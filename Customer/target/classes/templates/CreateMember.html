@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Create Member</title>
+</head>
+<body>
+    <header>
+        <img src="https://o2o.ipos.vn/static/images/icon_staff.svg" alt="">
+    </header>
+    <main>
+        <form th:action="register" method="post" th:object="${customer}">
+            <div class="container">
+                <div class="nameshop">
+                    <h1>QRCoffee</h1>
+                </div>
+                <div class="enter-phone">
+                    <input type="text" th:field="*{phone}" placeholder="Enter Phone Number">
+                </div>
+                <div class="enter-name">
+                    <input type="text" th:field="*{name}" placeholder="Enter Your Name">
+                </div>
+                <div class="button-start">
+                    <button type="submit" name="register" id="register">Register</button>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
