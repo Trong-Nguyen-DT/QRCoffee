@@ -1,0 +1,363 @@
+@import url('http://fonts.googleapis.com/css?family=Exo+2:400,700|Oswald:400,700');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box ;
+}
+body{
+
+    background-color: #F5F5F5;
+    max-width: 1500px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 100%;
+    background-color: #fff;
+}
+.container{
+    margin: 0 auto;
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.header-top{
+    margin: 0.3% auto;
+    width: 100%;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.enter-search {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.enter-search input {
+    width: 100%;
+    padding: 1% 0;
+    margin: 1% auto;
+    height: 40px;
+    border: 2px solid #EEEEEE;
+    border-radius: 15px;
+    background-color: #F5F5F5;
+}
+
+.enter-search input:focus {
+    outline: none;
+    padding: 1% 2%;
+}
+
+.header-bottom {
+    width: 90%;
+    margin: 1% auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-head {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.menu-head ul {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-head ul li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    margin-right: 20px;
+    float: left;
+}
+
+.menu-head ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-head ul li a:hover {
+    color: rgb(241, 36, 88);
+}
+
+
+
+
+
+
+
+
+
+main{
+    margin: 0 auto;
+    max-width: 1500px;
+    width: 100%;
+}
+
+.menu {
+    width: 100%;
+}
+.slider{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.content {
+    margin: 0 auto 1% auto;
+    flex-basis: 100%;
+}
+
+.content h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+
+}
+
+
+
+
+/** posts slider widget **/
+.w{
+    text-align: center;
+    width: 100%;
+
+}
+
+.crsl-items {
+    width: 100%;
+}
+
+.crsl-wrap{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.crsl-item {
+    margin: 0.5% 0.5%;
+    width: 19%; /* Tính toán lại width để tránh tràn */
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+    border: 1px solid #EEEEEE;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 80px;
+}
+
+
+.thumbnail {
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+    width: 25%;
+    height: 90%;
+    background-color: bisque;
+}
+
+/* .crsl-item .thumbnail img {
+  display: block;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+   border-radius: 10px;
+  float: left;
+
+  text-align: center;
+} */
+/* .crsl-item .thumbnail:hover img {
+  opacity: 0.8;
+} */
+
+.m1{
+    width: 75%;
+    height: 90%;
+    margin: auto auto auto 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #000;
+    background-color: #fff;
+    flex-direction: column;
+
+}
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+.title {
+    width: 100%;
+    margin: auto auto 20px auto;
+}
+
+.price {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.price p {
+    color: #f7941e;
+    font-size: 1rem;
+    width: 60%;
+}
+
+.input-group {
+    width: 30%;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+
+.input-group button {
+    background-color: #f7941e;
+    border: 1px solid #f7941e;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.input-group-btn-minus,
+.input-group-btn-plus {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-group-btn-minus {
+    left: 0;
+}
+
+.input-group-btn-plus {
+    right: 0;
+}
+
+.input-quantity {
+    width: 40%; /* Điều chỉnh kích thước của input-quantity nếu cần */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.input-quantity input {
+    width: 100%;
+    border: none;
+}
+
+footer {
+    max-width: 1500px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center; /* Căn giữa nội dung */
+    padding: 0; /* Khoảng cách giữa nội dung và viền của footer */
+    z-index: 1; /* Hiển thị trên các phần tử có z-index thấp hơn */
+
+}
+
+footer button {
+    width: 100%;
+    margin: auto;
+    padding: 20px 0;
+    background-color: #f7941e; /* Màu nền của footer */
+    border: 1px solid #f7941e;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 767px) {
+    .header-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.3rem;
+    }
+
+    .menu {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .menu ul {
+        justify-content: center; /* Canh giữa các mục menu */
+    }
+
+    .menu ul li {
+        margin-right: 0; /* Loại bỏ khoảng cách giữa các mục menu */
+        margin-bottom: 10px; /* Thêm khoảng cách dưới mỗi mục menu */
+    }
+
+    main {
+        padding: 0 10px; /* Thêm khoảng cách phía trái và phải */
+    }
+
+    .content h1 {
+        font-size: 1.5rem; /* Giảm kích thước font chủ đề */
+    }
+
+    .crsl-item {
+        width: 100%; /* Sử dụng toàn bộ chiều rộng */
+    }
+
+    .thumbnail {
+        width: 30%; /* Điều chỉnh kích thước hình ảnh */
+        height: auto; /* Đảm bảo chiều cao tỷ lệ */
+    }
+
+    .m1 {
+        width: 70%; /* Điều chỉnh kích thước phần mô tả */
+        margin: auto; /* Canh giữa */
+        margin-top: 2%; /* Thêm khoảng cách từ trên xuống */
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+    .input-group {
+        width: 70%; /* Điều chỉnh kích thước phần input số lượng */
+        margin: 10px auto; /* Canh giữa và thêm khoảng cách */
+    }
+
+    .input-group button {
+        font-size: 0.8rem; /* Điều chỉnh kích thước nút +/- */
+    }
+
+    .input-quantity {
+        width: 50%; /* Điều chỉnh kích thước input số lượng */
+    }
+
+}
+
+
+
+
