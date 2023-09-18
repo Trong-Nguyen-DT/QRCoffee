@@ -64,8 +64,13 @@ public class ProductController {
     @GetMapping("/product/restore/{id}")
     public String restoreProduct(@PathVariable Long id,  Model model) {
         productService.restoreProduct(id);
-        return "redirect:/admin/product"; // Chuyển hướng về trang danh sách sản phẩm sau khi cập nhật
+        return "redirect:/admin/product/restore"; // Chuyển hướng về trang danh sách sản phẩm sau khi cập nhật
     }
-
+@GetMapping("product/restore")
+    public String showRestoreProduct(Model model){
+        model.addAttribute("categories",categoryService.getAllCategory());
+        model.addAttribute("RestoreProducts", productService.getAllProducts());
+        return "RestoreProduct";
+}
 
 }
