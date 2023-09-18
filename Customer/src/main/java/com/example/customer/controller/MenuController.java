@@ -32,11 +32,6 @@ public class MenuController {
         model.addAttribute("orderdetails", cartEntity.getAllCartItems());
         model.addAttribute("products", productService.getAllProduct());
         model.addAttribute("categories", categoryService.getAllCategory());
-        for (OrderDetail orderDetail: cartEntity.getAllCartItems()) {
-            System.out.println(orderDetail.getProduct_id());
-            System.out.println(orderDetail.getQuantity());
-            System.out.println("=========");
-        }
 
         Customer customer = (Customer) session.getAttribute("customer");
         if (customer != null) {
@@ -59,8 +54,12 @@ public class MenuController {
         Integer banValue = Integer.parseInt(tb);
         Customer customer = (Customer) session.getAttribute("customer");
 
+        if (customer == null){
+            return "ErrorQR";
+        }
+
         ProductEntity product = productService.getProductById(productId);
-        cartEntity.addItem(product, customer);
+        cartEntity.addItem(product);
         redirectAttributes.addAttribute("tb", banValue);
         return "redirect:/menu/{tb}";
     }
