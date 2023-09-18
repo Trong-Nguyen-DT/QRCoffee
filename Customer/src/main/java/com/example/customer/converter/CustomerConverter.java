@@ -18,6 +18,7 @@ public class CustomerConverter {
 
     public static CustomerEntity toEntity(Customer customer) {
         CustomerEntity entity = new CustomerEntity();
+        entity.setId(customer.getId());
         entity.setName(customer.getName());
         entity.setPhone(customer.getPhone());
         entity.setPoint(0);

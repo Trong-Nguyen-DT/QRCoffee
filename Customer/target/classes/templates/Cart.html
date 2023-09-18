@@ -141,7 +141,6 @@
                     </div>
                   </td>
                   <td class="py-3" style="width: 40%">
-
                       <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" th:value="${item.quantity}">
                       <div class="cart-remove" style="padding-left: 5%;">
                         <a th:href="@{'/cart/' + ${tb} + '/removeItem?productId=' + ${item.product_id}}">
@@ -150,7 +149,6 @@
                           </svg>
                         </a>
                       </div>
-                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -180,7 +178,7 @@
                       <span class="price-amount amount text-dark ps-6">
                         <bdi>
                           <span class="price-currency-symbol"></span>
-                          <span th:text="${customer.point}"></span>
+                          <span id="current-points" th:text="${customer.point}"></span>
                         </bdi>
                       </span>
                     </td>
@@ -189,7 +187,10 @@
                     <th><input type="checkbox" name="checkbox" id="minus-point"> Minus</th>
                     <td data-title="Total">
                       <span class="price-amount amount text-dark ps-6">
-                        <input type="text" name="point" id="enter-point" value="" readonly>
+                        <form action="your-url-here" method="GET">
+                          <input type="text" name="point" id="enter-point" value="" readonly>
+<!--                          <button type="submit">Check</button>-->
+                      </form>
                       </span>
                     </td>
                   </tr>
@@ -205,7 +206,7 @@
                     <th><h1 style="width: 50%; float: left; font-size: 200%;">Total</h1>
                       <span class="price-amount amount text-dark" style="width: 50%;">
                         <bdi>
-                          <span class="price-currency-symbol px-3" th:text="${totalPrice}"></span></bdi>
+                          <span class="price-currency-symbol px-3" id="total" th:text="${totalPrice}"></span></bdi>
                       </span>
                     </th>
                     <!-- <td data-title="Total">
@@ -218,7 +219,8 @@
           </div>
         </div>
         <div class="button-wrap row g-2 justify-content-center">
-          <div class="col-md-8"><button class="btn btn-primary py-3 px-4 text-uppercase btn-rounded-none w-100">Check Out</button>
+          <div class="col-md-8">
+            <a th:href="@{'/cart/' + ${tb} + '/checkout'}"><button class="btn btn-primary py-3 px-4 text-uppercase btn-rounded-none w-100">Check Out</button></a>
           </div>
         </div>
       </div>
@@ -235,25 +237,6 @@
       } else {
         input.setAttribute('readonly', '');
       }
-    });
-  </script>
-  <script>
-    $(document).ready(function () {
-      // Decrement function
-      $('.quantity-left-minus').click(function (e) {
-        e.preventDefault();
-        let quantityInput = $(this).parent().parent().find('#quantity');
-        let currentQuantity = parseInt(quantityInput.val(), 10);
-        if (currentQuantity > 1) { // assuming you don't want quantities to go below 1
-          quantityInput.val(currentQuantity - 1);
-        }
-      });
-      // Increment function
-      $('.quantity-right-plus').click(function (e) {
-        let quantityInput = $(this).parent().parent().find('#quantity');
-        let currentQuantity = parseInt(quantityInput.val(), 10);
-        quantityInput.val(currentQuantity + 1);
-      });
     });
   </script>
 

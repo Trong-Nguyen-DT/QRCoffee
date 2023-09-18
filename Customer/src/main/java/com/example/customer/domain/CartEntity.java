@@ -23,10 +23,7 @@ public class CartEntity implements Serializable {
 
     private OrderEntity orderEntity = new OrderEntity();
 
-    public void addItem(ProductEntity productEntity, Customer customer) {
-
-        orderEntity.setCustomerEntity(CustomerConverter.toEntity(customer));
-
+    public void addItem(ProductEntity productEntity) {
         Optional<OrderDetailEntity> existingDetail = orderEntity.getOrderDetails().stream()
                 .filter(item -> Objects.equals(item.getProductEntity().getId(), productEntity.getId()))
                 .findFirst();
