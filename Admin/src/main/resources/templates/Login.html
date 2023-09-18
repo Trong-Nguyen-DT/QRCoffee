@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Login</title>
+</head>
+<body>
+<main>
+    <form action="perform_login" method="post">
+        <div class="left">
+            <h1>Đăng nhập</h1>
+            <div class="register">
+                <input type="text" class="form-control" id="tk" name="username" aria-describedby="tkHelp"
+                       placeholder="   Tài khoản" autofocus>
+            </div>
+            <div class="register">
+                <input type="password" class="form-control" id="pw" name="password" aria-describedby="pwHelp"
+                       placeholder="   Mật khẩu">
+            </div>
+            <div class="group-button">
+                <button type="submit">Đăng nhập</button>
+            </div>
+<!--            <div class="QMK">-->
+<!--                <a href="">Quên mật khẩu</a>-->
+<!--            </div>-->
+        </div>
+        <div class="right">
+            <img th:src="@{/images/login.png}" alt="">
+        </div>
+    </form>
+</main>
+</body>
+</html>
