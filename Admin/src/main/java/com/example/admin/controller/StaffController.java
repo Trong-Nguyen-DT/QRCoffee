@@ -56,4 +56,9 @@ public class StaffController {
        staffService.restoreStaff(id);
         return "redirect:/admin/staff"; // Chuyển hướng về trang danh sách sản phẩm sau khi cập nhật
     }
+    @GetMapping("staff/restore")
+    public String showRestoreStaff(Model model){
+        model.addAttribute("staff",staffService.getAllUsers("ROLE_STAFF"));
+        return "RestoreStaff";
+    }
 }

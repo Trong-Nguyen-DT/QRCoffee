@@ -17,7 +17,6 @@
     <!-- APP CSS -->
     <link rel="stylesheet" th:href="@{/css/grid.css}">
     <link rel="stylesheet" th:href="@{/css/app.css}">
-    <link rel="stylesheet" th:href="@{/css/create.css}">
     <link rel="stylesheet" th:href="@{/images/icon edit.jpg}">
 
 </head>
@@ -117,7 +116,7 @@
             </a>
             <ul class="sidebar-menu sidebar-menu-dropdown-content">
                 <li>
-                    <a th:href="@{/admin/product}" >
+                    <a th:href="@{/admin/product}">
                         list products
                     </a>
                 </li>
@@ -127,7 +126,7 @@
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/admin/product/restore}">
+                    <a href="">
                         restore products
                     </a>
                 </li>
@@ -183,52 +182,40 @@
     </div>
 
     <!-- ORDERS TABLE -->
-
     <div class="box">
-        <!-- <div class="box-header">
-           Account Staff
-        </div> -->
+
+
         <div class="box-body overflow-scroll">
-            <form th:action="@{/admin/product/create}" th:method="post" th:object="${product}">
+            <div class="box-header">
+                Product Restore
+            </div>
+            <div class="box-body overflow-scroll">
+
                 <table>
+                    <thead>
                     <tr>
-                        <th>
-                            <label>Price:</label>
+                        <th>ID</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Price</th>
 
-                        </th>
-                        <td>
-                            <input type="text" th:field="*{price}" />
-                        </td>
+                        <th>Restore</th>
+
                     </tr>
+                    </thead>
+                    <tbody th:each="RS : ${RestoreProducts}" th:if="${RS.deleted == false}" >
                     <tr>
-                        <th>
-                            <label>Title:</label>
-
-                        </th>
-                        <td>
-                            <input type="text" th:field="*{title}" />
-                        </td>
+                        <td th:text="${RS.id}"></td>
+                        <td th:each="cate : ${categories}"  th:if="${RS.category_id == cate.id}" th:text="${cate.name}"></td>
+                        <td th:text="${RS.title}"></td>
+                        <td th:text="${RS.price}"></td>
+                        <td><button> <a th:href="@{/admin/product/restore/{productId}(productId=${RS.id})}" > Restore  </a> </button></td>
                     </tr>
-                    <tr>
-                        <th>
-                            <label>Chọn Category</label>
-
-                        </th>
-                        <td>
-                            <select th:field="*{category_id}">
-
-                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-                            </select>
-                        </td>
-                    </tr>
-
+                    </tbody>
                 </table>
-                <button type="submit">ADD</button>
-            </form>
+            </div>
         </div>
     </div>
-
-
     <!-- END ORDERS TABLE -->
 
     <!-- END MAIN CONTENT -->

@@ -17,7 +17,6 @@
   <!-- APP CSS -->
   <link rel="stylesheet" th:href="@{/css/grid.css}">
   <link rel="stylesheet" th:href="@{/css/app.css}">
-  <link rel="stylesheet" th:href="@{/css/create.css}">
   <link rel="stylesheet" th:href="@{/images/icon edit.jpg}">
 
 </head>
@@ -181,65 +180,70 @@
       dashboard
     </div>
   </div>
+  <div class="main-content">
+    <div class="row">
+    </div>
 
-  <!-- ORDERS TABLE -->
+    <div class="row">
 
-  <div class="box">
-    <!-- <div class="box-header">
-       Account Staff
-    </div> -->
-    <div class="box-body overflow-scroll">
-      <form th:action="@{/admin/product/create}" th:method="post" th:object="${product}">
-        <table>
-          <tr>
-            <th>
+      <div class="col-12">
+        <!-- Account TABLE -->
+        <div class="box">
+          <div class="box-header">
+            Restore Staff
+          </div>
+          <div class="box-body overflow-scroll">
+            <table>
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>User name</th>
+                <th>Pass word</th>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Restore</th>
+              </tr>
+              </thead>
+
+              <tbody th:each="st : ${staff}" th:if="${st.deleted == false}"  >
+              <tr >
+                <td th:text="${st.id}"></td>
+
+                <td th:text="${st.name}"></td>
+                <td th:text="${st.birthday}"></td>
+                <td th:text="${st.address}"></td>
+                <td th:text="${st.phone}"></td>
+                <td th:text="${st.salary}"></td>
+                <td th:text="${st.username}"></td>
+                <td th:text="${st.password}"></td>
+                <td><button> <a  th:href="@{/admin/staff/restore/{id}(id=${st.id}) }"> Restore  </a></button> </td>
 
 
-            </th>
-            <td>
-              <input type="text" readonly th:field="*{id}" />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <label>Price:</label>
 
-            </th>
-            <td>
-              <input type="text" th:field="*{price}" />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <label>Title:</label>
+              </tr>
 
-            </th>
-            <td>
-              <input type="text" th:field="*{title}" />
-            </td>
-          </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-
-        </table>
-        <button type="submit">UpDate</button>
-      </form>
+        <!-- END Account TABLE -->
+      </div>
     </div>
   </div>
+</div>
+<!-- END MAIN CONTENT -->
 
+<div class="overlay"></div>
 
-  <!-- END ORDERS TABLE -->
-
-  <!-- END MAIN CONTENT -->
-
-  <div class="overlay"></div>
-
-  <!-- SCRIPT -->
-  <!-- APEX CHART -->
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <!-- APP JS -->
-  <script th:src="@{/js/app.js}"></script>
-
-
+<!-- SCRIPT -->
+<!-- APEX CHART -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- APP JS -->
+<script th:src="@{/js/app.js}"></script>
 
 </body>
 
