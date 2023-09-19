@@ -150,7 +150,6 @@
                           </svg>
                         </a>
                       </div>
-                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -247,12 +246,6 @@
         if (currentQuantity > 1) { // assuming you don't want quantities to go below 1
           quantityInput.val(currentQuantity - 1);
         }
-      });
-      // Increment function
-      $('.quantity-right-plus').click(function (e) {
-        let quantityInput = $(this).parent().parent().find('#quantity');
-        let currentQuantity = parseInt(quantityInput.val(), 10);
-        quantityInput.val(currentQuantity + 1);
       });
     });
   </script>
