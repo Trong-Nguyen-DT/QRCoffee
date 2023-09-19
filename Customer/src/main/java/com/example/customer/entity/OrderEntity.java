@@ -25,6 +25,34 @@ public class OrderEntity {
     @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetailEntity> orderDetails = new ArrayList<>();
 
+    private Boolean confirmed;
+
+    private Integer tb;
+
+    public Integer getTb() {
+        return tb;
+    }
+
+    public void setTb(Integer tb) {
+        this.tb = tb;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public Boolean getConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
     public Long getId() {
         return id;
     }
@@ -47,14 +75,6 @@ public class OrderEntity {
 
     public void setCustomerEntity(CustomerEntity customerEntity) {
         this.customerEntity = customerEntity;
-    }
-
-    public UserEntity getStaffEntity() {
-        return userEntity;
-    }
-
-    public void setStaffEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
     }
 
     public List<OrderDetailEntity> getOrderDetails() {

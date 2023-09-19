@@ -20,8 +20,8 @@ public class CustomerEntity {
 
     private Integer point;
 
-    @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderEntity> orderEntities = new ArrayList<>();
+//    @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<OrderEntity> orderEntities = new ArrayList<>();
 
 
     public Long getId() {
@@ -56,11 +56,4 @@ public class CustomerEntity {
         this.point = point;
     }
 
-    public List<OrderEntity> getOrderEntities() {
-        return orderEntities;
-    }
-
-    public void setOrderEntities(List<OrderEntity> orderEntities) {
-        this.orderEntities = orderEntities;
-    }
 }
