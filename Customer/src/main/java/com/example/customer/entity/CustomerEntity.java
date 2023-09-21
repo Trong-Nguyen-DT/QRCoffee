@@ -20,9 +20,6 @@ public class CustomerEntity {
 
     private Integer point;
 
-//    @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<OrderEntity> orderEntities = new ArrayList<>();
-
 
     public Long getId() {
         return id;
@@ -55,5 +52,4 @@ public class CustomerEntity {
     public void setPoint(Integer point) {
         this.point = point;
     }
-
 }

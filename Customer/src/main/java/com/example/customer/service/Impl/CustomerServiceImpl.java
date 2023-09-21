@@ -3,6 +3,7 @@ package com.example.customer.service.Impl;
 import com.example.customer.converter.CustomerConverter;
 import com.example.customer.domain.Customer;
 import com.example.customer.entity.CustomerEntity;
+import com.example.customer.entity.OrderEntity;
 import com.example.customer.repository.CustomerRepository;
 import com.example.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,15 @@ public class CustomerServiceImpl implements CustomerService {
 
         if (customerEntity != null) {
             return CustomerConverter.toModel(customerEntity);
-        } else {
-            return null;
         }
+        return null;
+    }
+
+    @Override
+    public void setPoint(OrderEntity orderEntity) {
+        CustomerEntity customerEntity = customerRepository.findById(orderEntity.getCustomerEntity().getId()).orElseThrow();
+        double newPoint = (orderEntity.getCustomerEntity().getPoint() - orderEntity.getPoint()) + (0.02 * orderEntity.getAmount());
+        customerEntity.setPoint((int) newPoint);
+        customerRepository.save(customerEntity);
     }
 }

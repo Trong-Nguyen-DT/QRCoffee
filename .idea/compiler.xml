@@ -17,7 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Admin" options="-parameters" />
       <module name="Customer" options="-parameters" />
-      <module name="Staff" options="-parameters" />
+      <module name="Staff" options="" />
     </option>
   </component>
 </project>

@@ -18,6 +18,11 @@ public class LoginController {
     @Autowired
     private CustomerService customerService;
 
+    @GetMapping()
+    public String showErrorQR() {
+        return "ErrorQR";
+    }
+
     @GetMapping("/{tb}")
     public String showLogin(@PathVariable String tb, Model model) {
         try {
@@ -29,10 +34,7 @@ public class LoginController {
         }
     }
 
-    @GetMapping()
-    public String showLoginErrorQR(Model model) {
-        return "ErrorQR";
-    }
+
 
     @PostMapping("/{tb}")
     public String processLogin(

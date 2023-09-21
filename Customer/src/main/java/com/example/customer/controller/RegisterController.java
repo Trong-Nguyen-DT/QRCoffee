@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping
+@RequestMapping("register")
 public class RegisterController {
 
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("register")
+    @GetMapping()
     public String showRegister(Model model) {
         model.addAttribute("customer", new Customer());
         return "CreateMember";
     }
 
-    @PostMapping("register")
+    @PostMapping()
     public String registerCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.createMember(customer);
         return "redirect:/login";
