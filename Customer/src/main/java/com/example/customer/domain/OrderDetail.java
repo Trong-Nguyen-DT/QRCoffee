@@ -13,10 +13,9 @@ import lombok.Setter;
 public class OrderDetail {
 
     private Long id;
-
     private Long order_id;
-
     private Long product_id;
-
+    private String name;
+    private long price;
     private int quantity;
 }

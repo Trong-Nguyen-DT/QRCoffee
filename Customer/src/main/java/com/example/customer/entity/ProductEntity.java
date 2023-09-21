@@ -16,7 +16,7 @@ public class ProductEntity {
 
     private String title;
 
-    private Integer price;
+    private Long price;
 
     private String image;
 
@@ -43,11 +43,11 @@ public class ProductEntity {
         this.title = title;
     }
 
-    public Integer getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 

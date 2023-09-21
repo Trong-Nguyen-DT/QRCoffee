@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,9 +100,9 @@
             </div>
 
             <div id="w">
-                <div class="crsl-items" data-navigation="navbtns" th:each="prod : ${products}" th:if="${prod.category_id == cate.id}">
+                <div class="crsl-items" data-navigation="navbtns">
                     <div class="crsl-wrap">
-                        <div class="crsl-item">
+                        <div class="crsl-item" th:each="prod : ${products}" th:if="${prod.category_id == cate.id}">
                             <div class="thumbnail">
                                 <img src="" alt="java">
                             </div>
@@ -114,7 +114,7 @@
                                     <p class="price-amount" th:text="${prod.price}"></p>
 
                                     <div class="input-group product-qty">
-                                        <div th:each="item : ${orderdetails}" th:if="${item.product_id == prod.id}">
+                                        <div th:each="item : ${orderDetails}" th:if="${item.product_id == prod.id}">
                                             <span class="input-group-btn-minus">
                                                 <button type="button" class="quantity-left-minus btn btn-light btn-number" data-type="minus">
                                                     <a th:href="@{'/menu/' + ${tb} + '/reduceItem?productId=' + ${prod.id}}">
@@ -126,7 +126,7 @@
                                             </span>
                                         </div>
 
-                                        <div class="input-quantity" th:each="item : ${orderdetails}">
+                                        <div class="input-quantity" th:each="item : ${orderDetails}">
                                             <div class="input-quantity" th:if="${item.product_id == prod.id}">
                                                 <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" th:value="${item.quantity}">
                                             </div>
@@ -155,7 +155,7 @@
         </div>
 
     </main>
-    <footer th:each="a : ${orderdetails}">
+    <footer th:each="a : ${orderDetails}">
         <a th:href="@{'/cart/' + ${tb}}">
             <button>
                 <svg width="16" height="16">

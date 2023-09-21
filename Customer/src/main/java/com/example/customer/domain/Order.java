@@ -14,12 +14,16 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
 
-    private Long id;
-
+    private Long orderCode;
+    private Long amount;
+    private String description;
     private Long customer_id;
-
+    private String buyerName;
+    private String buyerPhone;
+    private String returnUrl;
+    private String cancelUrl;
+    private String signature;
     private Long user_id;
-
-    private List<OrderDetail> orderDetails;
+    private List<OrderDetail> items;
 
 }

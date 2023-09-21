@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("menu/{tb}")
+@RequestMapping("menu")
 public class MenuController {
 
     @Autowired
@@ -27,51 +27,72 @@ public class MenuController {
     @Autowired
     private CartEntity cartEntity;
 
-    @GetMapping("")
+    @GetMapping()
+    public String showErrorQR() {
+        return "ErrorQR";
+    }
+
+    @GetMapping("/{tb}")
     public String showMenuPage(Model model, HttpSession session, @PathVariable String tb) {
-        model.addAttribute("orderdetails", cartEntity.getAllCartItems());
-        model.addAttribute("products", productService.getAllProduct());
-        model.addAttribute("categories", categoryService.getAllCategory());
-
-        Customer customer = (Customer) session.getAttribute("customer");
-        if (customer != null) {
-            model.addAttribute("customer", customer);
-            model.addAttribute("product", new ProductEntity());
-            return "Menu";
-        } else {
-            return "redirect:/login";
+        try {
+            Integer banValue = Integer.parseInt(tb);
+            Customer customer = (Customer) session.getAttribute("customer");
+            if (customer != null) {
+                model.addAttribute("customer", customer);
+                model.addAttribute("product", new ProductEntity());
+                model.addAttribute("orderDetails", cartEntity.getAllCartItems());
+                model.addAttribute("products", productService.getAllProduct());
+                model.addAttribute("categories", categoryService.getAllCategory());
+                return "Menu";
+            } else {
+                return "redirect:/login";
+            }
+        } catch (NumberFormatException e) {
+            return "ErrorQR";
         }
-
-//        model.addAttribute("customer", customer);
-//        model.addAttribute("product", new ProductEntity());
-//        return "Menu";
     }
 
 
 
-    @GetMapping("/addItem")
+    @GetMapping("/{tb}/addItem")
     public String addItem(@RequestParam Long productId, @PathVariable String tb, HttpSession session, RedirectAttributes redirectAttributes) {
-        Integer banValue = Integer.parseInt(tb);
-        Customer customer = (Customer) session.getAttribute("customer");
 
-        if (customer == null){
+        try {
+            Integer banValue = Integer.parseInt(tb);
+            Customer customer = (Customer) session.getAttribute("customer");
+            if (customer != null) {
+                ProductEntity product = productService.getProductById(productId);
+                cartEntity.addItem(product);
+                redirectAttributes.addAttribute("tb", banValue);
+                return "redirect:/menu/{tb}";
+            } else {
+                return "redirect:/login";
+            }
+        } catch (NumberFormatException e) {
             return "ErrorQR";
         }
 
-        ProductEntity product = productService.getProductById(productId);
-        cartEntity.addItem(product);
-        redirectAttributes.addAttribute("tb", banValue);
-        return "redirect:/menu/{tb}";
+
     }
 
 
-    @GetMapping("/reduceItem")
-    public String reduceItem(@RequestParam Long productId, @PathVariable String tb, RedirectAttributes redirectAttributes) {
-        Integer banValue = Integer.parseInt(tb);
-        ProductEntity product = productService.getProductById(productId);
-        cartEntity.reduceItem(product);
-        redirectAttributes.addAttribute("tb", banValue);
-        return "redirect:/menu/{tb}";
+    @GetMapping("/{tb}/reduceItem")
+    public String reduceItem(@RequestParam Long productId, @PathVariable String tb, RedirectAttributes redirectAttributes, HttpSession session) {
+
+        try {
+            Integer banValue = Integer.parseInt(tb);
+            Customer customer = (Customer) session.getAttribute("customer");
+            if (customer != null) {
+                ProductEntity product = productService.getProductById(productId);
+                cartEntity.reduceItem(product);
+                redirectAttributes.addAttribute("tb", banValue);
+                return "redirect:/menu/{tb}";
+            } else {
+                return "redirect:/login";
+            }
+        } catch (NumberFormatException e) {
+            return "ErrorQR";
+        }
     }
 
 }

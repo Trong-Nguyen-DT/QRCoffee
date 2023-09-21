@@ -15,6 +15,12 @@ public class OrderEntity {
 
     private LocalDateTime orderDateTime;
 
+    private Long totalPrice;
+
+    private Long amount;
+
+    private Integer point;
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private CustomerEntity customerEntity;
@@ -25,33 +31,12 @@ public class OrderEntity {
     @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetailEntity> orderDetails = new ArrayList<>();
 
+    private Boolean status;
+
     private Boolean confirmed;
 
     private Integer tb;
 
-    public Integer getTb() {
-        return tb;
-    }
-
-    public void setTb(Integer tb) {
-        this.tb = tb;
-    }
-
-    public UserEntity getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
-    }
-
-    public Boolean getConfirmed() {
-        return confirmed;
-    }
-
-    public void setConfirmed(Boolean confirmed) {
-        this.confirmed = confirmed;
-    }
 
     public Long getId() {
         return id;
@@ -69,6 +54,30 @@ public class OrderEntity {
         this.orderDateTime = orderDateTime;
     }
 
+    public Long getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Long totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
+    public Integer getPoint() {
+        return point;
+    }
+
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
+
     public CustomerEntity getCustomerEntity() {
         return customerEntity;
     }
@@ -77,11 +86,43 @@ public class OrderEntity {
         this.customerEntity = customerEntity;
     }
 
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
     public List<OrderDetailEntity> getOrderDetails() {
         return orderDetails;
     }
 
     public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Boolean getConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    public Integer getTb() {
+        return tb;
+    }
+
+    public void setTb(Integer tb) {
+        this.tb = tb;
     }
 }

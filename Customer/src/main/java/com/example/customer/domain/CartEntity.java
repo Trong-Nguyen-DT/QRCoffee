@@ -74,14 +74,18 @@ public class CartEntity implements Serializable {
     }
 
 
-    public Integer getTotalPrice() {
-        Integer totalPrice = 0;
+    public Long getTotalPrice() {
+        Long totalPrice = 0L;
         for (OrderDetailEntity detail : orderEntity.getOrderDetails()) {
             ProductEntity product = detail.getProductEntity();
             int quantity = detail.getQuantity();
-            Integer price = product.getPrice();
+            Long price = product.getPrice();
             totalPrice += price * quantity;
         }
         return totalPrice;
+    }
+
+    public OrderEntity getOrderEntity() {
+        return this.orderEntity;
     }
 }
