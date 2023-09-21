@@ -4,8 +4,6 @@ import com.example.admin.domain.Product;
 import com.example.admin.entity.CategoryEntity;
 import com.example.admin.entity.ProductEntity;
 import com.example.admin.repository.CategoryRepository;
-import com.example.admin.repository.OrderDetailRepositoty;
-import com.example.admin.repository.OrderRepository;
 import com.example.admin.repository.ProductRepository;
 import com.example.admin.service.CategoryService;
 import com.example.admin.service.ProductService;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.admin.convertor.ProductConvertor;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

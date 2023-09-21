@@ -9,6 +9,8 @@ import com.example.admin.entity.UserEntity;
 import com.example.admin.repository.UserRepository;
 import com.example.admin.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,11 +49,12 @@ public class StaffServiceImpl implements StaffService {
         UserEntity existingStaff = userRepository.findById(user.getId()).orElseThrow(() ->
                 new RuntimeException("Không tìm thấy sản phẩm"));
 
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         // Cập nhật thông tin sản phẩm với dữ liệu mới từ form chỉnh sửa
         existingStaff.setName(user.getName());
         existingStaff.setAddress(user.getAddress());
         existingStaff.setBirthday(user.getBirthday());
-        existingStaff.setPassword(user.getPassword());
+        existingStaff.setPassword(passwordEncoder.encode(user.getPassword()));
         existingStaff.setSalary(user.getSalary());
         existingStaff.setUsername(user.getUsername());
         existingStaff.setPhone(user.getPhone());
