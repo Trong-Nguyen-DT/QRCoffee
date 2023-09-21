@@ -36,10 +36,22 @@ header{
 }
 .name-staff-right{
     width: 60%;
-    float: left;
+
 }
 .time{
     width: 35%;
+
+}
+.time h1{
+    text-align: center;
+    margin-top: 2px;
+    font-size: 25px;
+}
+#clock{
+    padding: 5px;
+    margin: 2px;
+    font-size: x-large;
+    text-align: center;
 }
 main{
     width: 100%;

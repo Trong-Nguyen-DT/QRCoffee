@@ -79,4 +79,9 @@ public class StaffServiceImpl implements StaffService {
         existingStaff.setDeleted(true);
         userRepository.save(existingStaff);
     }
+
+    @Override
+    public User getUserByUserName(String username) {
+        return StaffConvertor.toModel(userRepository.findByUsername(username).orElseThrow());
+    }
 }

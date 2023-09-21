@@ -1,6 +1,5 @@
 package com.example.admin.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +9,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDetail {
+public class OrderDetailHistory {
+
     private Long id;
-    private Long order_id;
-    private Long product_id;
-    private String name;
-    private Long price;
+
+    private Long orderId;
+
+    private Long productId;
+
+    private String productTitle;
+
+    private Long productPrice;
+
     private int quantity;
+
+    private OrderHistory orderHistory;
 }

@@ -17,8 +17,14 @@
     <!-- APP CSS -->
     <link rel="stylesheet" th:href="@{/css/grid.css}">
     <link rel="stylesheet" th:href="@{/css/app.css}">
-    <link rel="stylesheet" th:href="@{/css/create.css}">
     <link rel="stylesheet" th:href="@{/images/icon edit.jpg}">
+    <link rel="stylesheet" th:href="@{/css/formsearch.css}">
+
+
+<!--    <link rel="stylesheet" href="../static/css/formsearch.css">-->
+<!--    <link rel="stylesheet" href="../static/css/grid.css">-->
+<!--    <link rel="stylesheet" href="../static/css/app.css">-->
+
 
 </head>
 
@@ -60,7 +66,7 @@
             </a>
         </li>
         <li>
-            <ath:href="@{/admin/orders}">
+            <a href="#">
                 <i class='bx bx-chart'></i>
                 <span>Order History</span>
             </a>
@@ -181,83 +187,71 @@
             dashboard
         </div>
     </div>
+    <div class="main-content">
+        <div class="row">
+        </div>
 
-    <!-- ORDERS TABLE -->
+        <div class="row">
 
-    <div class="box">
-        <!-- <div class="box-header">
-           Account Staff
-        </div> -->
-        <div class="box-body overflow-scroll">
-            <form th:action="@{/admin/product/create}" th:method="post" th:object="${product}">
-                <table>
-                    <tr>
-                        <th>
-                            <label>Price:</label>
+            <div class="col-12">
+                <!-- Account TABLE -->
+                <div class="box">
+                    <div class="box-header">
+                        Order History
+                    </div>
+                    <div class="form_search">
+                        <form th:action="@{/admin/orders/search}" method="get">
+                           <p>Từ:</p>  <input type="datetime-local" name="startTime" required><br>
+                            <p>Đến:</p> <input type="datetime-local" name="endTime" required><br>
+                            <button type="submit">Tìm kiếm</button>
+                        </form>
+                    </div>
+                    <div class="box-body overflow-scroll">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer Name</th>
+                                <th>Order Date</th>
+                                <th>Amount</th>
+                                <th>Point</th>
+                                <th>Total Price</th>
 
-                        </th>
-                        <td>
-                            <input type="text" th:field="*{price}" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>Title:</label>
 
-                        </th>
-                        <td>
-                            <input type="text" th:field="*{title}" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>Chọn Category</label>
+                            </tr>
+                            </thead>
 
-                        </th>
-                        <td>
-                            <select th:field="*{category_id}">
+                            <tbody th:each="orderhistory : ${orders}"    >
+                            <tr >
+                                <td th:text="${orderhistory.id}"></td>
 
-                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-                            </select>
-                        </td>
-                    </tr>
+                                <td th:each="cus:${customers}" th:if="${cus.id== orderhistory.customerId}" th:text="${cus.name}"></td>
+                                <td th:text="${orderhistory.orderDateTime}"></td>
+                                <td th:text="${orderhistory.amount}"></td>
+                                <td th:text="${orderhistory.point}"></td>
+                                <td th:text="${orderhistory.totalPrice}"></td>
 
-                </table>
-                <button type="submit">ADD</button>
-            </form>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- END Account TABLE -->
+            </div>
         </div>
     </div>
+</div>
+<!-- END MAIN CONTENT -->
 
+<div class="overlay"></div>
 
-    <!-- END ORDERS TABLE -->
-
-    <!-- END MAIN CONTENT -->
-
-    <div class="overlay"></div>
-
-    <!-- SCRIPT -->
-    <!-- APEX CHART -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- APP JS -->
-    <script th:src="@{/js/app.js}"></script>
-
-    <!--    <script>-->
-    <!--        document.getElementById('categorySelect').addEventListener('change', function() {-->
-    <!--            var selectedCategoryId = this.value;-->
-    <!--            // Gửi yêu cầu tìm kiếm dựa trên selectedCategoryId bằng AJAX-->
-    <!--            // Ví dụ sử dụng Fetch API:-->
-    <!--            fetch('/adminhome/product?category_id=' + selectedCategoryId)-->
-    <!--                .then(response => response.json())-->
-    <!--                .then(data => {-->
-    <!--                    // Xử lý dữ liệu trả về và cập nhật giao diện người dùng-->
-    <!--                    // Ví dụ: hiển thị danh sách sản phẩm-->
-    <!--                })-->
-    <!--                .catch(error => {-->
-    <!--                    console.error('Lỗi khi gửi yêu cầu: ' + error);-->
-    <!--                });-->
-    <!--        });-->
-    <!--    </script>-->
-
+<!-- SCRIPT -->
+<!-- APEX CHART -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- APP JS -->
+<script th:src="@{/js/app.js}"></script>
 
 </body>
 

@@ -12,6 +12,8 @@ public interface StaffService {
     void updateStaff( User user);
     void deleteStaff(Long id);
     void restoreStaff(Long id);
+
+    User getUserByUserName(String username);
 }
 
 

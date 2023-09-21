@@ -39,7 +39,7 @@
       </div>
     </div>
     <button class="btn btn-outline">
-      <a href="perform_logout">
+      <a th:href="@{/perform_logout}">
         <i class='bx bx-log-out bx-flip-horizontal'></i>
       </a>
     </button>
@@ -59,9 +59,9 @@
       </a>
     </li>
     <li>
-      <a href="#">
+      <a th:href="@{/admin/orders}">
         <i class='bx bx-chart'></i>
-        <span>analytic</span>
+        <span>order history</span>
       </a>
     </li>
     <li class="sidebar-submenu">
@@ -197,13 +197,14 @@
               <thead>
               <tr>
                 <th>ID</th>
-                <th>User name</th>
-                <th>Pass word</th>
+
                 <th>Name</th>
                 <th>Birthday</th>
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Salary</th>
+<!--                <th>User name</th>-->
+<!--                <th>Pass word</th>-->
                 <th>Restore</th>
               </tr>
               </thead>
@@ -217,8 +218,8 @@
                 <td th:text="${st.address}"></td>
                 <td th:text="${st.phone}"></td>
                 <td th:text="${st.salary}"></td>
-                <td th:text="${st.username}"></td>
-                <td th:text="${st.password}"></td>
+<!--                <td th:text="${st.username}"></td>-->
+<!--                <td th:text="${st.password}"></td>-->
                 <td><button> <a  th:href="@{/admin/staff/restore/{id}(id=${st.id}) }"> Restore  </a></button> </td>
 
 

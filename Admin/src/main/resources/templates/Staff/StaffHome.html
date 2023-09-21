@@ -8,6 +8,8 @@
     <title>aaaa</title>
     <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
     <link rel="stylesheet" th:href="@{/css/staff.css}">
+
+
 <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <!--    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>-->
 <!--    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>-->
@@ -19,14 +21,16 @@
 
     <header>
         <div class="container">
-            <div class="name-staff">
+            <div class="name-staff" th:object="${user}">
                 <div class="name-staff-left"><h1>Xin chào:</h1></div>
 
-                <div class=" name-staff-right"><h1>Ngọc Sương</h1></div>
+                <div class=" name-staff-right"><h1 th:text="${user.name}"></h1></div>
 
             </div>
             <div class="time">
-                <h1>Giờ thực tế:</h1>
+                <h1>Giờ thực tế</h1>
+                <div id="clock"></div>
+
             </div>
         </div>
     </header>
@@ -91,5 +95,28 @@
             </div>
 
     </main>
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Định dạng thời gian để hiển thị dưới dạng 00:00:00
+            var timeString =
+                (hours < 10 ? "0" : "") + hours + ":" +
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds;
+
+            // Hiển thị thời gian trên trang web
+            document.getElementById("clock").textContent = timeString;
+        }
+
+        // Cập nhật đồng hồ mỗi giây
+        setInterval(updateClock, 1000);
+
+        // Khởi chạy đồng hồ
+        updateClock();
+    </script>
 </body>
 </html>
