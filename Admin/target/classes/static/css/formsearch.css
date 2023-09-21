@@ -1,0 +1,23 @@
+.form_search input {
+
+    /*float: left;*/
+    display: flex;
+
+    margin: 3px;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+.form_search form{
+    display: flex;
+    flex-direction: row;
+
+}
+.form_search button{
+    border-radius: 5px;
+    padding: 2px;
+    margin: 5px;
+}
+.form_search p{
+   margin-top: 10px;
+}
