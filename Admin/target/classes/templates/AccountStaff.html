@@ -39,7 +39,7 @@
       </div>
     </div>
     <button class="btn btn-outline">
-      <a href="perform_logout">
+      <a th:href="@{/perform_logout}">
         <i class='bx bx-log-out bx-flip-horizontal'></i>
       </a>
     </button>
@@ -59,9 +59,9 @@
       </a>
     </li>
     <li>
-      <a href="#">
+      <a th:href="@{/admin/orders}">
         <i class='bx bx-chart'></i>
-        <span>analytic</span>
+        <span>Order History</span>
       </a>
     </li>
     <li class="sidebar-submenu">
@@ -197,13 +197,14 @@
               <thead>
               <tr>
                 <th>ID</th>
-                <th>User name</th>
-                <th>Pass word</th>
+
                 <th>Name</th>
                 <th>Birthday</th>
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Salary</th>
+<!--                <th>User name</th>-->
+<!--                <th>Pass word</th>-->
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -218,8 +219,8 @@
                 <td th:text="${staff.address}"></td>
                 <td th:text="${staff.phone}"></td>
                 <td th:text="${staff.salary}"></td>
-                <td th:text="${staff.username}"></td>
-                <td th:text="${staff.password}"></td>
+<!--                <td th:text="${staff.username}"></td>-->
+<!--                <td th:text="${staff.password}"></td>-->
                 <td><button> <a  th:href="@{/admin/staff/edit/{id}(id=${staff.id}) }"> Edit  </a></button> </td>
                 <td><button> <a th:href="@{/admin/staff/delete/{id}(id=${staff.id}) }" > Delete  </a></button> </td>
 

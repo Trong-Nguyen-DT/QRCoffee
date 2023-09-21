@@ -13,14 +13,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-    private Long id;
-
-    private LocalDateTime orderDateTime;
-
-    private Customer customer;
-
-    private User user;
-
-    private List<OrderDetail> orderDetails;
+    private Long orderCode;
+    private Long amount;
+    private Long total;
+    private Integer point;
+    private String description;
+    private Long customer_id;
+    private String buyerName;
+    private String buyerPhone;
+    private String returnUrl;
+    private String cancelUrl;
+    private String signature;
+    private Long user_id;
+    private Boolean status;
+    private List<OrderDetail> items;
 
 }

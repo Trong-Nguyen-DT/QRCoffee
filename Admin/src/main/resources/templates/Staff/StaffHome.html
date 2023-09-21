@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aaaa</title>
+    <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
+    <link rel="stylesheet" th:href="@{/css/staff.css}">
+
+
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>-->
+<!--    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>-->
+<!--    <script type="text/javascript" src="/js/responsiveCarousel.min.js"></script>-->
+
+    <meta name="keywords" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm, BLOG">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="name-staff" th:object="${user}">
+                <div class="name-staff-left"><h1>Xin chào:</h1></div>
+
+                <div class=" name-staff-right"><h1 th:text="${user.name}"></h1></div>
+
+            </div>
+            <div class="time">
+                <h1>Giờ thực tế</h1>
+                <div id="clock"></div>
+
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="left">
+            <div id="w">
+                <div class="order-new">
+
+                    <h2> All Table </h2>
+                </div>
+                <div class="crsl-items" data-navigation="navbtns" >
+                    <div class="crsl-wrap">
+                        <div class="crsl-item" th:each="order : ${orders}" th:if="${order.status}">
+                            <a th:href="@{/staff/detail/{id}(id=${order.orderCode})}"><button th:text="${order.description}"></button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>
+                            Bàn 1
+                        </th>
+                        <th>
+                            Trọng nguyên
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Tổng Bill</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>Điểm trừ</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>Thanh toán</th>
+                            <th></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </main>
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Định dạng thời gian để hiển thị dưới dạng 00:00:00
+            var timeString =
+                (hours < 10 ? "0" : "") + hours + ":" +
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds;
+
+            // Hiển thị thời gian trên trang web
+            document.getElementById("clock").textContent = timeString;
+        }
+
+        // Cập nhật đồng hồ mỗi giây
+        setInterval(updateClock, 1000);
+
+        // Khởi chạy đồng hồ
+        updateClock();
+    </script>
+</body>
+</html>

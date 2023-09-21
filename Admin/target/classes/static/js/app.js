@@ -17,7 +17,7 @@ document.querySelectorAll('.sidebar-submenu').forEach(e => {
 let category_options = {
     // series: [70, 75, 41, 27],
     // labels: ['Coffee', 'Trà Sữa', 'Trà Chanh', 'Kem'],
-  
+
     chart: {
         type: 'donut',
     },
@@ -46,8 +46,7 @@ fetch('/admin/category-data')
     .catch(error => console.error(error));
 
 
-// let category_chart = new ApexCharts(document.querySelector("#category-chart"), category_options)
-// category_chart.render()
+
 
 let customer_options = {
     series: [{
