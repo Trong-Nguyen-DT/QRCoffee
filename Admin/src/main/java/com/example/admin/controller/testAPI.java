@@ -26,8 +26,4 @@ public class testAPI {
     public List<Product> getProductFromRemote() {
         return remoteService.getProductFromOtherClient();
     }
-
-
 }
-
-

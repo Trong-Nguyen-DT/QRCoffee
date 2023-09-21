@@ -15,16 +15,38 @@ document.querySelectorAll('.sidebar-submenu').forEach(e => {
 })
 
 let category_options = {
-    series: [50, 75, 41, 27],
-    labels: ['Coffee', 'Trà Sữa', 'Trà Chanh', 'Kem'],
+    // series: [70, 75, 41, 27],
+    // labels: ['Coffee', 'Trà Sữa', 'Trà Chanh', 'Kem'],
+
     chart: {
         type: 'donut',
     },
     colors: ['#6ab04c', '#2980b9', '#f39c12', '#d35400']
 }
 
-let category_chart = new ApexCharts(document.querySelector("#category-chart"), category_options)
-category_chart.render()
+// Gọi API lấy dữ liệu danh mục
+fetch('/admin/category-data')
+    .then(response => response.json())
+    .then(data => {
+        // Chuyển dữ liệu từ API thành dạng thích hợp cho biểu đồ
+        const seriesData = data.map(item => item.quantity);
+        const labels = data.map(item => item.categoryName);
+
+        // Cập nhật category_options
+
+         category_options.series = seriesData;
+         category_options.labels = labels;
+
+
+
+        // Tạo hoặc cập nhật biểu đồ danh mục ở đây
+        let category_chart = new ApexCharts(document.querySelector("#category-chart"), category_options);
+        category_chart.render();
+    })
+    .catch(error => console.error(error));
+
+
+
 
 let customer_options = {
     series: [{

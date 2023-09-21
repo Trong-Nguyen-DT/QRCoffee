@@ -72,18 +72,19 @@
             </a>
             <ul class="sidebar-menu sidebar-menu-dropdown-content">
                 <li>
-                    <a href="#">
-                        edit profile
+                    <a th:href="@{/admin/staff/create}">
+                        Add Staff
                     </a>
                 </li>
                 <li>
                     <a th:href="@{/admin/staff}">
-                        account Staff
+                        Staffs
                     </a>
                 </li>
+
                 <li>
-                    <a th:href="@{/admin/staff/create}">
-                        add staff
+                    <a th:href="@{/admin/staff/restore}">
+                        Restores Staff
                     </a>
                 </li>
             </ul>
@@ -125,7 +126,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a th:href="@{/admin/product/restore}">
                         restore products
                     </a>
                 </li>

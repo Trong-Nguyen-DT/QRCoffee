@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Login Member</title>
+</head>
+<body>
+    <header>
+        <img src="https://o2o.ipos.vn/static/images/icon_staff.svg" alt="">
+    </header>
+    <main>
+        <form th:action="@{'/login/' + ${tb}}" method="post">
+            <div class="container">
+                <div class="nameshop">
+                    <h1>QRCoffee</h1>
+                </div>
+                <div class="enter-phone">
+                    <input type="text" name="phone" placeholder="Enter Phone Number">
+                </div>
+                <div th:if="${errorMessage}" class="error-message">
+                    <p th:text="${errorMessage}" style="color: red"></p>
+                </div>
+                <div class="button-start">
+                    <button type="submit" name="start" id="start">Start</button>
+                </div>
+                <div class="button-register">
+                    <a th:href="@{'/register'}"><button type=button name="register" id="register">Sign In</button></a>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
