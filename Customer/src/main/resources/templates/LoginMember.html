@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/login.css}">
@@ -12,7 +12,7 @@
     <main>
         <form th:action="@{'/login/' + ${tb}}" method="post">
             <div class="container">
-                <div class="nameshop">
+                <div class="name-shop">
                     <h1>QRCoffee</h1>
                 </div>
                 <div class="enter-phone">
@@ -25,7 +25,7 @@
                     <button type="submit" name="start" id="start">Start</button>
                 </div>
                 <div class="button-register">
-                    <a th:href="@{'/register'}"><button type=button name="register" id="register">Sign In</button></a>
+                    <a th:href="@{'/register'}"><button type=button name="register" id="register">Sign Up</button></a>
                 </div>
             </div>
         </form>

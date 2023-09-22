@@ -112,7 +112,7 @@
   </section>
   <section class="py-5">
     <div class="container-fluid">
-      <form th:action="@{'/cart/' + ${tb} + '/checkout'}" th:object="${orderEntity}" onsubmit="return validatePoints()">
+      <form th:action="@{'/cart/' + ${tb} + '/checkout'}" th:object="${orderEntity}">
         <div class="row g-5 justify-content-around">
           <div>
             <div class="table-responsive cart">
@@ -190,7 +190,7 @@
                     <th><label for="minus-point"></label><input type="checkbox" name="checkbox" id="minus-point"> Minus</th>
                     <td data-title="Total">
                       <span class="price-amount amount text-dark ps-6">
-                        <label for="enter-point"></label><input type="text" th:field="${orderEntity.point}" id="enter-point" readonly>
+                        <label for="enter-point"></label><input type="text" th:field="${orderEntity.point}" value="0" id="enter-point" readonly>
                       </span>
                     </td>
                   </tr>

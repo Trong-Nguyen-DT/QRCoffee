@@ -43,9 +43,11 @@ public class StaffHomeController {
 
     @GetMapping("/detail/{id}")
     public String showOrderDetail(@PathVariable Long id, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("orders", orderService.getOrderConfirmedFalse(false));
         model.addAttribute("orderDetails", orderDetailService.getItemsById(id));
         model.addAttribute("order", orderService.getOrderById(id));
+        model.addAttribute("user", staffService.getUserByUserName(authentication.getName()));
 
 
         return "Staff/StaffHomeDetail";

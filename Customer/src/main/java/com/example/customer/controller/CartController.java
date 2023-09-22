@@ -103,8 +103,9 @@ public class CartController {
             Integer banValue = Integer.parseInt(tb);
             Customer customer = (Customer) session.getAttribute("customer");
             if (customer != null) {
-                if (cartOrderEntity.getPoint() <= customer.getPoint() && cartOrderEntity.getPoint() <= cartEntity.getTotalPrice()) {
-                    OrderEntity orderEntity = orderService.saveOrder(banValue, customer, cartEntity.getTotalPrice(), cartOrderEntity.getPoint());
+                int orderPoints = (cartOrderEntity.getPoint() != null) ? cartOrderEntity.getPoint() : 0;
+                if ((orderPoints <= customer.getPoint()) && orderPoints <= cartEntity.getTotalPrice()) {
+                    OrderEntity orderEntity = orderService.saveOrder(banValue, customer, cartEntity.getTotalPrice(), orderPoints);
                     orderDetailService.saveOrderDetail(orderEntity, cartEntity.getAllCartItems());
 
                     if (orderEntity.getAmount() > 0) {
@@ -113,7 +114,7 @@ public class CartController {
 
 //                        String url = paymentAPI.getQrFromOtherClient(order);
 //                        return "redirect:" + url;
-                        return "Menu";
+                        return "redirect:/payment/{tb}/success/" + orderEntity.getId();
                     } else {
                         redirectAttributes.addAttribute("tb", banValue);
                         return "redirect:/payment/{tb}/success/" + orderEntity.getId();

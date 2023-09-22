@@ -45,6 +45,7 @@ public class PaymentController {
 
         redirectAttributes.addAttribute("tb", banValue);
         OrderEntity orderEntity = orderService.getOrderById(orderId);
+        orderEntity = orderService.setStatus(orderEntity);
         customerService.setPoint(orderEntity);
         OrderHistoryEntity orderHistoryEntity = orderService.saveOrderHistory(orderEntity);
         orderDetailService.saveOrderDetailHistory(orderEntity, orderHistoryEntity);

@@ -81,4 +81,10 @@ public class OrderServiceImpl implements OrderService {
         orderHistoryEntity.setCustomerId(orderEntity.getCustomerEntity().getId());
         return orderHistoryRepository.save(orderHistoryEntity);
     }
+
+    @Override
+    public OrderEntity setStatus(OrderEntity orderEntity) {
+        orderEntity.setStatus(true);
+        return orderRepository.save(orderEntity);
+    }
 }

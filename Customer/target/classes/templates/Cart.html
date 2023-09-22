@@ -112,7 +112,7 @@
   </section>
   <section class="py-5">
     <div class="container-fluid">
-      <form th:action="@{'/cart/' + ${tb} + '/checkout'}" th:object="${orderEntity}" onsubmit="return validatePoints()">
+      <form th:action="@{'/cart/' + ${tb} + '/checkout'}" th:object="${orderEntity}">
         <div class="row g-5 justify-content-around">
           <div>
             <div class="table-responsive cart">
@@ -190,7 +190,7 @@
                     <th><label for="minus-point"></label><input type="checkbox" name="checkbox" id="minus-point"> Minus</th>
                     <td data-title="Total">
                       <span class="price-amount amount text-dark ps-6">
-                        <label for="enter-point"></label><input type="text" th:field="${orderEntity.point}" id="enter-point" readonly>
+                        <label for="enter-point"></label><input type="text" th:field="${orderEntity.point}" value="0" id="enter-point" readonly>
                       </span>
                     </td>
                   </tr>
@@ -208,8 +208,8 @@
                     <th><h1 style="width: 50%; float: left; font-size: 200%;">Total</h1>
                       <span class="price-amount amount text-dark" style="width: 50%;">
                         <bdi>
-                          <span class="price-currency-symbol px-3" id="totalPrice" ></span>
-<!--                          th:text="${totalPrice}"-->
+                          <span class="price-currency-symbol px-3" id="totalPrice" th:text="${totalPrice}"></span>
+
                         </bdi>
                       </span>
                     </th>
@@ -229,17 +229,17 @@
     </div>
   </section>
 
-<!--  <script>-->
-<!--    var checkbox = document.getElementById('minus-point');-->
-<!--    var input = document.getElementById('enter-point');-->
-<!--    checkbox.addEventListener('change', function () {-->
-<!--      if (this.checked) {-->
-<!--        input.removeAttribute('readonly');-->
-<!--      } else {-->
-<!--        input.setAttribute('readonly', '');-->
-<!--      }-->
-<!--    });-->
-<!--  </script>-->
+  <script>
+    var checkbox = document.getElementById('minus-point');
+    var input = document.getElementById('enter-point');
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        input.removeAttribute('readonly');
+      } else {
+        input.setAttribute('readonly', '');
+      }
+    });
+  </script>
 
 <!--  <script>-->
 <!--    function validatePoints() {-->
@@ -289,28 +289,6 @@
 
 
 <!--  </script>-->
-
-  <script>
-    var checkbox = document.getElementById('minus-point');
-    var input = document.getElementById('enter-point');
-    var totalPriceElement = document.getElementById('totalPrice');
-    var finalPriceElement = document.getElementById('finalPrice');
-
-    checkbox.addEventListener('change', function () {
-      if (this.checked) {
-        input.removeAttribute('readonly');
-      } else {
-        input.setAttribute('readonly', '');
-      }
-    });
-
-    input.addEventListener('input', function() {
-      var enteredPoints = parseInt(this.value) || 0; // Chuyển đổi giá trị thành số nguyên, mặc định là 0 nếu không hợp lệ
-      var originalTotalPrice = parseFloat(totalPriceElement.innerText);
-      var finalPrice = originalTotalPrice - enteredPoints; // Trừ điểm trừ từ tổng giá trị ban đầu
-      finalPriceElement.innerText = finalPrice.toFixed(2); // Hiển thị tổng giá trị cuối cùng với 2 chữ số thập phân
-    });
-  </script>
 
 
 
