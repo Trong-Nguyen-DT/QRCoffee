@@ -2,11 +2,10 @@ package com.example.admin.convertor;
 
 import com.example.admin.domain.Product;
 import com.example.admin.entity.CategoryEntity;
+import com.example.admin.entity.OrderDetailHistoryEntity;
 import com.example.admin.entity.ProductEntity;
-import com.example.admin.service.CategoryService;
-import com.example.admin.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 
 
 public class ProductConvertor {

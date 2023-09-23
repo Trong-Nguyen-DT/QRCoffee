@@ -50,11 +50,8 @@ fetch('/admin/category-data')
 
 let customer_options = {
     series: [{
-        name: "Store Customers",
-        data: [40, 70, 20, 90, 36, 80, 30, 91, 60]
-    },{
-        name: "Online Customers",
-        data: [20, 30, 10, 20, 16, 40, 20, 51, 10]
+        // name: "Store Customers",
+        data: []
     }],
     colors: ['#6ab04c', '#2980b9'],
     chart: {
@@ -68,15 +65,37 @@ let customer_options = {
         curve: 'smooth'
     },
     xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        categories: [],
     },
     legend: {
         position: 'top'
     }
 }
 
-let customer_chart = new ApexCharts(document.querySelector("#customer-chart"), customer_options)
-customer_chart.render()
+
+fetch('/admin/amount-data')
+    .then(response => response.json())
+    .then(data => {
+        // Chuyển dữ liệu từ API thành dạng thích hợp cho biểu đồ
+        // const seriesData = data.map(item => item.quantity);
+        const seriesData = data.map(item => item.amount);
+        const labels = data.map(item => item.month);
+
+
+        // Cập nhật category_options
+
+
+        customer_options.series.data = seriesData
+        customer_options.xaxis.categories = labels
+
+        let customer_chart = new ApexCharts(document.querySelector("#customer-chart"), customer_options)
+        customer_chart.render()
+    })
+    .catch(error => console.error(error));
+
+// let customer_chart = new ApexCharts(document.querySelector("#customer-chart"), customer_options)
+// customer_chart.render()
 
 setDarkChart = (dark) => {
     let theme = {
