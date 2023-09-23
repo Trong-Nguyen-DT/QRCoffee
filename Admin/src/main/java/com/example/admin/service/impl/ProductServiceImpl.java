@@ -86,5 +86,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductEntityByCategoryEntity(categoryRepository.findById(categoryId).orElseThrow()).stream().map(ProductConvertor::toModel).toList();
     }
 
+    @Override
+    public ProductEntity getProductEntityById(Long id) {
+        return productRepository.findById(id).orElseThrow(() ->new RuntimeException("Không tìm thấy sản phẩm"));
+    }
+
 
 }

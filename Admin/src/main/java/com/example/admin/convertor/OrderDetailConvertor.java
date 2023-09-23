@@ -14,4 +14,14 @@ public class OrderDetailConvertor {
         orderDetail.setQuantity(orderDetailEntity.getQuantity());
         return orderDetail;
     }
+
+    public static OrderDetail toModelMenu (OrderDetailEntity orderDetailEntity){
+        OrderDetail orderDetail = new OrderDetail();
+        orderDetail.setId(orderDetailEntity.getId());
+        orderDetail.setProduct_id(orderDetailEntity.getProductEntity().getId());
+        orderDetail.setName(orderDetailEntity.getProductEntity().getTitle());
+        orderDetail.setPrice(orderDetailEntity.getProductEntity().getPrice());
+        orderDetail.setQuantity(orderDetailEntity.getQuantity());
+        return orderDetail;
+    }
 }

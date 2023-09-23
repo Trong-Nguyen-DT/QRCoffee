@@ -21,4 +21,6 @@ public interface ProductService {
     void restoreProduct(Long id);
 
     List<Product> getProductsByCategory(Long categoryId);
+
+    ProductEntity getProductEntityById(Long productId);
 }

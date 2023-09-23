@@ -1,9 +1,6 @@
 package com.example.admin.controller.UserController;
 
 
-import com.example.admin.domain.Order;
-import com.example.admin.domain.OrderDetail;
-import com.example.admin.domain.User;
 import com.example.admin.service.OrderDetailService;
 import com.example.admin.service.OrderService;
 import com.example.admin.service.StaffService;
@@ -43,9 +40,11 @@ public class StaffHomeController {
 
     @GetMapping("/detail/{id}")
     public String showOrderDetail(@PathVariable Long id, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("orders", orderService.getOrderConfirmedFalse(false));
         model.addAttribute("orderDetails", orderDetailService.getItemsById(id));
         model.addAttribute("order", orderService.getOrderById(id));
+        model.addAttribute("user", staffService.getUserByUserName(authentication.getName()));
 
 
         return "Staff/StaffHomeDetail";

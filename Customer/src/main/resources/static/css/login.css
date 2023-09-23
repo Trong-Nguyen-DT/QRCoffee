@@ -21,11 +21,11 @@ main {
     width: 100%;
 }
 
-.nameshop {
+.name-shop {
     margin: 3% auto;
 }
 
-.nameshop h1 {
+.name-shop h1 {
     font-size: 4rem;
 }
 
@@ -68,7 +68,7 @@ main {
         font-size: 16px; /* Điều chỉnh kích thước font chung */
     }
 
-    .nameshop h1 {
+    .name-shop h1 {
         font-size: 3rem; /* Điều chỉnh kích thước tiêu đề */
     }
 

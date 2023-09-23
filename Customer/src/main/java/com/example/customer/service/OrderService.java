@@ -15,4 +15,6 @@ public interface OrderService {
     Order setOrder(OrderEntity orderEntity);
 
     OrderHistoryEntity saveOrderHistory(OrderEntity orderEntity);
+
+    OrderEntity setStatus(OrderEntity orderEntity);
 }
