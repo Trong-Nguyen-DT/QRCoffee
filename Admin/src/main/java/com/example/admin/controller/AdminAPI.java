@@ -1,11 +1,13 @@
 package com.example.admin.controller;
 
 
+import com.example.admin.convertor.AmountData;
 import com.example.admin.domain.CategoryData;
 import com.example.admin.domain.Product;
 import com.example.admin.domain.User;
 import com.example.admin.remote.RemoteService;
 import com.example.admin.service.CategoryService;
+import com.example.admin.service.OrderService;
 import com.example.admin.service.ProductService;
 import com.example.admin.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +24,28 @@ import java.util.List;
 public class AdminAPI {
 
     @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private RemoteService remoteService;
-
-    @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private OrderService orderService;
 
 
     @GetMapping("/category-data")
     public ResponseEntity<List<CategoryData>> getCategoryData() {
         List<CategoryData> data = categoryService.getAllCategoryData(); // Lấy dữ liệu từ cơ sở dữ liệu
+        return ResponseEntity.ok(data);
+    }
+
+    @GetMapping("/amount-data")
+    public ResponseEntity<List<AmountData>> getAmount() {
+        List<AmountData> data = orderService.getAmountByMonth();
+        for (AmountData aLong : data){
+            System.out.print("Tháng: ");
+            System.out.println(aLong.getMonth());
+            System.out.println("Tiền: ");
+            System.out.println(aLong.getAmount());
+            System.out.println("=====");
+        }
         return ResponseEntity.ok(data);
     }
 }

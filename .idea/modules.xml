@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QRCoffee.iml" filepath="$PROJECT_DIR$/QRCoffee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Staff/.mvn/wrapper/wrapper.iml" filepath="$PROJECT_DIR$/Staff/.mvn/wrapper/wrapper.iml" />
     </modules>
   </component>
 </project>
