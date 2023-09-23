@@ -133,7 +133,7 @@
       </ul>
     </li>
     <li>
-      <a th:href="@{/admin/customer}">
+      <a href="#">
         <i class='bx bx-mail-send'></i>
         <span>customer</span>
       </a>
@@ -190,40 +190,28 @@
         <!-- Account TABLE -->
         <div class="box">
           <div class="box-header">
-            Account Staff
+            Customer
           </div>
           <div class="box-body overflow-scroll">
             <table>
               <thead>
               <tr>
                 <th>ID</th>
-
                 <th>Name</th>
-                <th>Birthday</th>
-                <th>Address</th>
+                <th>Point</th>
                 <th>Phone</th>
-                <th>Salary</th>
-<!--                <th>User name</th>-->
-<!--                <th>Pass word</th>-->
-                <th>Edit</th>
-                <th>Delete</th>
+
               </tr>
               </thead>
 
-              <tbody th:each="staff : ${staffs}" th:if="${staff.deleted == true}"  >
+              <tbody th:each="customer : ${customer}"  >
               <tr >
-                <td th:text="${staff.id}"></td>
+                <td th:text="${customer.id}"></td>
 
-                <td th:text="${staff.name}"></td>
-                <td th:text="${staff.birthday}"></td>
-                <td th:text="${staff.address}"></td>
-                <td th:text="${staff.phone}"></td>
-                <td th:text="${staff.salary}"></td>
-<!--                <td th:text="${staff.username}"></td>-->
-<!--                <td th:text="${staff.password}"></td>-->
-                <td><button> <a  th:href="@{/admin/staff/edit/{id}(id=${staff.id}) }"> Edit  </a></button> </td>
-                <td><button> <a th:href="@{/admin/staff/delete/{id}(id=${staff.id}) }" > Delete  </a></button> </td>
+                <td th:text="${customer.name}"></td>
 
+                <td th:text="${customer.point}"></td>
+                <td th:text="${customer.phone}"></td>
 
               </tr>
 

@@ -134,9 +134,9 @@
       </ul>
     </li>
     <li>
-      <a href="#">
+      <a th:href="@{/admin/customer}">
         <i class='bx bx-mail-send'></i>
-        <span>mail</span>
+        <span>customer</span>
       </a>
     </li>
     <li>
@@ -193,12 +193,14 @@
           <div class="box-header">
             Order History
           </div>
-          <form th:action="@{/admin/orders/search}" method="get">
-            Từ: <input type="datetime-local" name="startTime" required><br>
-            Đến: <input type="datetime-local" name="endTime" required><br>
-            <button type="submit">Tìm kiếm</button>
-            <a th:href="@{/admin/orders}">ALL</a>
-          </form>
+          <div class="form_search">
+            <form th:action="@{/admin/orders/search}" method="get">
+              <p>Từ:</p>  <input type="datetime-local" name="startTime" required><br>
+              <p>Đến:</p> <input type="datetime-local" name="endTime" required><br>
+              <button type="submit">Tìm kiếm</button>
+            </form>
+            <a th:href="@{/admin/orders}"><button>ALL</button></a>
+          </div>
           <div class="box-body overflow-scroll">
             <table>
               <thead>
