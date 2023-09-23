@@ -1,9 +1,6 @@
 package com.example.admin.controller.UserController;
 
 
-import com.example.admin.domain.Order;
-import com.example.admin.domain.OrderDetail;
-import com.example.admin.domain.User;
 import com.example.admin.service.OrderDetailService;
 import com.example.admin.service.OrderService;
 import com.example.admin.service.StaffService;
