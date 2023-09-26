@@ -2,7 +2,6 @@ package com.example.customer.validator;
 
 import com.example.customer.domain.Customer;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 public class CustomerValidator implements Validator {
