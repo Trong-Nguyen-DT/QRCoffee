@@ -12,5 +12,5 @@ public interface OrderDetailService {
 
     List<ProductEntity> getAllProduct();
 
-    List<Product> getTop4Product();
+//    List<Product> getTop4Product();
 }

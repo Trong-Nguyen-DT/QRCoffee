@@ -112,9 +112,9 @@ public class CartController {
                         Order order = orderService.setOrder(orderEntity);
                         order.setItems(cartEntity.getAllCartItems());
 
-//                        String url = paymentAPI.getQrFromOtherClient(order);
-//                        return "redirect:" + url;
-                        return "redirect:/payment/{tb}/success/" + orderEntity.getId();
+                        String url = paymentAPI.getQrFromOtherClient(order);
+                        return "redirect:" + url;
+//                        return "redirect:/payment/{tb}/success/" + orderEntity.getId();
                     } else {
                         redirectAttributes.addAttribute("tb", banValue);
                         return "redirect:/payment/{tb}/success/" + orderEntity.getId();
