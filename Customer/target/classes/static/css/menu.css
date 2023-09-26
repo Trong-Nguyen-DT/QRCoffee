@@ -26,14 +26,72 @@ header {
 }
 .header-top{
     margin: 0.3% auto;
-    width: 100%;
+    width: 90%;
+    display: flex;
     border-bottom: 1px solid #EEEEEE;
 }
 
 .enter-search {
     margin: 0 auto;
-    width: 90%;
+    flex-basis: 80%;
 }
+
+.house-user{
+    flex-basis: 5%;
+}
+
+.house-user i {
+    color: #f7941e;
+    width: 100%;
+    height: 100%;
+    margin: 28px auto;
+    text-align: center;
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    animation: fadeIn linear 0.2s;
+}
+
+.user_items {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    background-color: #fff;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all linear 0.2s;
+}
+
+.user_items-list{
+    margin-top: 30px;
+    list-style-type: none;
+}
+
+.user_item-link {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 8px 0;
+    font-size: 1.4rem;
+}
+
+.user_items-close {
+    font-size: 1.4rem;
+    color: #666;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
 
 .enter-search input {
     width: 100%;
@@ -48,6 +106,24 @@ header {
 .enter-search input:focus {
     outline: none;
     padding: 1% 2%;
+}
+
+.nav_input:checked ~ .nav-overlay {
+    display: block;
+}
+
+.nav_input:checked ~ .user_items {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+    opacity: 1;
+    }
+    
 }
 
 .header-bottom {

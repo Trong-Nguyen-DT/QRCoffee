@@ -2,7 +2,6 @@ package com.example.customer.controller;
 
 
 import com.example.customer.domain.Customer;
-import com.example.customer.entity.CustomerEntity;
 import com.example.customer.service.CustomerService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ public class LoginController {
 
     @Autowired
     private CustomerService customerService;
+
 
     @GetMapping()
     public String showErrorQR() {

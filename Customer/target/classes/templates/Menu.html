@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" th:src="@{/js/jquery-1.11.0.min.js}" ></script>
     <script type="text/javascript" th:src="@{/js/responsiveCarousel.min.js}"></script>
+    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
     <title>Menu</title>
 </head>
 <body>
@@ -81,6 +82,19 @@
             <div class="header-top">
                 <div class="enter-search">
                     <input type="text" name="search" id="search">
+                </div>
+                <input type="checkbox" hidden="hidden" id="nav_input" class="nav_input">
+                <label for="nav_input" class="house-user">
+                    <i class="fa-solid fa-house-user fa-2xl"></i>
+                </label>
+                <label for="nav_input" class="nav-overlay"></label>
+                <label class="user_items">
+                    <label for="nav_input" class="user_items-close"><i class="fa-solid fa-xmark fa-2xl"></i></label>
+                    <ul class="user_items-list">
+                        <li><a class="user_item-link">Thông tin của bạn</a></li>
+                        <li><a class="user_item-link">Lịch sử đăt hàng</a></li>
+                        <li><a class="user_item-link">Thoát</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="header-bottom">
