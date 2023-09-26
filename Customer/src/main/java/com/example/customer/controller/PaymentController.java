@@ -24,9 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class PaymentController {
 
     @Autowired
-    private ProductService productService;
-
-    @Autowired
     private OrderService orderService;
 
     @Autowired
