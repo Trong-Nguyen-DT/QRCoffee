@@ -55,8 +55,6 @@ public class SecurityConfig {
 //                        .anonymous()
                                         .requestMatchers("/login*")
                                         .permitAll()
-                                        .requestMatchers("/api/**")
-                                        .permitAll()
 //                                        .anyRequest()
 //                                        .authenticated()
                                         .requestMatchers("/css/**")
