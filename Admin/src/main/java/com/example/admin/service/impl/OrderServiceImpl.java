@@ -5,9 +5,12 @@ import com.example.admin.convertor.OrderConvertor;
 import com.example.admin.convertor.OrderHistoryConvertor;
 import com.example.admin.domain.Order;
 import com.example.admin.domain.OrderHistory;
+import com.example.admin.domain.User;
+import com.example.admin.entity.OrderEntity;
 import com.example.admin.entity.OrderHistoryEntity;
 import com.example.admin.repository.OrderHistoryRepository;
 import com.example.admin.repository.OrderRepository;
+import com.example.admin.repository.UserRepository;
 import com.example.admin.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +29,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderHistoryRepository orderHistoryRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     @Override
@@ -80,6 +86,18 @@ public class OrderServiceImpl implements OrderService {
 
 
         return amountDataList;
+    }
+
+    @Override
+    public void confirmOrder(Long id, User user) {
+        OrderEntity orderEntity = orderRepository.findById(id).orElseThrow();
+        orderEntity.setConfirmed(true);
+        orderEntity.setUserEntity(userRepository.findById(user.getId()).orElseThrow());
+
+        OrderHistoryEntity orderHistoryEntity = orderHistoryRepository.findById(id).orElseThrow();
+        orderHistoryEntity.setUserId(user.getId());
+        orderHistoryRepository.save(orderHistoryEntity);
+        orderRepository.save(orderEntity);
     }
 
 }

@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -43,13 +44,26 @@ public class StaffHomeController {
 
     @GetMapping("/detail/{id}")
     public String showOrderDetail(@PathVariable Long id, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("orders", orderService.getOrderConfirmedFalse(false));
         model.addAttribute("orderDetails", orderDetailService.getItemsById(id));
         model.addAttribute("order", orderService.getOrderById(id));
+        model.addAttribute("user", staffService.getUserByUserName(authentication.getName()));
 
 
         return "Staff/StaffHomeDetail";
     }
+
+
+    @GetMapping("/confirm/{id}")
+    public String confirmOrder(@PathVariable String id){
+        Long orderId = Long.parseLong(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        orderService.confirmOrder(orderId, staffService.getUserByUserName(authentication.getName()));
+        return "redirect:/staff";
+    }
+
 
 
 
