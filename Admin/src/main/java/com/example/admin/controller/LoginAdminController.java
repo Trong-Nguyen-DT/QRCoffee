@@ -15,6 +15,4 @@ public class LoginAdminController {
         model.addAttribute("user", new UserEntity());
         return "Login";
     }
-
-
 }
