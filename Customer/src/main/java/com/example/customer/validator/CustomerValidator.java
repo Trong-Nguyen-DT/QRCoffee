@@ -1,10 +1,13 @@
 package com.example.customer.validator;
 
 import com.example.customer.domain.Customer;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+
+@Component
 public class CustomerValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
@@ -15,7 +18,7 @@ public class CustomerValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Customer customer = (Customer) target;
         if (!isValidPhoneNumber(customer.getPhone())) {
-            errors.rejectValue("phoneNumber", "field.invalid", "Số điện thoại không hợp lệ. Vui lòng nhập 10 số.");
+            errors.rejectValue("phone", "field.invalid", "Số điện thoại không hợp lệ. Vui lòng nhập 10 số.");
         }
     }
 
