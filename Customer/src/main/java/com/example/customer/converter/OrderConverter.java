@@ -2,6 +2,7 @@ package com.example.customer.converter;
 
 import com.example.customer.domain.Order;
 import com.example.customer.entity.OrderEntity;
+import com.example.customer.entity.OrderHistoryEntity;
 
 import java.util.stream.Collectors;
 

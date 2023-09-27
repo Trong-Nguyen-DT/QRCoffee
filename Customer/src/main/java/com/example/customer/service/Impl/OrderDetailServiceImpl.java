@@ -39,7 +39,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
             OrderDetailHistoryEntity orderDetailHistoryEntity = new OrderDetailHistoryEntity();
             orderDetailHistoryEntity.setOrderHistoryEntity(orderHistoryEntity);
 
-            orderDetailHistoryEntity.setId(orderEntity.getId());
+            orderDetailHistoryEntity.setId(orderDetailEntity.getId());
 
             ProductEntity productEntity = productRepository.findById(orderDetailEntity.getProductEntity().getId())
                     .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy sản phẩm với id: " + orderDetailEntity.getProductEntity().getId()));

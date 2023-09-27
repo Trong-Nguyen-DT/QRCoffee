@@ -2,7 +2,10 @@ package com.example.customer.controller;
 
 
 import com.example.customer.domain.Customer;
+import com.example.customer.domain.Product;
+import com.example.customer.entity.ProductEntity;
 import com.example.customer.service.CustomerService;
+import com.example.customer.service.ProductService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,17 +20,22 @@ public class LoginController {
     @Autowired
     private CustomerService customerService;
 
+//    @Autowired
+//    private ProductService productService;
+
 
     @GetMapping()
     public String showErrorQR() {
+//        System.out.printf(productService.getProductById(1L).getTitle());
         return "ErrorQR";
     }
 
     @GetMapping("/{tb}")
-    public String showLogin(@PathVariable String tb, Model model) {
+    public String showLogin(@PathVariable String tb, Model model, RedirectAttributes redirectAttributes) {
         try {
             Integer banValue = Integer.parseInt(tb);
             model.addAttribute("tableNumber", banValue);
+            redirectAttributes.addAttribute("tb", banValue);
             return "LoginMember";
         } catch (NumberFormatException e) {
             return "ErrorQR";
