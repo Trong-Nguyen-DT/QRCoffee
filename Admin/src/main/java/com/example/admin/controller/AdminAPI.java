@@ -39,13 +39,7 @@ public class AdminAPI {
     @GetMapping("/amount-data")
     public ResponseEntity<List<AmountData>> getAmount() {
         List<AmountData> data = orderService.getAmountByMonth();
-        for (AmountData aLong : data){
-            System.out.print("Tháng: ");
-            System.out.println(aLong.getMonth());
-            System.out.println("Tiền: ");
-            System.out.println(aLong.getAmount());
-            System.out.println("=====");
-        }
+
         return ResponseEntity.ok(data);
     }
 }

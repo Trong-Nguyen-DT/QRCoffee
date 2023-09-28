@@ -45,25 +45,25 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         return orderDetailRepository.findAll().stream().map(OrderDetailEntity::getProductEntity).toList();
     }
 
-//    @Override
-//    public List<Product> getTop4Product() {
-//        List<Object[]> products = orderDetailHistoryRepository.findTop4SellingProductsLimited();
-//        List<Product> productList = productRepository.findAll().stream().map(ProductConvertor::toModel).toList();
-//        List<Product> topProducts = new ArrayList<>();
-//        for (Object[] productData : products) {
-//            Long productId = (Long) productData[0];
-//
-//            for (Product prod:productList) {
-//                if (prod.getId() == productId) {
-//                    Product product = new Product();
-//                    product.setId(productId);
-//                    product.setTitle(prod.getTitle());
-//                    product.setPrice(prod.getPrice());
-//                    topProducts.add(product);
-//                }
-//            }
-//
-//        }
-//        return topProducts;
-//    }
+    @Override
+    public List<Product> getTop4Product() {
+        List<Object[]> products = orderDetailHistoryRepository.findTop4SellingProductsLimited();
+        List<Product> productList = productRepository.findAll().stream().map(ProductConvertor::toModel).toList();
+        List<Product> topProducts = new ArrayList<>();
+        for (Object[] productData : products) {
+            Long productId = (Long) productData[0];
+
+            for (Product prod:productList) {
+                if (prod.getId() == productId) {
+                    Product product = new Product();
+                    product.setId(productId);
+                    product.setTitle(prod.getTitle());
+                    product.setPrice(prod.getPrice());
+                    topProducts.add(product);
+                }
+            }
+
+        }
+        return topProducts;
+    }
 }

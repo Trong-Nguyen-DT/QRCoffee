@@ -3,6 +3,7 @@ package com.example.admin.service;
 import com.example.admin.convertor.AmountData;
 import com.example.admin.domain.Order;
 import com.example.admin.domain.OrderHistory;
+import com.example.admin.domain.User;
 import com.example.admin.entity.ProductEntity;
 
 import java.time.LocalDateTime;
@@ -21,4 +22,6 @@ public interface OrderService {
     Long getAllTotalByTime(LocalDateTime of, LocalDateTime now);
 
     List<AmountData> getAmountByMonth();
+
+    void confirmOrder(Long id, User user);
 }
