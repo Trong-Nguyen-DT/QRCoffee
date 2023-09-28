@@ -8,7 +8,8 @@
     <title>aaaa</title>
     <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
     <link rel="stylesheet" th:href="@{/css/staff.css}">
-    <!--    <link rel="stylesheet" href="../../static/css/staff.css">-->
+    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
+<!--        <link rel="stylesheet" href="../../static/css/staff.css">-->
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <!--    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>-->
     <!--    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>-->
@@ -23,7 +24,13 @@
         <div class="name-staff" th:object="${user}">
             <div class="name-staff-left"><h1>Xin chào:</h1></div>
 
-            <div class=" name-staff-right"><h1 th:text="${user.name}"></h1></div>
+            <div class=" name-staff-right">
+                <h1 th:text="${user.name}"></h1>
+                <a th:href="@{/perform_logout}">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+
+            </div>
 
         </div>
         <div class="time">
@@ -52,21 +59,21 @@
     <div class="right">
         <table>
             <tbody>
-            <tr>
-                <th>
-                    Bàn 1
-                </th>
-                <th>
-                    Trọng nguyên
-                </th>
-            </tr>
+                <tr th:object="${order}">
+                    <th>
+                         <h2 th:text="'Bàn: ' + ${order.description}"></h2>
+                    </th>
+                    <th>
+                       <h2  th:text="'Tên Khách Hàng: ' + ${order.buyerName}"></h2>
+                    </th>
+                </tr>
             </tbody>
         </table>
         <table>
             <thead>
             <tr>
                 <th>STT</th>
-                <th>Tên Khách Hàng</th>
+                <th>Tên Món</th>
                 <th>Số Lượng</th>
                 <th>Đơn Giá</th>
             </tr>

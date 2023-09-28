@@ -8,6 +8,7 @@
     <title>QRCoffee</title>
     <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
     <link rel="stylesheet" th:href="@{/css/staff.css}">
+    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
 
 
 <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
@@ -24,7 +25,12 @@
             <div class="name-staff" th:object="${user}">
                 <div class="name-staff-left"><h1>Xin chào:</h1></div>
 
-                <div class=" name-staff-right"><h1 th:text="${user.name}"></h1></div>
+                <div class=" name-staff-right">
+                    <h1 th:text="${user.name}"></h1>
+                    <a th:href="@{/perform_logout}">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </div>
 
             </div>
             <div class="time">
@@ -58,10 +64,11 @@
                     <tbody>
                     <tr>
                         <th>
-                            Bàn 1
+                            <h2> Bàn: </h2>
+
                         </th>
                         <th>
-                            Trọng nguyên
+                            <h2> Tên Khách Hàng: </h2>
                         </th>
                     </tr>
                     </tbody>
