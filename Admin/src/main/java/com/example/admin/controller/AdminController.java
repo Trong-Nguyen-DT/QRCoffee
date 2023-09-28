@@ -37,7 +37,7 @@ public class AdminController {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         String formattedTotal = decimalFormat.format(total);
         model.addAttribute("totalAmount", formattedTotal);
-//        model.addAttribute("topProduct", orderDetailService.getTop4Product());
+        model.addAttribute("topProduct", orderDetailService.getTop4Product());
         model.addAttribute("products", productService.getAllProducts());
 
 

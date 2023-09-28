@@ -51,5 +51,14 @@ public class StaffHomeController {
     }
 
 
+    @GetMapping("/confirm/{id}")
+    public String confirmOrder(@PathVariable String id){
+        Long orderId = Long.parseLong(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        orderService.confirmOrder(orderId, staffService.getUserByUserName(authentication.getName()));
+        return "redirect:/staff";
+    }
+
 
 }

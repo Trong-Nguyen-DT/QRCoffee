@@ -10,7 +10,7 @@ document.querySelectorAll('.sidebar-submenu').forEach(e => {
 
         dropdown_content.classList.toggle('active')
 
-         dropdown_content.style.height = dropdown_content.classList.contains('active') ? active_height + 'px' : '0'
+        dropdown_content.style.height = dropdown_content.classList.contains('active') ? active_height + 'px' : '0'
     }
 })
 
@@ -34,8 +34,8 @@ fetch('/admin/category-data')
 
         // Cập nhật category_options
 
-         category_options.series = seriesData;
-         category_options.labels = labels;
+        category_options.series = seriesData;
+        category_options.labels = labels;
 
 
 
@@ -50,9 +50,16 @@ fetch('/admin/category-data')
 
 let customer_options = {
     series: [{
-        // name: "Store Customers",
+        name: "Store Customers",
         data: []
+    },{
+        // name: "Online Customers",
+        // data: [20, 30, 10, 20, 16, 40, 20, 51, 10,20,15,23]
     }],
+    // xaxis: {
+    //     // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    //     // categories: [],
+    // },
     colors: ['#6ab04c', '#2980b9'],
     chart: {
         height: 350,
@@ -65,8 +72,8 @@ let customer_options = {
         curve: 'smooth'
     },
     xaxis: {
-        // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        categories: [],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'],
+        //  categories: [],
     },
     legend: {
         position: 'top'
@@ -78,21 +85,29 @@ fetch('/admin/amount-data')
     .then(response => response.json())
     .then(data => {
         // Chuyển dữ liệu từ API thành dạng thích hợp cho biểu đồ
-        // const seriesData = data.map(item => item.quantity);
-        const seriesData = data.map(item => item.amount);
-        const labels = data.map(item => item.month);
+        console.log(data);
+
+        const Data = data.map(item => item.amount);
+        const categories = data.map(item => item.month);
 
 
-        // Cập nhật category_options
+        customer_options.series[0].data = Data;
+        // customer_options.xaxis.categories= categories;
 
 
-        customer_options.series.data = seriesData
-        customer_options.xaxis.categories = labels
+        // });
+
+
+
+
 
         let customer_chart = new ApexCharts(document.querySelector("#customer-chart"), customer_options)
         customer_chart.render()
+
+
     })
     .catch(error => console.error(error));
+
 
 // let customer_chart = new ApexCharts(document.querySelector("#customer-chart"), customer_options)
 // customer_chart.render()
@@ -106,7 +121,7 @@ setDarkChart = (dark) => {
 
     customer_chart.updateOptions(theme)
     category_chart.updateOptions(theme)
-} 
+}
 
 // DARK MODE TOGGLE
 let darkmode_toggle = document.querySelector('#darkmode-toggle')
