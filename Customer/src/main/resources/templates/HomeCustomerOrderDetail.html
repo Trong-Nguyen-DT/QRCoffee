@@ -34,7 +34,7 @@
         <tr th:each="order : ${orderDetails}">
           <td th:text="${order.id}"></td>
           <td th:text="${order.productTitle}"></td>
-          <td th:text="${order.productPrice} VNĐ"></td>
+          <td th:text="${order.productPrice} + 'VNĐ'"></td>
           <td th:text="${order.quantity}"></td>
         </tr>
 

@@ -2,6 +2,7 @@ package com.example.customer.service.Impl;
 
 import com.example.customer.domain.OrderDetail;
 import com.example.customer.entity.*;
+import com.example.customer.repository.OrderDetailHistoryRepository;
 import com.example.customer.repository.OrderDetailRepository;
 import com.example.customer.repository.ProductRepository;
 import com.example.customer.service.OrderDetailService;
@@ -19,6 +20,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+
+    @Autowired
+    private OrderDetailHistoryRepository orderDetailHistoryRepository;
 
     @Override
     public void saveOrderDetail(OrderEntity orderEntity, List<OrderDetail> orderDetails) {
@@ -47,7 +51,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
             orderDetailHistoryEntity.setProductTitle(productEntity.getTitle());
             orderDetailHistoryEntity.setProductPrice(productEntity.getPrice());
             orderDetailHistoryEntity.setQuantity(orderDetailEntity.getQuantity());
-            orderDetailRepository.save(orderDetailEntity);
+            orderDetailHistoryRepository.save(orderDetailHistoryEntity);
         }
     }
 }

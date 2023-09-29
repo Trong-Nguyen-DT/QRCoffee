@@ -1,7 +1,9 @@
 package com.example.admin.domain;
 
 
+import com.example.admin.convertor.CustomerConvertor;
 import com.example.admin.convertor.OrderDetailConvertor;
+import com.example.admin.entity.CustomerEntity;
 import com.example.admin.entity.OrderDetailEntity;
 import com.example.admin.entity.OrderEntity;
 import com.example.admin.entity.ProductEntity;
@@ -69,12 +71,11 @@ public class CartEntity implements Serializable {
     }
 
     public void emptyCart() {
-        orderEntity.setOrderDetails(List.of());
+        orderEntity.getOrderDetails().clear();
     }
 
-
     public Long getTotalPrice() {
-        Long totalPrice = 0L;
+        long totalPrice = 0L;
         for (OrderDetailEntity detail : orderEntity.getOrderDetails()) {
             ProductEntity product = detail.getProductEntity();
             int quantity = detail.getQuantity();
@@ -87,4 +88,21 @@ public class CartEntity implements Serializable {
     public OrderEntity getOrderEntity() {
         return this.orderEntity;
     }
+
+    public void setCustomer(CustomerEntity customer) {
+        orderEntity.setCustomerEntity(customer);
+    }
+
+    public Customer getCustomer(){
+        CustomerEntity customerEntity = orderEntity.getCustomerEntity();
+        if (customerEntity != null) {
+            return CustomerConvertor.toModel(customerEntity);
+        }
+        return null;
+    }
+
+    public void reset() {
+        this.orderEntity = new OrderEntity();
+    }
+
 }
