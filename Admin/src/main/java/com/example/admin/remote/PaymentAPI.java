@@ -1,8 +1,8 @@
-package com.example.customer.remote;
+package com.example.admin.remote;
 
 
-import com.example.customer.domain.Order;
-import com.example.customer.domain.ResponseBody;
+import com.example.admin.domain.Order;
+import com.example.admin.domain.ResponseBody;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

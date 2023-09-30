@@ -25,7 +25,6 @@ public class StaffConvertor {
 
     public static UserEntity toEntity(User user) {
         UserEntity userEntity = new UserEntity();
-
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         userEntity.setName(user.getName());
@@ -37,6 +36,19 @@ public class StaffConvertor {
         userEntity.setSalary(user.getSalary());
         userEntity.setRole("ROLE_STAFF");
         userEntity.setDeleted(true);
+
+        return userEntity;
+    }
+
+    public static UserEntity toEntityOrder(User user) {
+        UserEntity userEntity = new UserEntity();
+
+        userEntity.setId(user.getId());
+        userEntity.setName(user.getName());
+        userEntity.setAddress(user.getAddress());
+        userEntity.setBirthday(user.getBirthday());
+        userEntity.setPhone(user.getPhone());
+        userEntity.setSalary(user.getSalary());
 
         return userEntity;
     }

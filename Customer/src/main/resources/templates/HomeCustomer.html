@@ -35,10 +35,10 @@
                 </tr>
                 <tr th:each="order : ${orders}">
                     <td th:text="${order.id}"></td>
-                    <td th:text="${order.orderDateTime}"> VNĐ</td>
-                    <td th:text="${order.amount}"> VNĐ</td>
-                    <td th:text="${order.point}"> VNĐ</td>
-                    <td th:text="${order.totalPrice}"> VNĐ</td>
+                    <td th:text="${order.orderDateTime}"></td>
+                    <td th:text="${order.amount} + 'VNĐ'"></td>
+                    <td th:text="${order.point}"></td>
+                    <td th:text="${order.totalPrice} + 'VNĐ'"></td>
                     <td><a th:href="@{'/my/' + ${order.id}}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
                 </tr>
 

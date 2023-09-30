@@ -117,7 +117,7 @@
                     <div class="crsl-wrap">
                         <div class="crsl-item" th:each="prod : ${products}" th:if="${prod.category_id == cate.id}">
                             <div class="thumbnail">
-                                <img src="" alt="java">
+                                <img th:src="@{/images/test.jpg}" alt="java">
                             </div>
                             <div class="m1">
                                 <div class="title">

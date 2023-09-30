@@ -20,13 +20,9 @@ public class LoginController {
     @Autowired
     private CustomerService customerService;
 
-//    @Autowired
-//    private ProductService productService;
-
 
     @GetMapping()
     public String showErrorQR() {
-//        System.out.printf(productService.getProductById(1L).getTitle());
         return "ErrorQR";
     }
 

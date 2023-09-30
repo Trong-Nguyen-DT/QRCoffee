@@ -4,8 +4,7 @@ import com.example.admin.convertor.OrderDetailConvertor;
 import com.example.admin.convertor.ProductConvertor;
 import com.example.admin.domain.OrderDetail;
 import com.example.admin.domain.Product;
-import com.example.admin.entity.OrderDetailEntity;
-import com.example.admin.entity.ProductEntity;
+import com.example.admin.entity.*;
 import com.example.admin.repository.OrderDetailHistoryRepository;
 import com.example.admin.repository.OrderDetailRepository;
 import com.example.admin.repository.OrderRepository;
@@ -65,5 +64,36 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
         }
         return topProducts;
+    }
+
+    @Override
+    public void saveOrderDetail(OrderEntity orderEntity, List<OrderDetail> orderDetails) {
+        for (OrderDetail orderDetail : orderDetails) {
+            OrderDetailEntity orderDetailEntity = new OrderDetailEntity();
+            orderDetailEntity.setOrderEntity(orderEntity);
+            ProductEntity productEntity = productRepository.findById(orderDetail.getProduct_id())
+                    .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy sản phẩm với id: " + orderDetail.getProduct_id()));
+            orderDetailEntity.setProductEntity(productEntity);
+            orderDetailEntity.setQuantity(orderDetail.getQuantity());
+            orderDetailRepository.save(orderDetailEntity);
+        }
+    }
+
+    @Override
+    public void saveOrderDetailHistory(OrderEntity orderEntity, OrderHistoryEntity orderHistoryEntity) {
+        for (OrderDetailEntity orderDetailEntity : orderEntity.getOrderDetails()) {
+            OrderDetailHistoryEntity orderDetailHistoryEntity = new OrderDetailHistoryEntity();
+            orderDetailHistoryEntity.setOrderHistoryEntity(orderHistoryEntity);
+
+            orderDetailHistoryEntity.setId(orderDetailEntity.getId());
+
+            ProductEntity productEntity = productRepository.findById(orderDetailEntity.getProductEntity().getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy sản phẩm với id: " + orderDetailEntity.getProductEntity().getId()));
+            orderDetailHistoryEntity.setProductId(productEntity.getId());
+            orderDetailHistoryEntity.setProductTitle(productEntity.getTitle());
+            orderDetailHistoryEntity.setProductPrice(productEntity.getPrice());
+            orderDetailHistoryEntity.setQuantity(orderDetailEntity.getQuantity());
+            orderDetailHistoryRepository.save(orderDetailHistoryEntity);
+        }
     }
 }

@@ -8,8 +8,8 @@
     <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
     <link rel="stylesheet" th:href="@{/css/menu.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" th:src="@{/js/jquery-1.11.0.min.js}" ></script>
-    <script type="text/javascript" th:src="@{/js/responsiveCarousel.min.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/js/jquery-1.11.0.min.js}" ></script>-->
+<!--    <script type="text/javascript" th:src="@{/js/responsiveCarousel.min.js}"></script>-->
     <title>Menu</title>
 </head>
 <body>
@@ -76,6 +76,8 @@
             </symbol>
         </defs>
     </svg>
+
+
     <header>
         <div class="container">
             <div class="header-top">
@@ -89,8 +91,10 @@
                         <li><a th:text="${cate.name}"></a></li>
                     </ul>
                 </div>
+                <div class="enter-phone">
+                    <input type="text" name="phone" id="phone-customer" placeholder="  Số điện thoại">
+                </div>
             </div>
-        </div>
         </div>
     </header>
     <main class="id">
@@ -155,8 +159,8 @@
         </div>
 
     </main>
-    <footer th:each="a : ${orderDetails}">
-        <a th:href="@{'/cart/' + ${tb}}">
+    <footer th:each="order : ${orderDetails}">
+        <a>
             <button>
                 <svg width="16" height="16">
                     <use xlink:href="#cart"></use>
@@ -165,6 +169,18 @@
         </a>
     </footer>
 
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var orderLinks = document.querySelectorAll('footer a');
+            orderLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    var phoneValue = document.getElementById('phone-customer').value;
+                    var phoneParam = phoneValue || 'null';
+                    window.location.href = '/staff/cart?phone=' + phoneParam;
+                });
+            });
+        });
 
+    </script>
 </body>
 </html>
