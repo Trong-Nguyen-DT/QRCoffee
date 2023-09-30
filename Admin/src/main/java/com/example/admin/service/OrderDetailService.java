@@ -3,6 +3,7 @@ package com.example.admin.service;
 
 import com.example.admin.domain.OrderDetail;
 import com.example.admin.domain.Product;
+import com.example.admin.entity.OrderDetailHistoryEntity;
 import com.example.admin.entity.OrderEntity;
 import com.example.admin.entity.OrderHistoryEntity;
 import com.example.admin.entity.ProductEntity;
@@ -19,4 +20,6 @@ public interface OrderDetailService {
     void saveOrderDetail(OrderEntity orderEntity, List<OrderDetail> allCartItems);
 
     void saveOrderDetailHistory(OrderEntity orderEntity, OrderHistoryEntity orderHistoryEntity);
+
+    List<OrderDetailHistoryEntity> getAllDetailByOrderId(Long orderID);
 }
