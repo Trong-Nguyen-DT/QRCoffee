@@ -5,10 +5,7 @@ import com.example.admin.convertor.ProductConvertor;
 import com.example.admin.domain.OrderDetail;
 import com.example.admin.domain.Product;
 import com.example.admin.entity.*;
-import com.example.admin.repository.OrderDetailHistoryRepository;
-import com.example.admin.repository.OrderDetailRepository;
-import com.example.admin.repository.OrderRepository;
-import com.example.admin.repository.ProductRepository;
+import com.example.admin.repository.*;
 import com.example.admin.service.OrderDetailService;
 import com.example.admin.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
     @Autowired
     private OrderDetailHistoryRepository orderDetailHistoryRepository;
+
+    @Autowired
+    private OrderHistoryRepository orderHistoryRepository;
 
     @Autowired
     private ProductRepository productRepository;
@@ -95,5 +95,12 @@ public class OrderDetailServiceImpl implements OrderDetailService {
             orderDetailHistoryEntity.setQuantity(orderDetailEntity.getQuantity());
             orderDetailHistoryRepository.save(orderDetailHistoryEntity);
         }
+    }
+
+    @Override
+    public List<OrderDetailHistoryEntity> getAllDetailByOrderId(Long orderID) {
+
+        return orderDetailHistoryRepository.findAllByOrderHistoryEntity
+                (orderHistoryRepository.findById(orderID).orElseThrow());
     }
 }
