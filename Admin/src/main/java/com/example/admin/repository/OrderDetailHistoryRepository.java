@@ -1,6 +1,7 @@
 package com.example.admin.repository;
 
 import com.example.admin.entity.OrderDetailHistoryEntity;
+import com.example.admin.entity.OrderHistoryEntity;
 import com.example.admin.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,5 +19,7 @@ public interface OrderDetailHistoryRepository extends JpaRepository<OrderDetailH
     default List<Object[]> findTop4SellingProductsLimited() {
         return findTop4SellingProducts().subList(0, 4);
     }
+
+    List<OrderDetailHistoryEntity> findAllByOrderHistoryEntity(OrderHistoryEntity orderHistoryEntity);
 
 }

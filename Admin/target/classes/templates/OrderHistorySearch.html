@@ -19,6 +19,7 @@
   <link rel="stylesheet" th:href="@{/css/app.css}">
   <link rel="stylesheet" th:href="@{/images/icon edit.jpg}">
   <link rel="stylesheet" th:href="@{/css/formsearch.css}">
+  <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -211,6 +212,7 @@
                 <th>Amount</th>
                 <th>Point</th>
                 <th>Total Price</th>
+                <th>Details</th>
 
 
               </tr>
@@ -225,6 +227,8 @@
                 <td th:text="${orderhistory.amount}"></td>
                 <td th:text="${orderhistory.point}"></td>
                 <td th:text="${orderhistory.totalPrice}"></td>
+                <td><a th:href="@{'/admin/orderdetail/' + ${orderhistory.id}}"><i class="fa-solid fa-magnifying-glass"></i></a> </td>
+
 
               </tr>
 
