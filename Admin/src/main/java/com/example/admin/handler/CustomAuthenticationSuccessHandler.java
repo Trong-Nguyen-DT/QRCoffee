@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Set;
 
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response,

@@ -25,13 +25,21 @@ public class CustomUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity entity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new BadCredentialsException("Không tìm thấy user"));
-
-        UserPrincipal principal = new UserPrincipal();
-        principal.setId((long) entity.getId());
-        principal.setUsername(username);
-        principal.setPassword(entity.getPassword());
-        principal.setAuthorities(List.of(new SimpleGrantedAuthority(entity.getRole())));
-        return principal;
+        if (entity.getDeleted()){
+            UserPrincipal principal = new UserPrincipal();
+            principal.setId((long) entity.getId());
+            principal.setUsername(username);
+            principal.setPassword(entity.getPassword());
+            principal.setAuthorities(List.of(new SimpleGrantedAuthority(entity.getRole())));
+            return principal;
+        }
+        return null;
+//        UserPrincipal principal = new UserPrincipal();
+//        principal.setId((long) entity.getId());
+//        principal.setUsername(username);
+//        principal.setPassword(entity.getPassword());
+//        principal.setAuthorities(List.of(new SimpleGrantedAuthority(entity.getRole())));
+//        return principal;
     }
 
     public static void main(String[] args) {
