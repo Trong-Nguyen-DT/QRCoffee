@@ -68,7 +68,7 @@ public class StaffServiceImpl implements StaffService {
     public void deleteStaff(Long id) {
         UserEntity existingStaff = userRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Không tìm thấy sản phẩm"));
-        existingStaff.setDeleted(false);
+        existingStaff.setDeleted(true);
         userRepository.save(existingStaff);
     }
 
@@ -76,7 +76,7 @@ public class StaffServiceImpl implements StaffService {
     public void restoreStaff(Long id) {
         UserEntity existingStaff = userRepository.findById(id).orElseThrow(()
                 -> new RuntimeException("Không tìm thấy sản phẩm"));
-        existingStaff.setDeleted(true);
+        existingStaff.setDeleted(false);
         userRepository.save(existingStaff);
     }
 

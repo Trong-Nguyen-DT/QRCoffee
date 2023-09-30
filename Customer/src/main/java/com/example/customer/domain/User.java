@@ -32,4 +32,6 @@ public class User {
 
     private String salary;
 
+    private boolean deleted;
+
 }

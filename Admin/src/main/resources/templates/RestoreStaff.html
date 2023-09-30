@@ -209,10 +209,9 @@
               </tr>
               </thead>
 
-              <tbody th:each="st : ${staff}" th:if="${st.deleted == false}"  >
+              <tbody th:each="st : ${staff}" th:if="${st.deleted == true}"  >
               <tr >
                 <td th:text="${st.id}"></td>
-
                 <td th:text="${st.name}"></td>
                 <td th:text="${st.birthday}"></td>
                 <td th:text="${st.address}"></td>

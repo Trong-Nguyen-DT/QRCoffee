@@ -203,7 +203,7 @@
 
                     </tr>
                     </thead>
-                    <tbody th:each="RS : ${RestoreProducts}" th:if="${RS.deleted == false}" >
+                    <tbody th:each="RS : ${RestoreProducts}" th:if="${RS.deleted == true}" >
                     <tr>
                         <td th:text="${RS.id}"></td>
                         <td th:each="cate : ${categories}"  th:if="${RS.category_id == cate.id}" th:text="${cate.name}"></td>

@@ -217,24 +217,26 @@
                                 <th>Amount</th>
                                 <th>Point</th>
                                 <th>Total Price</th>
-                               <th>Details</th>
+                                <th>Details</th>
 
 
                             </tr>
                             </thead>
 
-                            <tbody th:each="orderhistory : ${orders}"    >
-                            <tr >
+                            <tbody th:each="orderhistory : ${orders}">
+                            <tr>
                                 <td th:text="${orderhistory.id}"></td>
-
-                                <td th:each="cus:${customers}" th:if="${cus.id== orderhistory.customerId}" th:text="${cus.name}"></td>
+                                <td th:if="${orderhistory.getCustomerId() == null}"></td>
+                                <td th:unless="${orderhistory.getCustomerId() == null}">
+                                    <span th:each="cus:${customers}" th:if="${cus.id== orderhistory.customerId}" th:text="${cus.name}"></span>
+                                </td>
                                 <td th:text="${orderhistory.orderDateTime}"></td>
                                 <td th:text="${orderhistory.amount}"></td>
                                 <td th:text="${orderhistory.point}"></td>
                                 <td th:text="${orderhistory.totalPrice}"></td>
                                 <td><a th:href="@{'/admin/orderdetail/' + ${orderhistory.id}}"><i class="fa-solid fa-magnifying-glass"></i></a> </td>
-
                             </tr>
+
 
                             </tbody>
                         </table>

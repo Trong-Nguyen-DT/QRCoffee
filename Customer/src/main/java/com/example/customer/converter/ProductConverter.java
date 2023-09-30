@@ -12,6 +12,7 @@ public class ProductConverter {
         product.setPrice(entity.getPrice());
         product.setImage(entity.getImage());
         product.setCategory_id(entity.getCategoryEntity().getId());
+        product.setDeleted(entity.isDeleted());
         return product;
     }
 }

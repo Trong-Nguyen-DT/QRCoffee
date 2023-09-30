@@ -32,6 +32,9 @@ public class PaymentController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private CartEntity cartEntity;
+
 
 
     @GetMapping("success/{orderCode}")
@@ -46,6 +49,7 @@ public class PaymentController {
         customerService.setPoint(orderEntity);
         OrderHistoryEntity orderHistoryEntity = orderService.saveOrderHistory(orderEntity);
         orderDetailService.saveOrderDetailHistory(orderEntity, orderHistoryEntity);
+        cartEntity.reset();
         return "Success";
     }
 

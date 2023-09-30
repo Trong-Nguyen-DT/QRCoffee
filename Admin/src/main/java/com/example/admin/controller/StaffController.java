@@ -25,7 +25,7 @@ public class StaffController {
     @GetMapping("/staff/create")
     public String showCreateStaffBy(Model model){
         model.addAttribute("user", new User());
-        return "createStaff";
+        return "CreateStaff";
     }
     @PostMapping("/staff/create")
     public String createStaff (@ModelAttribute User user){

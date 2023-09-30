@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProduct(Long id) {
         ProductEntity existingProduct = productRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Không tìm thấy sản phẩm"));
-        existingProduct.setDeleted(false);
+        existingProduct.setDeleted(true);
         productRepository.save(existingProduct);
     }
 
@@ -77,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
     public void restoreProduct(Long id) {
         ProductEntity existingProduct = productRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Không tìm thấy sản phẩm"));
-        existingProduct.setDeleted(true);
+        existingProduct.setDeleted(false);
         productRepository.save(existingProduct);
     }
 

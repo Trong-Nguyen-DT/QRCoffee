@@ -35,7 +35,7 @@ public class StaffConvertor {
         userEntity.setPhone(user.getPhone());
         userEntity.setSalary(user.getSalary());
         userEntity.setRole("ROLE_STAFF");
-        userEntity.setDeleted(true);
+        userEntity.setDeleted(false);
 
         return userEntity;
     }

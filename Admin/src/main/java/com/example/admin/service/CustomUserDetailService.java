@@ -26,14 +26,14 @@ public class CustomUserDetailService implements UserDetailsService {
         UserEntity entity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new BadCredentialsException("Không tìm thấy user"));
         if (entity.getDeleted()){
-            UserPrincipal principal = new UserPrincipal();
-            principal.setId((long) entity.getId());
-            principal.setUsername(username);
-            principal.setPassword(entity.getPassword());
-            principal.setAuthorities(List.of(new SimpleGrantedAuthority(entity.getRole())));
-            return principal;
+            return null;
         }
-        return null;
+        UserPrincipal principal = new UserPrincipal();
+        principal.setId((long) entity.getId());
+        principal.setUsername(username);
+        principal.setPassword(entity.getPassword());
+        principal.setAuthorities(List.of(new SimpleGrantedAuthority(entity.getRole())));
+        return principal;
 //        UserPrincipal principal = new UserPrincipal();
 //        principal.setId((long) entity.getId());
 //        principal.setUsername(username);

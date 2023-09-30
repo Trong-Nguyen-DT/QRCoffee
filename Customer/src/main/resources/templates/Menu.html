@@ -78,8 +78,8 @@
         </defs>
     </svg>
     <header>
-        <div class="container">
-            <div class="header-top">
+        <label class="container">
+            <label class="header-top">
                 <div class="enter-search">
                     <input type="text" name="search" id="search">
                 </div>
@@ -94,8 +94,8 @@
                         <li><a th:href="@{'/my'}" class="user_item-link">Thông tin của bạn</a></li>
                         <li><a class="user_item-link">Thoát</a></li>
                     </ul>
-                </div>
-            </div>
+                </label>
+            </label>
             <div class="header-bottom">
                 <div class="menu-head">
                     <ul th:each="cate : ${categories}">
@@ -103,8 +103,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        </div>
+        </label>
     </header>
     <main class="id">
         <div class="slider" th:each="cate : ${categories}">
@@ -115,9 +114,9 @@
             <div id="w">
                 <div class="crsl-items" data-navigation="navbtns">
                     <div class="crsl-wrap">
-                        <div class="crsl-item" th:each="prod : ${products}" th:if="${prod.category_id == cate.id}">
+                        <div class="crsl-item" th:each="prod : ${products}" th:if="${prod.category_id == cate.id && prod.deleted == false}">
                             <div class="thumbnail">
-                                <img th:src="@{/images/test.jpg}" alt="java">
+                                <img th:src="@{${prod.image}}" alt="java">
                             </div>
                             <div class="m1">
                                 <div class="title">

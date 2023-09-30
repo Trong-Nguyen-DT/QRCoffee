@@ -20,12 +20,22 @@ public class ProductEntity {
 
     private String image;
 
+    private boolean deleted;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryEntity categoryEntity;
 
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetailEntity> orderDetails = new ArrayList<>();
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public Long getId() {
         return id;

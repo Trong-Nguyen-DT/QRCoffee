@@ -106,9 +106,9 @@
             <div id="w">
                 <div class="crsl-items" data-navigation="navbtns">
                     <div class="crsl-wrap">
-                        <div class="crsl-item" th:each="prod : ${products}" th:if="${prod.category_id == cate.id}">
+                        <div class="crsl-item" th:each="prod : ${products}" th:if="${prod.category_id == cate.id && prod.deleted == false}">
                             <div class="thumbnail">
-                                <img src="" alt="java">
+                                <img th:src="@{${prod.image}}" alt="java">
                             </div>
                             <div class="m1">
                                 <div class="title">

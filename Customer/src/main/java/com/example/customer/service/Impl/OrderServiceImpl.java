@@ -53,8 +53,8 @@ public class OrderServiceImpl implements OrderService {
         order.setDescription("Bàn số " + orderEntity.getTb());
         order.setBuyerName(orderEntity.getCustomerEntity().getName());
         order.setBuyerPhone(orderEntity.getCustomerEntity().getPhone());
-        order.setCancelUrl("http://localhost:8080/payment/" + orderEntity.getTb() + "/failed" + "/" + order.getOrderCode());
-        order.setReturnUrl("http://localhost:8080/payment/" + orderEntity.getTb() + "/success"+ "/" + order.getOrderCode());
+        order.setCancelUrl("http://192.168.2.59:8080/payment/" + orderEntity.getTb() + "/failed" + "/" + order.getOrderCode());
+        order.setReturnUrl("http://192.168.2.59:8080/payment/" + orderEntity.getTb() + "/success"+ "/" + order.getOrderCode());
 
         Map<String, String> params = Map.of(
                 "amount", String.valueOf(order.getAmount()),

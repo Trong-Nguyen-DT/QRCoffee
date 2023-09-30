@@ -88,4 +88,8 @@ public class CartEntity implements Serializable {
     public OrderEntity getOrderEntity() {
         return this.orderEntity;
     }
+
+    public void reset() {
+        this.orderEntity = new OrderEntity();
+    }
 }

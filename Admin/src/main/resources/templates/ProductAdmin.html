@@ -205,7 +205,7 @@
 
                     </tr>
                     </thead>
-                    <tbody  th:each="prod : ${products}" th:if="${prod.deleted}"  >
+                    <tbody  th:each="prod : ${products}" th:if="${prod.deleted == false}"  >
                     <tr>
                         <td th:text="${prod.id}"></td>
                         <td th:each="cate : ${categories}"  th:if="${prod.category_id == cate.id}" th:text="${cate.name}"></td>

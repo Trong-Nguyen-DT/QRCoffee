@@ -23,17 +23,13 @@ public class ProductConvertor {
 
    }
    public static ProductEntity toEntity(Product product, CategoryEntity categoryEntity){
-         ProductEntity entity = new ProductEntity();
+       ProductEntity entity = new ProductEntity();
        entity.setTitle(product.getTitle());
        entity.setPrice(product.getPrice());
-
-        entity.setCategoryEntity(categoryEntity);
+       entity.setCategoryEntity(categoryEntity);
 //        entity.setImage(product.getImage());
-
-
-        entity.setDeleted(true);
-
-         return entity;
+       entity.setDeleted(false);
+       return entity;
 
    }
 }

@@ -24,6 +24,8 @@ public class Product {
 
     private Long category_id;
 
+    private boolean deleted;
+
     private List<OrderDetail> orderDetails;
 
 }

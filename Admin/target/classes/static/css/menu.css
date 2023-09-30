@@ -168,19 +168,11 @@ main{
     background-color: bisque;
 }
 
-/* .crsl-item .thumbnail img {
-  display: block;
-  -webkit-transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  transition: all 0.3s linear;
-   border-radius: 10px;
-  float: left;
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+}
 
-  text-align: center;
-} */
-/* .crsl-item .thumbnail:hover img {
-  opacity: 0.8;
-} */
 
 .m1{
     width: 75%;
@@ -310,6 +302,10 @@ footer button {
         margin: 20px 0;
     }
 
+    .menu-head{
+        width: 100%;
+    }
+
     .menu ul {
         justify-content: center; /* Canh giữa các mục menu */
     }
@@ -332,8 +328,8 @@ footer button {
     }
 
     .thumbnail {
-        width: 30%; /* Điều chỉnh kích thước hình ảnh */
-        height: auto; /* Đảm bảo chiều cao tỷ lệ */
+        width: 25%; /* Điều chỉnh kích thước hình ảnh */
+        height: 100%; /* Đảm bảo chiều cao tỷ lệ */
     }
 
     .m1 {
