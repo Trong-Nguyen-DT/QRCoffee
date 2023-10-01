@@ -23,229 +23,229 @@
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <div class="sidebar-logo">
-        <!-- <img src="./images/logo-lg.png" alt="Comapny logo"> -->
-        <div class="sidebar-close" id="sidebar-close">
-            <i class='bx bx-left-arrow-alt'></i>
-        </div>
-    </div>
-    <div class="sidebar-user">
-        <div class="sidebar-user-info">
-            <!-- <img src="./images/user-image.jpg" alt="User picture" class="profile-image"> -->
-            <div class="sidebar-user-name">
-                Admin
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <!-- <img src="./images/logo-lg.png" alt="Comapny logo"> -->
+            <div class="sidebar-close" id="sidebar-close">
+                <i class='bx bx-left-arrow-alt'></i>
             </div>
         </div>
-        <button class="btn btn-outline">
-            <a th:href="@{/perform_logout}">
-                <i class='bx bx-log-out bx-flip-horizontal'></i>
-            </a>
-        </button>
-    </div>
-    <!-- SIDEBAR MENU -->
-    <ul class="sidebar-menu">
-        <li>
-            <a th:href="@{/admin}" class="active">
-                <i class='bx bx-home'></i>
-                <span>dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-shopping-bag'></i>
-                <span>sales</span>
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/admin/orders}">
-                <i class='bx bx-chart'></i>
-                <span>order history</span>
-            </a>
-        </li>
-        <li class="sidebar-submenu">
-            <a href="#" class="sidebar-menu-dropdown">
-                <i class='bx bx-user-circle'></i>
-                <span>account</span>
-                <div class="dropdown-icon"></div>
-            </a>
-            <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                <li>
-                    <a th:href="@{/admin/staff/create}">
-                        Add Staff
-                    </a>
-                </li>
-                <li>
-                    <a th:href="@{/admin/staff}">
-                        Staffs
-                    </a>
-                </li>
-
-                <li>
-                    <a th:href="@{/admin/staff/restore}">
-                        Restores Staff
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="sidebar-submenu">
-            <a href="#" class="sidebar-menu-dropdown">
-                <i class='bx bx-category'></i>
-                <span>project</span>
-                <div class="dropdown-icon"></div>
-            </a>
-            <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                <li>
-                    <a href="#">
-                        list
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        add project
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="sidebar-submenu">
-            <a href="#" class="sidebar-menu-dropdown">
-                <i class='bx bx-category'></i>
-                <span>e-commerce</span>
-                <div class="dropdown-icon"></div>
-            </a>
-            <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                <li>
-                    <a th:href="@{/admin/product}">
-                        list products
-                    </a>
-                </li>
-                <li>
-                    <a th:href="@{/admin/product/create}">
-                        add product
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        restore products
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-mail-send'></i>
-                <span>customer</span>
-            </a>
-        </li>
-        <li>
-            <a th:href="@{/admin/customer}">
-                <i class='bx bx-chat'></i>
-                <span>chat</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-calendar'></i>
-                <span>calendar</span>
-            </a>
-        </li>
-        <li class="sidebar-submenu">
-            <a href="#" class="sidebar-menu-dropdown">
-                <i class='bx bx-cog'></i>
-                <span>settings</span>
-                <div class="dropdown-icon"></div>
-            </a>
-            <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                <li>
-                    <a href="#" class="darkmode-toggle" id="darkmode-toggle">
-                        darkmode
-                        <span class="darkmode-switch"></span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <!-- END SIDEBAR MENU -->
-</div>
-<!-- END SIDEBAR -->
-
-<!-- MAIN CONTENT -->
-<div class="main">
-    <div class="main-header">
-        <div class="mobile-toggle" id="mobile-toggle">
-            <i class='bx bx-menu-alt-right'></i>
-        </div>
-        <div class="main-title">
-            dashboard
-        </div>
-    </div>
-
-    <!-- ORDERS TABLE -->
-    <div class="box">
-
-
-        <div class="box-body overflow-scroll">
-            <div class="box-header">
-                Product Restore
+        <div class="sidebar-user">
+            <div class="sidebar-user-info">
+                <!-- <img src="./images/user-image.jpg" alt="User picture" class="profile-image"> -->
+                <div class="sidebar-user-name">
+                    Admin
+                </div>
             </div>
+            <button class="btn btn-outline">
+                <a th:href="@{/perform_logout}">
+                    <i class='bx bx-log-out bx-flip-horizontal'></i>
+                </a>
+            </button>
+        </div>
+        <!-- SIDEBAR MENU -->
+        <ul class="sidebar-menu">
+            <li>
+                <a th:href="@{/admin}" class="active">
+                    <i class='bx bx-home'></i>
+                    <span>dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-shopping-bag'></i>
+                    <span>sales</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/admin/orders}">
+                    <i class='bx bx-chart'></i>
+                    <span>order history</span>
+                </a>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-user-circle'></i>
+                    <span>account</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a th:href="@{/admin/staff/create}">
+                            Add Staff
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/staff}">
+                            Staffs
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/admin/staff/restore}">
+                            Restores Staff
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-category'></i>
+                    <span>project</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#">
+                            list
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            add project
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-category'></i>
+                    <span>e-commerce</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a th:href="@{/admin/product}">
+                            list products
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/product/create}">
+                            add product
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            restore products
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-mail-send'></i>
+                    <span>customer</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/admin/customer}">
+                    <i class='bx bx-chat'></i>
+                    <span>chat</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-calendar'></i>
+                    <span>calendar</span>
+                </a>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-cog'></i>
+                    <span>settings</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                            darkmode
+                            <span class="darkmode-switch"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+    <!-- END SIDEBAR -->
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class='bx bx-menu-alt-right'></i>
+            </div>
+            <div class="main-title">
+                dashboard
+            </div>
+        </div>
+
+        <!-- ORDERS TABLE -->
+        <div class="box">
+
+
             <div class="box-body overflow-scroll">
+                <div class="box-header">
+                    Product Restore
+                </div>
+                <div class="box-body overflow-scroll">
 
-                <table>
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Category</th>
-                        <th>Title</th>
-                        <th>Price</th>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Category</th>
+                            <th>Title</th>
+                            <th>Price</th>
 
-                        <th>Restore</th>
+                            <th>Restore</th>
 
-                    </tr>
-                    </thead>
-                    <tbody th:each="RS : ${RestoreProducts}" th:if="${RS.deleted == true}" >
-                    <tr>
-                        <td th:text="${RS.id}"></td>
-                        <td th:each="cate : ${categories}"  th:if="${RS.category_id == cate.id}" th:text="${cate.name}"></td>
-                        <td th:text="${RS.title}"></td>
-                        <td th:text="${RS.price}"></td>
-                        <td><button> <a th:href="@{/admin/product/restore/{productId}(productId=${RS.id})}" > Restore  </a> </button></td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </tr>
+                        </thead>
+                        <tbody th:each="RS : ${RestoreProducts}" th:if="${RS.deleted == true}" >
+                        <tr>
+                            <td th:text="${RS.id}"></td>
+                            <td th:each="cate : ${categories}"  th:if="${RS.category_id == cate.id}" th:text="${cate.name}"></td>
+                            <td th:text="${RS.title}"></td>
+                            <td th:text="${RS.price}"></td>
+                            <td><button> <a th:href="@{/admin/product/restore/{productId}(productId=${RS.id})}" > Restore  </a> </button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <!-- END ORDERS TABLE -->
+
+        <!-- END MAIN CONTENT -->
+
+        <div class="overlay"></div>
+
+        <!-- SCRIPT -->
+        <!-- APEX CHART -->
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <!-- APP JS -->
+        <script th:src="@{/js/app.js}"></script>
+
+        <!--    <script>-->
+        <!--        document.getElementById('categorySelect').addEventListener('change', function() {-->
+        <!--            var selectedCategoryId = this.value;-->
+        <!--            // Gửi yêu cầu tìm kiếm dựa trên selectedCategoryId bằng AJAX-->
+        <!--            // Ví dụ sử dụng Fetch API:-->
+        <!--            fetch('/adminhome/product?category_id=' + selectedCategoryId)-->
+        <!--                .then(response => response.json())-->
+        <!--                .then(data => {-->
+        <!--                    // Xử lý dữ liệu trả về và cập nhật giao diện người dùng-->
+        <!--                    // Ví dụ: hiển thị danh sách sản phẩm-->
+        <!--                })-->
+        <!--                .catch(error => {-->
+        <!--                    console.error('Lỗi khi gửi yêu cầu: ' + error);-->
+        <!--                });-->
+        <!--        });-->
+        <!--    </script>-->
+
     </div>
-    <!-- END ORDERS TABLE -->
-
-    <!-- END MAIN CONTENT -->
-
-    <div class="overlay"></div>
-
-    <!-- SCRIPT -->
-    <!-- APEX CHART -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- APP JS -->
-    <script th:src="@{/js/app.js}"></script>
-
-    <!--    <script>-->
-    <!--        document.getElementById('categorySelect').addEventListener('change', function() {-->
-    <!--            var selectedCategoryId = this.value;-->
-    <!--            // Gửi yêu cầu tìm kiếm dựa trên selectedCategoryId bằng AJAX-->
-    <!--            // Ví dụ sử dụng Fetch API:-->
-    <!--            fetch('/adminhome/product?category_id=' + selectedCategoryId)-->
-    <!--                .then(response => response.json())-->
-    <!--                .then(data => {-->
-    <!--                    // Xử lý dữ liệu trả về và cập nhật giao diện người dùng-->
-    <!--                    // Ví dụ: hiển thị danh sách sản phẩm-->
-    <!--                })-->
-    <!--                .catch(error => {-->
-    <!--                    console.error('Lỗi khi gửi yêu cầu: ' + error);-->
-    <!--                });-->
-    <!--        });-->
-    <!--    </script>-->
-
-
 </body>
 
 </html>
