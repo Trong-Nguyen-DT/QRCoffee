@@ -8,8 +8,10 @@ import com.example.admin.domain.User;
 import com.example.admin.entity.CustomerEntity;
 import com.example.admin.entity.OrderEntity;
 import com.example.admin.entity.OrderHistoryEntity;
+import com.example.admin.entity.TableEntity;
 import com.example.admin.repository.OrderHistoryRepository;
 import com.example.admin.repository.OrderRepository;
+import com.example.admin.repository.TableRepository;
 import com.example.admin.repository.UserRepository;
 import com.example.admin.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private TableRepository tableRepository;
 
 
     @Override
@@ -94,7 +99,9 @@ public class OrderServiceImpl implements OrderService {
         OrderEntity orderEntity = orderRepository.findById(id).orElseThrow();
         orderEntity.setConfirmed(true);
         orderEntity.setUserEntity(userRepository.findById(user.getId()).orElseThrow());
-
+        TableEntity tableEntity = tableRepository.findById(orderEntity.getTableEntity().getId()).orElseThrow();
+        tableEntity.setStatus(false);
+        tableRepository.save(tableEntity);
         OrderHistoryEntity orderHistoryEntity = orderHistoryRepository.findById(id).orElseThrow();
         orderHistoryEntity.setUserId(user.getId());
         orderHistoryRepository.save(orderHistoryEntity);

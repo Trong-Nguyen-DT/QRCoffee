@@ -47,9 +47,18 @@
                 </div>
                 <div class="crsl-items" data-navigation="navbtns" >
                     <div class="crsl-wrap">
-                        <div class="crsl-item" th:each="order : ${orders}" th:if="${order.status}">
-                            <a th:href="@{/staff/detail/{id}(id=${order.orderCode})}"><button th:text="${order.description}"></button></a>
+                        <div class="crsl-item" th:each="tb : ${tables}">
+                            <div th:each="order : ${orders}">
+                                <a th:if="${tb.id == order.tableId}" th:href="@{/staff/detail/{id}(id=${order.orderCode})}"  >
+                                    <button th:text="${tb.name}" style="background-color: red"></button>
+                                </a>
+                            </div>
+                            <div th:each="table : ${tablesFalse}" th:if="${tb.id == table.id}">
+                                <button th:text="${tb.name}"></button>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
