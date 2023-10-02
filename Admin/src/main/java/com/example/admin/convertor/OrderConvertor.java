@@ -14,11 +14,14 @@ public class OrderConvertor {
         order.setTotal(orderEntity.getTotalPrice());
         order.setOrderCode(orderEntity.getId());
         order.setDescription(String.valueOf(orderEntity.getTb()));
-        order.setCustomer_id(orderEntity.getCustomerEntity().getId());
-        order.setBuyerName(orderEntity.getCustomerEntity().getName());
-        order.setBuyerPhone(orderEntity.getCustomerEntity().getPhone());
+        if (orderEntity.getCustomerEntity() != null) {
+            order.setCustomer_id(orderEntity.getCustomerEntity().getId());
+            order.setBuyerName(orderEntity.getCustomerEntity().getName());
+            order.setBuyerPhone(orderEntity.getCustomerEntity().getPhone());
+        }
         order.setStatus(orderEntity.getStatus());
         order.setItems(orderEntity.getOrderDetails().stream().map(OrderDetailConvertor::toModel).toList());
+        order.setTableId(orderEntity.getTableEntity().getId());
         return order;
     }
 }

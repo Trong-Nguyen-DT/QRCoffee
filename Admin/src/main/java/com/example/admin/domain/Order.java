@@ -27,5 +27,5 @@ public class Order {
     private Long user_id;
     private Boolean status;
     private List<OrderDetail> items;
-
+    private Long tableId;
 }
