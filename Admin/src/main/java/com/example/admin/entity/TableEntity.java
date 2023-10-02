@@ -16,8 +16,6 @@ public class TableEntity {
 
     private boolean status;
 
-    @OneToMany(mappedBy = "tableEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderEntity> orderEntities;
 
     public Long getId() {
         return id;
