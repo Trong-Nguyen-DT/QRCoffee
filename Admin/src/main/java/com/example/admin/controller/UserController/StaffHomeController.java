@@ -85,8 +85,8 @@ public class StaffHomeController {
 
     @GetMapping("/checkout/{id}")
     public String checkoutOrder(@PathVariable String id){
-        Long orderId = Long.parseLong(id);
-        orderService.checkoutOrder(orderId);
+        Long tableId = Long.parseLong(id);
+        tableService.checkoutTable(tableId);
         return "redirect:/staff";
     }
 

@@ -179,12 +179,4 @@ public class OrderServiceImpl implements OrderService {
         return orderHistoryRepository.save(orderHistoryEntity);
     }
 
-    @Override
-    public void checkoutOrder(Long orderId) {
-        OrderEntity orderEntity = orderRepository.findById(orderId).orElseThrow();
-        TableEntity tableEntity = tableRepository.findById(orderEntity.getTableEntity().getId()).orElseThrow();
-        tableEntity.setStatus(false);
-        tableRepository.save(tableEntity);
-    }
-
 }

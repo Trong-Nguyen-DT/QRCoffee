@@ -70,4 +70,11 @@ public class TableServiceImpl implements TableService {
         newTable.setStatus(true);
         tableRepository.save(newTable);
     }
+
+    @Override
+    public void checkoutTable(Long tableId) {
+        TableEntity table = tableRepository.findById(tableId).orElseThrow();
+        table.setStatus(false);
+        tableRepository.save(table);
+    }
 }

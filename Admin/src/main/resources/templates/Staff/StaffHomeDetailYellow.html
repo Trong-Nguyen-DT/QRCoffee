@@ -71,12 +71,12 @@
     <div class="right">
         <form th:action="@{'/staff/switch-table/' + ${table.id}}" method="post" th:object="${table}">
             <h1 th:text="'Bàn số: ' + ${table.id}"></h1>
-            <a th:href="@{'/staff/checkout/' + ${table.id}}"><button><h2>Check Out</h2></button></a>
             <a><button type="submit"><h2>Chuyển bàn</h2></button></a>
             <select th:field="*{id}">
                 <option th:each="tb : ${tablesFalse}" th:text="${tb.name}" th:value="${tb.id}"></option>
             </select>
         </form>
+        <a th:href="@{'/staff/checkout/' + ${table.id}}"><button><h2>Check Out</h2></button></a>
     </div>
 
 </main>

@@ -59,11 +59,12 @@
                                 </a>
                             </div>
                             <div th:each="tableF : ${tablesFalse}" th:if="${tb.id == tableF.id}">
+<!--                                <a th:href="@{/staff/neworder/{id}(id=${tb.id})}">-->
+<!--                                    -->
+<!--                                </a>-->
                                 <button th:text="${tb.name}"></button>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

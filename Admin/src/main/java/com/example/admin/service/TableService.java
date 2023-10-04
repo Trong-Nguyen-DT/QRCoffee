@@ -18,4 +18,6 @@ public interface TableService {
     Table getById(Long id);
 
     void switchTable(Long id, Long switchId);
+
+    void checkoutTable(Long tableId);
 }
