@@ -4,12 +4,11 @@ package com.example.customer.controller;
 
 import com.example.customer.domain.CartEntity;
 import com.example.customer.domain.Customer;
+import com.example.customer.domain.Table;
 import com.example.customer.entity.OrderEntity;
 import com.example.customer.entity.OrderHistoryEntity;
-import com.example.customer.service.CustomerService;
-import com.example.customer.service.OrderDetailService;
-import com.example.customer.service.OrderService;
-import com.example.customer.service.ProductService;
+import com.example.customer.remote.TableAPI;
+import com.example.customer.service.*;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +34,12 @@ public class PaymentController {
     @Autowired
     private CartEntity cartEntity;
 
+    @Autowired
+    private TableService tableService;
+
+    @Autowired
+    private TableAPI tableAPI;
+
 
 
     @GetMapping("success/{orderCode}")
@@ -50,6 +55,10 @@ public class PaymentController {
         OrderHistoryEntity orderHistoryEntity = orderService.saveOrderHistory(orderEntity);
         orderDetailService.saveOrderDetailHistory(orderEntity, orderHistoryEntity);
         cartEntity.reset();
+
+        tableService.setTableTrue(Long.parseLong(tb));
+//        tableAPI.callStaffHome();
+
         return "Success";
     }
 

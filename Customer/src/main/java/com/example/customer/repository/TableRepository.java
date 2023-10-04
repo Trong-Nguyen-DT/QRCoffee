@@ -1,6 +1,6 @@
-package com.example.admin.repository;
+package com.example.customer.repository;
 
-import com.example.admin.entity.TableEntity;
+import com.example.customer.entity.TableEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +12,4 @@ public interface TableRepository extends JpaRepository<TableEntity, Long> {
     List<TableEntity> findAll();
 
     List<TableEntity> findAllByStatusFalse();
-
-    List<TableEntity> findAllByStatusTrue();
 }

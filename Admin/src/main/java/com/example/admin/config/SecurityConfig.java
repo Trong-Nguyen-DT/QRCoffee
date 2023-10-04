@@ -55,7 +55,7 @@ public class SecurityConfig {
                                         .hasRole("STAFF")
 //                        .requestMatchers("/anonymous*")
 //                        .anonymous()
-                                        .requestMatchers("/login*")
+                                        .requestMatchers("/login*", "/table-api*")
                                         .permitAll()
                                         .requestMatchers("/css/**")
                                         .permitAll()

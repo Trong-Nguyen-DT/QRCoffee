@@ -31,12 +31,22 @@ public class OrderEntity {
     @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetailEntity> orderDetails = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "table_id")
+    private TableEntity tableEntity;
+
     private Boolean status;
 
     private Boolean confirmed;
 
-    private Integer tb;
 
+    public TableEntity getTableEntity() {
+        return tableEntity;
+    }
+
+    public void setTableEntity(TableEntity tableEntity) {
+        this.tableEntity = tableEntity;
+    }
 
     public Long getId() {
         return id;
@@ -116,13 +126,5 @@ public class OrderEntity {
 
     public void setConfirmed(Boolean confirmed) {
         this.confirmed = confirmed;
-    }
-
-    public Integer getTb() {
-        return tb;
-    }
-
-    public void setTb(Integer tb) {
-        this.tb = tb;
     }
 }

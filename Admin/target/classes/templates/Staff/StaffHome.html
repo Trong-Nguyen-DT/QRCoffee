@@ -47,56 +47,70 @@
                 </div>
                 <div class="crsl-items" data-navigation="navbtns" >
                     <div class="crsl-wrap">
-                        <div class="crsl-item" th:each="order : ${orders}" th:if="${order.status}">
-                            <a th:href="@{/staff/detail/{id}(id=${order.orderCode})}"><button th:text="${order.description}"></button></a>
+                        <div class="crsl-item" th:each="tb : ${tables}">
+                            <div th:each="order : ${orders}">
+                                <a th:if="${tb.id == order.tableId and tb.status}" th:href="@{/staff/detail/{id}(id=${order.orderCode})}"  >
+                                    <button th:text="${tb.name}" style="background-color: red"></button>
+                                </a>
+                            </div>
+                            <div>
+                                <a th:each="tableY : ${tableYellow}" th:if="${tableY.id == tb.id}" th:href="@{/staff/table/{id}(id=${tb.id})}">
+                                    <button th:text="${tb.name}" style="background-color: yellow"></button>
+                                </a>
+                            </div>
+                            <div th:each="tableF : ${tablesFalse}" th:if="${tb.id == tableF.id}">
+                                <button th:text="${tb.name}"></button>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="right">
-                <table>
-                    <tbody>
-                    <tr>
-                        <th>
-                            <h2> Bàn: </h2>
+<!--                <table>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <th>-->
+<!--                            <h2> Bàn: </h2>-->
 
-                        </th>
-                        <th>
-                            <h2> Tên Khách Hàng: </h2>
-                        </th>
-                    </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+<!--                        </th>-->
+<!--                        <th>-->
+<!--                            <h2> Tên Khách Hàng: </h2>-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--                <table>-->
+<!--                    <thead>-->
+<!--                        <tr>-->
+<!--                            <th>STT</th>-->
+<!--                            <th>Name</th>-->
+<!--                            <th>Quantity</th>-->
+<!--                            <th>Price</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
 
-                    </tbody>
-                </table>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Tổng Bill</th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th>Điểm trừ</th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th>Thanh toán</th>
-                            <th></th>
-                        </tr>
-                    </tbody>
-                </table>
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--                <table>-->
+<!--                    <tbody>-->
+<!--                        <tr>-->
+<!--                            <th>Tổng Bill</th>-->
+<!--                            <th></th>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Điểm trừ</th>-->
+<!--                            <th></th>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Thanh toán</th>-->
+<!--                            <th></th>-->
+<!--                        </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
             </div>
 
     </main>

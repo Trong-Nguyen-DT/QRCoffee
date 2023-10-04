@@ -1,6 +1,10 @@
 package com.example.customer.validator;
 
 import com.example.customer.domain.Customer;
+import com.example.customer.entity.ProductEntity;
+import com.example.customer.handler.CustomerEntityNotFoundException;
+import jakarta.servlet.http.HttpSession;
+import org.apache.catalina.session.StandardSession;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -28,5 +32,13 @@ public class CustomerValidator implements Validator {
 
         // Kiểm tra xem chuỗi số điện thoại sau khi loại bỏ ký tự không phải là số có đúng 10 chữ số hay không
         return numericPhone.length() == 10;
+    }
+
+    public Customer checkSession(HttpSession session) {
+        try {
+            return (Customer) session.getAttribute("customer");
+        } catch (NumberFormatException e) {
+            throw new CustomerEntityNotFoundException("Không có khách hàng nào đang đặt món");
+        }
     }
 }

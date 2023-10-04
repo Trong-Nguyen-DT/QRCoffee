@@ -8,6 +8,7 @@ import com.example.customer.entity.OrderEntity;
 import com.example.customer.entity.OrderHistoryEntity;
 import com.example.customer.repository.OrderHistoryRepository;
 import com.example.customer.repository.OrderRepository;
+import com.example.customer.repository.TableRepository;
 import com.example.customer.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,18 +26,22 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderHistoryRepository orderHistoryRepository;
 
+    @Autowired
+    private TableRepository tableRepository;
+
 
     @Override
     public OrderEntity saveOrder(Integer tb, Customer customer, Long totalPrice, Integer point) {
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setOrderDateTime(LocalDateTime.now());
         orderEntity.setCustomerEntity(CustomerConverter.toEntity(customer));
-        orderEntity.setTb(tb);
         orderEntity.setPoint(point);
         orderEntity.setConfirmed(false);
         orderEntity.setStatus(false);
         orderEntity.setTotalPrice(totalPrice);
         orderEntity.setAmount(totalPrice - point);
+        orderEntity.setTableEntity(tableRepository.findById((long) tb).orElseThrow());
+
         return orderRepository.save(orderEntity);
     }
 
@@ -50,11 +55,11 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order();
         order.setOrderCode(orderEntity.getId());
         order.setAmount(orderEntity.getAmount());
-        order.setDescription("Bàn số " + orderEntity.getTb());
+        order.setDescription(orderEntity.getTableEntity().getName());
         order.setBuyerName(orderEntity.getCustomerEntity().getName());
         order.setBuyerPhone(orderEntity.getCustomerEntity().getPhone());
-        order.setCancelUrl("http://192.168.2.59:8080/payment/" + orderEntity.getTb() + "/failed" + "/" + order.getOrderCode());
-        order.setReturnUrl("http://192.168.2.59:8080/payment/" + orderEntity.getTb() + "/success"+ "/" + order.getOrderCode());
+        order.setCancelUrl("http://192.168.2.59:8080/payment/" + orderEntity.getTableEntity().getId() + "/failed" + "/" + order.getOrderCode());
+        order.setReturnUrl("http://192.168.2.59:8080/payment/" + orderEntity.getTableEntity().getId() + "/success"+ "/" + order.getOrderCode());
 
         Map<String, String> params = Map.of(
                 "amount", String.valueOf(order.getAmount()),
