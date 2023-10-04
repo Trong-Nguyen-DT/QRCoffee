@@ -37,4 +37,6 @@ public interface OrderService {
     OrderEntity setStatus(OrderEntity orderEntity);
 
     OrderHistoryEntity saveOrderHistory(OrderEntity orderEntity);
+
+    void checkoutOrder(Long orderId);
 }

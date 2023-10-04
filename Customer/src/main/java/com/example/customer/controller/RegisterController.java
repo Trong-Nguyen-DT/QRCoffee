@@ -4,6 +4,7 @@ package com.example.customer.controller;
 import com.example.customer.domain.Customer;
 import com.example.customer.service.CustomerService;
 import com.example.customer.validator.CustomerValidator;
+import com.example.customer.validator.TableValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,9 @@ public class RegisterController {
     @Autowired
     private CustomerValidator customerValidator;
 
+    @Autowired
+    private TableValidator tableValidator;
+
 
     @GetMapping()
     public String showRegister(Model model, @PathVariable String tb) {
@@ -31,22 +35,16 @@ public class RegisterController {
     @PostMapping()
     public String registerCustomer(@ModelAttribute("customer") Customer customer, BindingResult bindingResult, @PathVariable String tb, RedirectAttributes redirectAttributes){
         customerValidator.validate(customer, bindingResult);
-
-        System.out.println(tb);
-        try {
-            Integer banValue = Integer.parseInt(tb);
-            if (bindingResult.hasErrors()) {
-                return "redirect:/register/{tb}"; // Trả về trang form đăng ký với thông báo lỗi
-            }
-
-            if (customerService.getCustomerByPhone(customer.getPhone()) != null) {
-                return "redirect:/register/{tb}";
-            }
-            customerService.createMember(customer);
-            redirectAttributes.addAttribute("tb", banValue);
-            return "redirect:/login/{tb}";
-        } catch (NumberFormatException e) {
-            return "redirect:/login";
+        Long tableId = tableValidator.validateTable(tb);
+        if (bindingResult.hasErrors()) {
+            return "redirect:/register/{tb}"; // Trả về trang form đăng ký với thông báo lỗi
         }
+
+        if (customerService.getCustomerByPhone(customer.getPhone()) != null) {
+            return "redirect:/register/{tb}";
+        }
+        customerService.createMember(customer);
+        redirectAttributes.addAttribute("tb", tableId);
+        return "redirect:/login/{tb}";
     }
 }

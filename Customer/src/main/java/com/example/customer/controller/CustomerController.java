@@ -5,6 +5,7 @@ import com.example.customer.domain.Customer;
 import com.example.customer.domain.Order;
 import com.example.customer.entity.OrderDetailHistoryEntity;
 import com.example.customer.service.CustomerService;
+import com.example.customer.validator.CustomerValidator;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +23,12 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private CustomerValidator customerValidator;
+
     @GetMapping()
     public String showCustomerInfo(Model model, HttpSession session){
-        Customer customer = (Customer) session.getAttribute("customer");
+        Customer customer = customerValidator.checkSession(session);
         model.addAttribute("customer", customer);
         model.addAttribute("orders", customerService.getAllOrderByCustomerId(customer.getId()));
         return "HomeCustomer";
@@ -32,7 +36,7 @@ public class CustomerController {
 
     @GetMapping("{orderId}")
     public String showOrderDetail(@PathVariable String orderId, Model model, HttpSession session) {
-        Customer customer = (Customer) session.getAttribute("customer");
+        Customer customer = customerValidator.checkSession(session);
         Long id = Long.parseLong(orderId);
         model.addAttribute("customer", customer);
         model.addAttribute("orderDetails", customerService.getAllOrderDetailByOrderId(id));

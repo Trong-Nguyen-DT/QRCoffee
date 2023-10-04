@@ -8,6 +8,7 @@ import com.example.customer.entity.CustomerEntity;
 import com.example.customer.entity.OrderDetailHistoryEntity;
 import com.example.customer.entity.OrderEntity;
 import com.example.customer.entity.OrderHistoryEntity;
+import com.example.customer.handler.CustomerEntityNotFoundException;
 import com.example.customer.repository.CustomerRepository;
 import com.example.customer.repository.OrderDetailHistoryRepository;
 import com.example.customer.repository.OrderHistoryRepository;
@@ -36,18 +37,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomerByPhone(String phoneNumber) {
+    public Customer getCustomerByPhone(String phoneNumber) throws RuntimeException{
         CustomerEntity customerEntity = customerRepository.findByPhone(phoneNumber);
 
         if (customerEntity != null) {
             return CustomerConverter.toModel(customerEntity);
         }
-        return null;
+        throw new CustomerEntityNotFoundException("Khách hàng không tồn tại");
     }
 
     @Override
     public void setPoint(OrderEntity orderEntity) {
-        CustomerEntity customerEntity = customerRepository.findById(orderEntity.getCustomerEntity().getId()).orElseThrow();
+        CustomerEntity customerEntity = customerRepository.findById(orderEntity.getCustomerEntity().getId()).orElseThrow(() -> new CustomerEntityNotFoundException("Khách hàng không tồn tại"));
         double newPoint = (orderEntity.getCustomerEntity().getPoint() - orderEntity.getPoint()) + (0.02 * orderEntity.getAmount());
         customerEntity.setPoint((int) newPoint);
         customerRepository.save(customerEntity);

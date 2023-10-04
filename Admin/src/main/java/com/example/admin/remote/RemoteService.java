@@ -1,9 +1,5 @@
 package com.example.admin.remote;
 
-
-
-
-
 import com.example.admin.domain.Product;
 import com.example.admin.domain.User;
 import org.springframework.stereotype.Component;

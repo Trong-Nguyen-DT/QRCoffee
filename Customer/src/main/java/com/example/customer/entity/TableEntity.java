@@ -1,4 +1,4 @@
-package com.example.admin.entity;
+package com.example.customer.entity;
 
 import jakarta.persistence.*;
 
@@ -15,6 +15,7 @@ public class TableEntity {
     private String name;
 
     private boolean status;
+
 
     public Long getId() {
         return id;

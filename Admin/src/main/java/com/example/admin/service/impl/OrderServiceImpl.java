@@ -99,9 +99,7 @@ public class OrderServiceImpl implements OrderService {
         OrderEntity orderEntity = orderRepository.findById(id).orElseThrow();
         orderEntity.setConfirmed(true);
         orderEntity.setUserEntity(userRepository.findById(user.getId()).orElseThrow());
-        TableEntity tableEntity = tableRepository.findById(orderEntity.getTableEntity().getId()).orElseThrow();
-        tableEntity.setStatus(false);
-        tableRepository.save(tableEntity);
+
         OrderHistoryEntity orderHistoryEntity = orderHistoryRepository.findById(id).orElseThrow();
         orderHistoryEntity.setUserId(user.getId());
         orderHistoryRepository.save(orderHistoryEntity);
@@ -179,6 +177,14 @@ public class OrderServiceImpl implements OrderService {
             orderHistoryEntity.setCustomerId(orderEntity.getCustomerEntity().getId());
         }
         return orderHistoryRepository.save(orderHistoryEntity);
+    }
+
+    @Override
+    public void checkoutOrder(Long orderId) {
+        OrderEntity orderEntity = orderRepository.findById(orderId).orElseThrow();
+        TableEntity tableEntity = tableRepository.findById(orderEntity.getTableEntity().getId()).orElseThrow();
+        tableEntity.setStatus(false);
+        tableRepository.save(tableEntity);
     }
 
 }

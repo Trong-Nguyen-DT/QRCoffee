@@ -9,7 +9,7 @@
     <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
     <link rel="stylesheet" th:href="@{/css/staff.css}">
     <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
-<!--        <link rel="stylesheet" href="../../static/css/staff.css">-->
+    <!--        <link rel="stylesheet" href="../../static/css/staff.css">-->
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <!--    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>-->
     <!--    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>-->
@@ -69,58 +69,14 @@
         </div>
     </div>
     <div class="right">
-        <table>
-            <tbody>
-                <tr th:object="${order}">
-                    <th>
-                         <h2 th:text="'Bàn: ' + ${order.description}"></h2>
-                    </th>
-                    <th>
-                       <h2  th:text="'Tên Khách Hàng: ' + ${order.buyerName}"></h2>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-            <tr>
-                <th>STT</th>
-                <th>Tên Món</th>
-                <th>Số Lượng</th>
-                <th>Đơn Giá</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="od, start : ${orderDetails}">
-                <td th:text="${start.index + 1}"></td>
-                <td th:text="${od.name}"></td>
-                <td th:text="${od.quantity}"></td>
-                <td th:text="${od.price}"></td>
-            </tr>
-            </tbody>
-        </table>
-        <div th:object="${order}">
-            <table>
-                <tbody >
-                <tr>
-                    <th>Tổng Bill</th>
-                    <th th:text="${order.total}"></th>
-                </tr>
-                <tr>
-                    <th>Điểm trừ</th>
-                    <th th:text="${order.point}"></th>
-                </tr>
-                <tr>
-                    <th>Thanh toán</th>
-                    <th th:text="${order.amount}"></th>
-                </tr>
-
-                </tbody>
-
-
-            </table>
-            <a th:href="@{/staff/confirm/{id}(id=${order.orderCode})}"><button><h2>Confirm</h2></button></a>
-        </div>
+        <form th:action="@{'/staff/switch-table/' + ${table.id}}" method="post" th:object="${table}">
+            <h1 th:text="'Bàn số: ' + ${table.id}"></h1>
+            <a th:href="@{'/staff/checkout/' + ${table.id}}"><button><h2>Check Out</h2></button></a>
+            <a><button type="submit"><h2>Chuyển bàn</h2></button></a>
+            <select th:field="*{id}">
+                <option th:each="tb : ${tablesFalse}" th:text="${tb.name}" th:value="${tb.id}"></option>
+            </select>
+        </form>
     </div>
 
 </main>

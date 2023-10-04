@@ -2,23 +2,24 @@ package com.example.customer.controller;
 
 
 import com.example.customer.domain.Customer;
-import com.example.customer.domain.Product;
-import com.example.customer.entity.ProductEntity;
 import com.example.customer.service.CustomerService;
-import com.example.customer.service.ProductService;
+import com.example.customer.validator.TableValidator;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("login")
+@RequestMapping()
 public class LoginController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private TableValidator tableValidator;
+
 
 
     @GetMapping()
@@ -26,42 +27,33 @@ public class LoginController {
         return "ErrorQR";
     }
 
-    @GetMapping("/{tb}")
-    public String showLogin(@PathVariable String tb, Model model, RedirectAttributes redirectAttributes) {
-        try {
-            Integer banValue = Integer.parseInt(tb);
-            model.addAttribute("tableNumber", banValue);
-            redirectAttributes.addAttribute("tb", banValue);
-            return "LoginMember";
-        } catch (NumberFormatException e) {
-            return "ErrorQR";
-        }
+    @GetMapping("login")
+    public String showErrorLogin() {
+        return "ErrorQR";
+    }
+
+    @GetMapping("login/{tb}")
+    public String showLogin(@PathVariable String tb, RedirectAttributes redirectAttributes) {
+        Long tableId = tableValidator.validateTable(tb);
+        redirectAttributes.addAttribute("tb", tableId);
+        return "LoginMember";
     }
 
 
 
-    @PostMapping("/{tb}")
+    @PostMapping("login/{tb}")
     public String processLogin(
             @RequestParam("phone") String phoneNumber,
-            @PathVariable String tb, // Thay đổi kiểu dữ liệu của 'ban' thành String
+            @PathVariable String tb,
             HttpSession session,
             RedirectAttributes redirectAttributes
     ) {
-        try {
-            Integer banValue = Integer.parseInt(tb);
-            Customer customer = customerService.getCustomerByPhone(phoneNumber);
-            if (customer != null) {
-                session.setAttribute("customer", customer);
-
-                // Chuyển hướng đến /menu/{tb}
-                redirectAttributes.addAttribute("tb", banValue);
-                return "redirect:/menu/{tb}";
-            } else {
-                return "redirect:/login";
-            }
-        } catch (NumberFormatException e) {
-            return "redirect:/login";
-        }
+        Long tableId = tableValidator.validateTable(tb);
+        Customer customer = customerService.getCustomerByPhone(phoneNumber);
+        session.setAttribute("customer", customer);
+        // Chuyển hướng đến /menu/{tb}
+        redirectAttributes.addAttribute("tb", tableId);
+        return "redirect:/menu/{tb}";
     }
 
 

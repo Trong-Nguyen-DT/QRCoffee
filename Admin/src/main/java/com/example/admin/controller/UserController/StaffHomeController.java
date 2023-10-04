@@ -11,9 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -43,8 +42,7 @@ public class StaffHomeController {
         model.addAttribute("orders", orderService.getOrderConfirmedFalse(false));
         model.addAttribute("tables", tableService.getAllTables());
         model.addAttribute("tablesFalse", tableService.getAllTableFalse());
-
-
+        model.addAttribute("tableYellow", tableService.getAllTableYellow(orderService.getOrderConfirmedFalse(false)));
         return "Staff/StaffHome";
     }
 
@@ -57,7 +55,23 @@ public class StaffHomeController {
         model.addAttribute("user", staffService.getUserByUserName(authentication.getName()));
         model.addAttribute("tables", tableService.getAllTables());
         model.addAttribute("tablesFalse", tableService.getAllTableFalse());
+        model.addAttribute("tableYellow", tableService.getAllTableYellow(orderService.getOrderConfirmedFalse(false)));
+        for (Table table : tableService.getAllTableYellow(orderService.getOrderConfirmedFalse(false))) {
+            System.out.println(table.getName());
+        }
         return "Staff/StaffHomeDetail";
+    }
+
+    @GetMapping("/table/{id}")
+    public String showTable(@PathVariable Long id, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("user", staffService.getUserByUserName(authentication.getName()));
+        model.addAttribute("table", tableService.getById(id));
+        model.addAttribute("orders", orderService.getOrderConfirmedFalse(false));
+        model.addAttribute("tables", tableService.getAllTables());
+        model.addAttribute("tablesFalse", tableService.getAllTableFalse());
+        model.addAttribute("tableYellow", tableService.getAllTableYellow(orderService.getOrderConfirmedFalse(false)));
+        return "Staff/StaffHomeDetailYellow";
     }
 
 
@@ -65,8 +79,21 @@ public class StaffHomeController {
     public String confirmOrder(@PathVariable String id){
         Long orderId = Long.parseLong(id);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         orderService.confirmOrder(orderId, staffService.getUserByUserName(authentication.getName()));
+        return "redirect:/staff";
+    }
+
+    @GetMapping("/checkout/{id}")
+    public String checkoutOrder(@PathVariable String id){
+        Long orderId = Long.parseLong(id);
+        orderService.checkoutOrder(orderId);
+        return "redirect:/staff";
+    }
+
+    @PostMapping("switch-table/{id}")
+    public String switchTable(@PathVariable String id, @ModelAttribute Table table) {
+        Long tableId = Long.parseLong(id);
+        tableService.switchTable(tableId, table.getId());
         return "redirect:/staff";
     }
 

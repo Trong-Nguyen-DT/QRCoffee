@@ -50,11 +50,16 @@
                 <div class="crsl-wrap">
                     <div class="crsl-item" th:each="tb : ${tables}">
                         <div th:each="order : ${orders}">
-                            <a th:if="${tb.id == order.tableId}" th:href="@{/staff/detail/{id}(id=${order.orderCode})}"  >
+                            <a th:if="${tb.id == order.tableId and tb.status}" th:href="@{/staff/detail/{id}(id=${order.orderCode})}"  >
                                 <button th:text="${tb.name}" style="background-color: red"></button>
                             </a>
                         </div>
-                        <div th:each="table : ${tablesFalse}" th:if="${tb.id == table.id}">
+                        <div>
+                            <a th:each="tableY : ${tableYellow}" th:if="${tableY.id == tb.id}" th:href="@{/staff/table/{id}(id=${tb.id})}">
+                                <button th:text="${tb.name}" style="background-color: yellow"></button>
+                            </a>
+                        </div>
+                        <div th:each="tableF : ${tablesFalse}" th:if="${tb.id == tableF.id}">
                             <button th:text="${tb.name}"></button>
                         </div>
                     </div>
@@ -114,7 +119,7 @@
 
 
             </table>
-            <a th:href="@{/staff/confirm/{id}(id=${order.orderCode})}"><button><h2>In Hóa Đơn</h2></button></a>
+            <a th:href="@{/staff/confirm/{id}(id=${order.orderCode})}"><button><h2>Confirm</h2></button></a>
         </div>
     </div>
 
