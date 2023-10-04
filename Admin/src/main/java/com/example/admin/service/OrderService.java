@@ -26,7 +26,7 @@ public interface OrderService {
 
     List<AmountData> getAmountByMonth();
 
-    void confirmOrder(Long id, User user);
+    Order confirmOrder(Long id, User user);
 
     OrderEntity saveOrder(Customer customer, Long totalPrice, int orderPoints, User user);
 

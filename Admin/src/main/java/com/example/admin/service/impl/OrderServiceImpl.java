@@ -95,7 +95,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void confirmOrder(Long id, User user) {
+    public Order confirmOrder(Long id, User user) {
         OrderEntity orderEntity = orderRepository.findById(id).orElseThrow();
         orderEntity.setConfirmed(true);
         orderEntity.setUserEntity(userRepository.findById(user.getId()).orElseThrow());
@@ -104,6 +104,7 @@ public class OrderServiceImpl implements OrderService {
         orderHistoryEntity.setUserId(user.getId());
         orderHistoryRepository.save(orderHistoryEntity);
         orderRepository.save(orderEntity);
+        return OrderConvertor.toModel(orderEntity);
     }
 
     @Override

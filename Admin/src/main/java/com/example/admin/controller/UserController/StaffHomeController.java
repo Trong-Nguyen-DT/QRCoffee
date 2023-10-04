@@ -1,6 +1,7 @@
 package com.example.admin.controller.UserController;
 
 
+import com.example.admin.domain.Order;
 import com.example.admin.domain.Table;
 import com.example.admin.service.OrderDetailService;
 import com.example.admin.service.OrderService;
@@ -79,7 +80,7 @@ public class StaffHomeController {
     public String confirmOrder(@PathVariable String id){
         Long orderId = Long.parseLong(id);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        orderService.confirmOrder(orderId, staffService.getUserByUserName(authentication.getName()));
+        Order order = orderService.confirmOrder(orderId, staffService.getUserByUserName(authentication.getName()));
         return "redirect:/staff";
     }
 

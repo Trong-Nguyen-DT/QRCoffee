@@ -38,15 +38,16 @@
     <main>
         <div class="left">
             <div id="w">
-                <div class="create-order">
-                    <a th:href="@{/staff/menu}"><button>New</button></a>
-                </div>
+
                 <div class="order-new">
 
                     <h2> All Table </h2>
                 </div>
                 <div class="crsl-items" data-navigation="navbtns" >
                     <div class="crsl-wrap">
+                        <div class="crsl-item">
+                            <a th:href="@{/staff/menu}"><button>New</button></a>
+                        </div>
                         <div class="crsl-item" th:each="tb : ${tables}">
                             <div th:each="order : ${orders}">
                                 <a th:if="${tb.id == order.tableId and tb.status}" th:href="@{/staff/detail/{id}(id=${order.orderCode})}"  >
@@ -137,6 +138,13 @@
 
         // Khởi chạy đồng hồ
         updateClock();
+
+
+
+            setTimeout(function(){
+            location.reload();
+        }, 5000); // 60.000 milliseconds = 1 phut
+
     </script>
 </body>
 </html>

@@ -48,6 +48,9 @@
             </div>
             <div class="crsl-items" data-navigation="navbtns" >
                 <div class="crsl-wrap">
+                    <div class="crsl-item">
+                        <a th:href="@{/staff/menu}"><button>New</button></a>
+                    </div>
                     <div class="crsl-item" th:each="tb : ${tables}">
                         <div th:each="order : ${orders}">
                             <a th:if="${tb.id == order.tableId and tb.status}" th:href="@{/staff/detail/{id}(id=${order.orderCode})}"  >
@@ -143,6 +146,11 @@
 
     // Cập nhật đồng hồ mỗi giây
     setInterval(updateClock, 1000);
+
+
+    setTimeout(function(){
+        location.reload();
+    }, 5000); // 60.000 milliseconds = 1 phut
 
     // Khởi chạy đồng hồ
     updateClock();

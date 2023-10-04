@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>aaaa</title>
     <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
-    <link rel="stylesheet" th:href="@{/css/staff.css}">
+<!--    <link rel="stylesheet" th:href="@{/css/staff.css}">-->
+    <link rel="stylesheet" th:href="@{/css/staffDetail.css}">
     <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
     <!--        <link rel="stylesheet" href="../../static/css/staff.css">-->
     <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
@@ -48,6 +49,9 @@
             </div>
             <div class="crsl-items" data-navigation="navbtns" >
                 <div class="crsl-wrap">
+                    <div class="crsl-item">
+                        <a th:href="@{/staff/menu}"><button>New</button></a>
+                    </div>
                     <div class="crsl-item" th:each="tb : ${tables}">
                         <div th:each="order : ${orders}">
                             <a th:if="${tb.id == order.tableId and tb.status}" th:href="@{/staff/detail/{id}(id=${order.orderCode})}"  >
@@ -69,14 +73,19 @@
         </div>
     </div>
     <div class="right">
+
+        <h1 th:text="'Bàn số: ' + ${table.id}"></h1>
         <form th:action="@{'/staff/switch-table/' + ${table.id}}" method="post" th:object="${table}">
-            <h1 th:text="'Bàn số: ' + ${table.id}"></h1>
+
             <a><button type="submit"><h2>Chuyển bàn</h2></button></a>
             <select th:field="*{id}">
                 <option th:each="tb : ${tablesFalse}" th:text="${tb.name}" th:value="${tb.id}"></option>
             </select>
         </form>
-        <a th:href="@{'/staff/checkout/' + ${table.id}}"><button><h2>Check Out</h2></button></a>
+        <div class="check-out">
+            <a th:href="@{'/staff/checkout/' + ${table.id}}"><button><h2>Check Out</h2></button></a>
+        </div>
+
     </div>
 
 </main>
@@ -99,6 +108,11 @@
 
     // Cập nhật đồng hồ mỗi giây
     setInterval(updateClock, 1000);
+
+
+    setTimeout(function(){
+        location.reload();
+    }, 5000); // 60.000 milliseconds = 1 phut
 
     // Khởi chạy đồng hồ
     updateClock();
