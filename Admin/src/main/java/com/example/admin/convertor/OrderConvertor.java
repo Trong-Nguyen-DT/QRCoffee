@@ -13,7 +13,7 @@ public class OrderConvertor {
         order.setPoint(orderEntity.getPoint());
         order.setTotal(orderEntity.getTotalPrice());
         order.setOrderCode(orderEntity.getId());
-        order.setDescription(String.valueOf(orderEntity.getTb()));
+        order.setDescription(String.valueOf(orderEntity.getTableEntity().getName()));
         if (orderEntity.getCustomerEntity() != null) {
             order.setCustomer_id(orderEntity.getCustomerEntity().getId());
             order.setBuyerName(orderEntity.getCustomerEntity().getName());

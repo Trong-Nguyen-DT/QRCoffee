@@ -39,7 +39,7 @@ public class OrderEntity {
 
     private Boolean confirmed;
 
-    private Integer tb;
+
 
     public TableEntity getTableEntity() {
         return tableEntity;
@@ -129,11 +129,4 @@ public class OrderEntity {
         this.confirmed = confirmed;
     }
 
-    public Integer getTb() {
-        return tb;
-    }
-
-    public void setTb(Integer tb) {
-        this.tb = tb;
-    }
 }
