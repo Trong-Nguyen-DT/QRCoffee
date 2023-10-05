@@ -97,6 +97,4 @@ public class StaffHomeController {
         tableService.switchTable(tableId, table.getId());
         return "redirect:/staff";
     }
-
-
 }
