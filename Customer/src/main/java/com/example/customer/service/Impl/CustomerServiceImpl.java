@@ -37,13 +37,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomerByPhone(String phoneNumber) throws RuntimeException{
+    public Customer getCustomerByPhone(String phoneNumber) {
         CustomerEntity customerEntity = customerRepository.findByPhone(phoneNumber);
 
         if (customerEntity != null) {
             return CustomerConverter.toModel(customerEntity);
         }
-        throw new CustomerEntityNotFoundException("Khách hàng không tồn tại");
+        return null;
     }
 
     @Override

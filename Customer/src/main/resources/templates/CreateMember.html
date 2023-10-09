@@ -16,7 +16,7 @@
                     <h1>QRCoffee</h1>
                 </div>
                 <div class="enter-phone">
-                    <input type="text" th:field="*{phone}" placeholder="Enter Phone Number">
+                    <input type="text" name="phone" th:value="${phone}" readonly>
                 </div>
                 <div class="enter-name">
                     <input type="text" th:field="*{name}" placeholder="Enter Your Name">
