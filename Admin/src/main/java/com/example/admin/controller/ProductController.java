@@ -4,12 +4,27 @@ import com.example.admin.domain.Category;
 import com.example.admin.domain.Product;
 import com.example.admin.service.CategoryService;
 import com.example.admin.service.ProductService;
+import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("admin")
@@ -20,6 +35,9 @@ public class ProductController {
 
     @Autowired
      private CategoryService categoryService;
+
+    @Value("${path}")
+    private String imagePath;
 
     @GetMapping("/product")
     public String listProduct(Model model){
@@ -37,10 +55,40 @@ public class ProductController {
     }
 
     @PostMapping("product/create")
-    public String createProduct(@ModelAttribute Product product){
+    public String createProduct(@ModelAttribute Product product, @RequestParam("file") MultipartFile file, Model model) throws IOException, URISyntaxException {
+        String message = "";
+
+        try {
+//            getFileExtension(Objects.requireNonNull(file.getOriginalFilename()));
+//            String fileName = UUID.randomUUID().toString() + "." + fileExtension; // Tạo tên file mới để tránh trùng lặp
+
+            File file1 = new File("D:\\Hoc\\JavaFrame\\iviettech\\Image\\" + file.getOriginalFilename());
+
+
+            try (OutputStream os = new FileOutputStream(file1)) {
+                os.write(file.getBytes());
+            }
+
+            message = "Uploaded the file successfully: " + file.getOriginalFilename();
+            model.addAttribute("message", message);
+//            model.addAttribute("fileExtension", fileExtension);
+//            model.addAttribute("fileDownloadLink", "/files/download/" + fileExtension);
+
+        } catch (Exception e) {
+            message = "Could not upload the file: " + file.getOriginalFilename() + ". Error: " + e.getMessage();
+            model.addAttribute("message", message);
+        }
+        product.setImage(file.getOriginalFilename());
         productService.saveProduct(product);
         return "redirect:/admin/product";
     }
+
+//    private boolean getFileExtension(String originalFilename) {
+//        String newFileName = "png";
+//        //hack.png
+//        String[] fileSplits = originalFilename.split("\\."); // ["hack", "png"]
+//        return newFileName.equals(fileSplits[fileSplits.length - 1]);
+//    }
 
     @GetMapping("/product/edit/{id}")
     public String showUpdate(@PathVariable Long id,  Model model) {

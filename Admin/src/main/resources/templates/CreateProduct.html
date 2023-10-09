@@ -60,7 +60,7 @@
             </a>
         </li>
         <li>
-            <ath:href="@{/admin/orders}">
+            <a th:href="@{/admin/orders}">
                 <i class='bx bx-chart'></i>
                 <span>Order History</span>
             </a>
@@ -189,8 +189,17 @@
            Account Staff
         </div> -->
         <div class="box-body overflow-scroll">
-            <form th:action="@{/admin/product/create}" th:method="post" th:object="${product}">
+            <form th:action="@{/admin/product/create}" th:method="post" th:object="${product}" enctype="multipart/form-data">
                 <table>
+                    <tr>
+                        <th>
+                            <label>Title:</label>
+
+                        </th>
+                        <td>
+                            <input type="text" th:field="*{title}" />
+                        </td>
+                    </tr>
                     <tr>
                         <th>
                             <label>Price:</label>
@@ -202,11 +211,11 @@
                     </tr>
                     <tr>
                         <th>
-                            <label>Title:</label>
+                            <label>Chọn Ảnh</label>
 
                         </th>
                         <td>
-                            <input type="text" th:field="*{title}" />
+                            <input id="input-file" type="file" name="file">
                         </td>
                     </tr>
                     <tr>
@@ -258,7 +267,7 @@
     <!--        });-->
     <!--    </script>-->
 
-
+</div>
 </body>
 
 </html>

@@ -55,9 +55,7 @@ public class PaymentController {
         OrderHistoryEntity orderHistoryEntity = orderService.saveOrderHistory(orderEntity);
         orderDetailService.saveOrderDetailHistory(orderEntity, orderHistoryEntity);
         cartEntity.reset();
-
         tableService.setTableTrue(Long.parseLong(tb));
-//        tableAPI.callStaffHome();
 
         return "Success";
     }

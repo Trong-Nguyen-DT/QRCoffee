@@ -28,10 +28,8 @@ public class ProductConvertor {
        entity.setPrice(product.getPrice());
 
         entity.setCategoryEntity(categoryEntity);
-//        entity.setImage(product.getImage());
-
-
-        entity.setDeleted(true);
+        entity.setImage(product.getImage());
+        entity.setDeleted(false);
 
          return entity;
 

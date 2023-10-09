@@ -11,9 +11,14 @@ import com.example.admin.entity.OrderHistoryEntity;
 import com.example.admin.entity.ProductEntity;
 import com.example.admin.remote.PaymentAPI;
 import com.example.admin.service.*;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,6 +26,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 @Controller
