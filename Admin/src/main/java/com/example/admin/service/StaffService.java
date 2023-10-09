@@ -1,5 +1,6 @@
 package com.example.admin.service;
 
+import com.example.admin.domain.OrderHistory;
 import com.example.admin.domain.Product;
 import com.example.admin.domain.User;
 
@@ -14,6 +15,8 @@ public interface StaffService {
     void restoreStaff(Long id);
 
     User getUserByUserName(String username);
+
+    List<OrderHistory> getAllOrderByStaffIdAndByBetween(Long id);
 }
 
 

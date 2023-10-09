@@ -1,10 +1,8 @@
 package com.example.admin.service;
 
 import com.example.admin.convertor.AmountData;
-import com.example.admin.domain.Customer;
-import com.example.admin.domain.Order;
-import com.example.admin.domain.OrderHistory;
-import com.example.admin.domain.User;
+import com.example.admin.domain.*;
+import com.example.admin.entity.OrderDetailHistoryEntity;
 import com.example.admin.entity.OrderEntity;
 import com.example.admin.entity.OrderHistoryEntity;
 import com.example.admin.entity.ProductEntity;
@@ -37,4 +35,6 @@ public interface OrderService {
     OrderEntity setStatus(OrderEntity orderEntity);
 
     OrderHistoryEntity saveOrderHistory(OrderEntity orderEntity);
+
+    List<OrderDetailHistoryEntity> getOrderDetailHistoryByOrderId(Long id);
 }

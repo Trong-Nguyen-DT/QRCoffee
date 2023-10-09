@@ -43,7 +43,12 @@ header{
 }
 .name-staff-right{
     width: 60%;
+    display: flex;
+    flex-direction: column;
 
+}
+.name-staff-right h1{
+    width: 100%;
 }
 
 .name-staff-right a {
@@ -54,18 +59,30 @@ header{
     border-radius: 5px;
     background-color: #ffc43f;
 }
+.info-detail button{
+    border: hidden;
+    background-color: #ffc43f;
+    font-size: 20px;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.info-detail{
+    margin: auto;
+}
 .time{
     width: 35%;
+    display: flex;
+    flex-direction: row;
 
 }
 .time h1{
     text-align: center;
-    margin-top: 2px;
+    margin: auto;
     font-size: 25px;
 }
 #clock{
     padding: 5px;
-    margin: 2px;
+    margin: auto;
     font-size: x-large;
     text-align: center;
 }

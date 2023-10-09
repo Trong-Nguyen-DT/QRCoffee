@@ -1,8 +1,7 @@
 package com.example.admin.controller.UserController;
 
 
-import com.example.admin.domain.Order;
-import com.example.admin.domain.Table;
+import com.example.admin.domain.*;
 import com.example.admin.service.OrderDetailService;
 import com.example.admin.service.OrderService;
 import com.example.admin.service.StaffService;
@@ -97,4 +96,24 @@ public class StaffHomeController {
         tableService.switchTable(tableId, table.getId());
         return "redirect:/staff";
     }
+
+    @GetMapping("/order")
+    public  String showOrderStaff(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = staffService.getUserByUserName(authentication.getName());
+        model.addAttribute("user", user);
+        model.addAttribute("orders", staffService.getAllOrderByStaffIdAndByBetween(user.getId()));
+        return "Staff/OrderHistoryStaff";
+    }
+
+    @GetMapping("/order/{id}")
+    public  String showOrderDetailStaff(@PathVariable Long id, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = staffService.getUserByUserName(authentication.getName());
+        model.addAttribute("user", user);
+        model.addAttribute("orders", staffService.getAllOrderByStaffIdAndByBetween(user.getId()));
+        model.addAttribute("orderDetails", orderService.getOrderDetailHistoryByOrderId(id));
+        return "Staff/OrderDetailStaff";
+    }
+
 }
