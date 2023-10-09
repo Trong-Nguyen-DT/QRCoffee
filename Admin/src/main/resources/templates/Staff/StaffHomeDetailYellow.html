@@ -11,10 +11,6 @@
     <link rel="stylesheet" th:href="@{/css/staffDetail.css}">
     <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
     <!--        <link rel="stylesheet" href="../../static/css/staff.css">-->
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <!--    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>-->
-    <!--    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>-->
-    <!--    <script type="text/javascript" src="/js/responsiveCarousel.min.js"></script>-->
 
     <meta name="keywords" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm, BLOG">
 </head>
@@ -37,6 +33,11 @@
         <div class="time">
             <h1>Giờ thực tế</h1>
             <div id="clock"></div>
+            <div class="info-detail">
+                <a th:href="@{/staff/order}">
+                    <button> Kết Ca</button>
+                </a>
+            </div>
         </div>
     </div>
 </header>
@@ -110,9 +111,9 @@
     setInterval(updateClock, 1000);
 
 
-    setTimeout(function(){
-        location.reload();
-    }, 5000); // 60.000 milliseconds = 1 phut
+    // setTimeout(function(){
+    //     location.reload();
+    // }, 5000); // 60.000 milliseconds = 1 phut
 
     // Khởi chạy đồng hồ
     updateClock();

@@ -1,6 +1,7 @@
 package com.example.admin.repository;
 
 import com.example.admin.entity.OrderDetailHistoryEntity;
+import com.example.admin.entity.OrderEntity;
 import com.example.admin.entity.OrderHistoryEntity;
 import com.example.admin.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,4 +24,6 @@ public interface OrderHistoryRepository extends JpaRepository<OrderHistoryEntity
 
     @Query("SELECT o FROM OrderHistoryEntity o WHERE MONTH(o.orderDateTime) = :month AND YEAR(o.orderDateTime) = :year")
     List<OrderHistoryEntity> findOrdersByMonthAndYear(int month, int year);
+
+    List<OrderHistoryEntity> findOrderHistoryEntitiesByUserIdAndOrderDateTimeBetween(Long id, LocalDateTime start, LocalDateTime end);
 }

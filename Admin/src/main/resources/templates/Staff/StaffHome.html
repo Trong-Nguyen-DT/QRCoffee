@@ -25,12 +25,19 @@
                     <a th:href="@{/perform_logout}">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </a>
+
+
                 </div>
 
             </div>
             <div class="time">
                 <h1>Giờ thực tế</h1>
                 <div id="clock"></div>
+                <div class="info-detail">
+                    <a th:href="@{/staff/order}">
+                        <button> Kết Ca</button>
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -141,9 +148,9 @@
 
 
 
-            setTimeout(function(){
-            location.reload();
-        }, 5000); // 60.000 milliseconds = 1 phut
+        //     setTimeout(function(){
+        //     location.reload();
+        // }, 5000); // 60.000 milliseconds = 1 phut
 
     </script>
 </body>

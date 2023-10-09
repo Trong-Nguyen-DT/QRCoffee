@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" th:href="@{/css/info.css}">
+  <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
+  <title>Thông tin khách hàng</title>
+</head>
+<body>
+<div class="container">
+  <h1>Thông tin khách hàng</h1>
+  <div class="info">
+    <label for="name">Name:</label>
+    <span id="name" th:text="${user.name}"></span>
+  </div>
+
+  <div class="info">
+    <h2>Lịch sử đặt hàng</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Product Title</th>
+        <th>Product Price</th>
+        <th>Quantity</th>
+      </tr>
+      <tr th:each="order : ${orderDetails}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.productTitle}"></td>
+        <td th:text="${order.productPrice} + 'VNĐ'"></td>
+        <td th:text="${order.quantity}"></td>
+      </tr>
+
+
+    </table>
+  </div>
+</div>
+</body>
+</html>

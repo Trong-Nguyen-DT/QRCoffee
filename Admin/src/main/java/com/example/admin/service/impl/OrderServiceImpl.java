@@ -1,18 +1,9 @@
 package com.example.admin.service.impl;
 
 import com.example.admin.convertor.*;
-import com.example.admin.domain.Customer;
-import com.example.admin.domain.Order;
-import com.example.admin.domain.OrderHistory;
-import com.example.admin.domain.User;
-import com.example.admin.entity.CustomerEntity;
-import com.example.admin.entity.OrderEntity;
-import com.example.admin.entity.OrderHistoryEntity;
-import com.example.admin.entity.TableEntity;
-import com.example.admin.repository.OrderHistoryRepository;
-import com.example.admin.repository.OrderRepository;
-import com.example.admin.repository.TableRepository;
-import com.example.admin.repository.UserRepository;
+import com.example.admin.domain.*;
+import com.example.admin.entity.*;
+import com.example.admin.repository.*;
 import com.example.admin.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +30,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private TableRepository tableRepository;
 
+    @Autowired
+    private OrderDetailHistoryRepository orderDetailHistoryRepository;
 
     @Override
     public List<Order> getOrderConfirmedFalse(Boolean confirmed) {
@@ -178,6 +171,14 @@ public class OrderServiceImpl implements OrderService {
             orderHistoryEntity.setCustomerId(orderEntity.getCustomerEntity().getId());
         }
         return orderHistoryRepository.save(orderHistoryEntity);
+    }
+
+    @Override
+    public List<OrderDetailHistoryEntity> getOrderDetailHistoryByOrderId(Long id) {
+
+
+
+        return orderDetailHistoryRepository.findAllByOrderHistoryEntity(orderHistoryRepository.findById(id).orElseThrow());
     }
 
 }
