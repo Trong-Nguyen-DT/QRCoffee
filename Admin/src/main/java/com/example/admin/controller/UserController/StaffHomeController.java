@@ -102,7 +102,9 @@ public class StaffHomeController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = staffService.getUserByUserName(authentication.getName());
         model.addAttribute("user", user);
-        model.addAttribute("orders", staffService.getAllOrderByStaffIdAndByBetween(user.getId()));
+        List<OrderHistory> orderHistories = staffService.getAllOrderByStaffIdAndByBetween(user.getId());
+        model.addAttribute("orders", orderHistories);
+        model.addAttribute("total", staffService.getTotalAmountToday(orderHistories));
         return "Staff/OrderHistoryStaff";
     }
 

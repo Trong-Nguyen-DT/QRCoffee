@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 
 @Controller
 @RequestMapping("menu")
@@ -48,14 +50,21 @@ public class MenuController {
             return "redirect:/login";
         }
         model.addAttribute("customer", customer);
-        model.addAttribute("product", new ProductEntity());
         model.addAttribute("orderDetails", cartEntity.getAllCartItems());
         model.addAttribute("products", productService.getAllProduct());
         model.addAttribute("categories", categoryService.getAllCategory());
         return "Menu";
     }
 
-
+    @GetMapping("{tb}/{id}")
+    public String showMenuOneCategory(@PathVariable String tb, Model model, @PathVariable String id, HttpSession session) {
+        Long categoryId = Long.parseLong(id);
+        model.addAttribute("orderDetails", cartEntity.getAllCartItems());
+        model.addAttribute("products", productService.getAllProductByCategoryId(categoryId));
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("category", categoryService.getCategoryById(categoryId));
+        return "MenuOneCategory";
+    }
 
     @GetMapping("/{tb}/addItem")
     public String addItem(@RequestParam Long productId, @PathVariable String tb, HttpSession session, RedirectAttributes redirectAttributes) {
@@ -67,7 +76,6 @@ public class MenuController {
         redirectAttributes.addAttribute("tb", tableId);
         return "redirect:/menu/{tb}";
     }
-
 
     @GetMapping("/{tb}/reduceItem")
     public String reduceItem(@RequestParam Long productId, @PathVariable String tb, RedirectAttributes redirectAttributes, HttpSession session) {

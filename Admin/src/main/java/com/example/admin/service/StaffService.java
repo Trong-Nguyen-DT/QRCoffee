@@ -17,6 +17,8 @@ public interface StaffService {
     User getUserByUserName(String username);
 
     List<OrderHistory> getAllOrderByStaffIdAndByBetween(Long id);
+
+    Long getTotalAmountToday(List<OrderHistory> orderHistories);
 }
 
 

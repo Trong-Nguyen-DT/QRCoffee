@@ -101,4 +101,13 @@ public class StaffServiceImpl implements StaffService {
 
 
     }
+
+    @Override
+    public Long getTotalAmountToday(List<OrderHistory> orderHistories) {
+        Long total = 0L;
+        for (OrderHistory orderHistory : orderHistories){
+            total += orderHistory.getAmount();
+        }
+        return total;
+    }
 }

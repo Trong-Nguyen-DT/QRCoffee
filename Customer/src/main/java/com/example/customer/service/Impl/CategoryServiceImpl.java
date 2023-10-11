@@ -21,4 +21,9 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getAllCategory() {
         return categoryRepository.findAll().stream().map(CategoryConverter::toModel).toList();
     }
+
+    @Override
+    public Category getCategoryById(Long categoryId) {
+        return CategoryConverter.toModel(categoryRepository.findById(categoryId).orElseThrow());
+    }
 }

@@ -35,9 +35,10 @@ public class CustomerValidator implements Validator {
     }
 
     public Customer checkSession(HttpSession session) {
-        try {
-            return (Customer) session.getAttribute("customer");
-        } catch (NumberFormatException e) {
+        Customer customer = (Customer) session.getAttribute("customer");
+        if (customer != null) {
+            return customer;
+        } else {
             throw new CustomerEntityNotFoundException("Không có khách hàng nào đang đặt món");
         }
     }

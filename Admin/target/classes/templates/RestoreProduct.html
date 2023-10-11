@@ -8,7 +8,7 @@
     <title>
         Admin
     </title>
-    <link rel="shortcut icon" href="/images/logo-mb.png" type="image/png">
+    <link rel="shortcut icon" href="/image/logo-mb.png" type="image/png">
     <!-- GOOGLE FONT -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
     <!-- APP CSS -->
     <link rel="stylesheet" th:href="@{/css/grid.css}">
     <link rel="stylesheet" th:href="@{/css/app.css}">
-    <link rel="stylesheet" th:href="@{/images/icon edit.jpg}">
+    <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -209,7 +209,7 @@
                         <td th:each="cate : ${categories}"  th:if="${RS.category_id == cate.id}" th:text="${cate.name}"></td>
                         <td th:text="${RS.title}"></td>
                         <td th:text="${RS.price}"></td>
-                        <td><button> <a th:href="@{/admin/product/restore/{productId}(productId=${RS.id})}" > Restore  </a> </button></td>
+                        <td><button class="btn-click"> <a th:href="@{/admin/product/restore/{productId}(productId=${RS.id})}" > <i class="fa-solid fa-trash-can-arrow-up"></i>  </a> </button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -245,7 +245,7 @@
     <!--        });-->
     <!--    </script>-->
 
-
+</div>
 </body>
 
 </html>

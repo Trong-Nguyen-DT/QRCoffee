@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trung tâm đào tạo lập trình iViettech</title>
-    <meta name="description" content="Các khóa học, giới thiệu, lịch khai giảng, trang vàng hv, việc làm,BLOG">
     <link rel="stylesheet" th:href="@{/css/menu.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" th:src="@{/js/jquery-1.11.0.min.js}" ></script>
     <script type="text/javascript" th:src="@{/js/responsiveCarousel.min.js}"></script>
     <script src="https://kit.fontawesome.com/3edce6b09c.js" crossorigin="anonymous"></script>
-    <title>Menu</title>
+    <title>Thánh Địa Coffee</title>
 </head>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -91,15 +89,15 @@
                 <label class="user_items">
                     <label for="nav_input" class="user_items-close"><i class="fa-solid fa-xmark fa-2xl"></i></label>
                     <ul class="user_items-list">
-                        <li><a th:href="@{'/my'}" class="user_item-link">Thông tin của bạn</a></li>
-                        <li><a class="user_item-link">Thoát</a></li>
+                        <li><a th:href="@{'/my/' + ${tb}}" class="user_item-link">My Information</a></li>
+                        <li><a th:href="@{'/exit/' + ${tb}}" class="user_item-link">Exit</a></li>
                     </ul>
                 </label>
             </label>
             <div class="header-bottom">
                 <div class="menu-head">
-                    <ul th:each="cate : ${categories}">
-                        <li><a th:text="${cate.name}"></a></li>
+                    <ul>
+                        <li th:each="cate : ${categories}"><a th:href="@{'/menu/' + ${tb} + '/' + ${cate.id}}" th:text="${cate.name}"></a></li>
                     </ul>
                 </div>
             </div>

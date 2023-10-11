@@ -12,4 +12,6 @@ public interface ProductService {
     List<Product> getAllProduct();
 
     ProductEntity getProductById(Long productId);
+
+    List<Product> getAllProductByCategoryId(Long categoryId);
 }

@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1500px;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+.container {
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+button {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px 0;
+    border: none;
+    border-radius: 20px;
+    background-color: #FFC43F;
+    font-family: 'Times New Roman', Times, serif;        font-size: 1.8rem;
+    cursor: pointer;
+
+}
+@media screen and (max-width:661px) {
+    .container {
+        margin: 500px 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    h1, a, button {
+        font-size: 3rem;
+    }
+}
+

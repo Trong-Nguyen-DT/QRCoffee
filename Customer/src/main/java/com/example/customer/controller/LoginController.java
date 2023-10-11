@@ -103,7 +103,13 @@ public class LoginController {
         return "redirect:/login/{tb}";
     }
 
-
+    @GetMapping("exit/{tb}")
+    public String exitOrder(HttpSession session, @PathVariable String tb) {
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/login/{tb}";
+    }
 
 
 }

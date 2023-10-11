@@ -10,10 +10,17 @@
 </head>
 <body>
 <div class="container">
-  <h1>Thông tin khách hàng</h1>
-  <div class="info">
-    <label for="name">Name:</label>
-    <span id="name" th:text="${user.name}"></span>
+  <div class="header-customer">
+    <div class="info-customer">
+      <h1>Information</h1>
+      <div class="info">
+        <label for="name">Name:</label>
+        <span id="name" th:text="${user.name}"></span>
+      </div>
+    </div>
+    <div class="btn-back">
+      <a th:href="@{/staff/order}"><i class="fa-solid fa-left-long"></i></a>
+    </div>
   </div>
 
   <div class="info">

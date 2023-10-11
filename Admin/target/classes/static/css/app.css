@@ -459,6 +459,16 @@ table td {
     display: block;
 }
 
+.btn-click {
+    border: none;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+table, table th {
+    text-align: center;
+}
+
 @media only screen and (max-width: 1280px) {
     .sidebar {
         transition: transform 0.3s ease-in-out;

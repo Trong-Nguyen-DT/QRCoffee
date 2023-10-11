@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    Optional<UserEntity> findByUsernameAndDeletedFalse(String username);
+
     Optional<UserEntity> findByUsername(String username);
 
     List<UserEntity> findAllByRole(String staff);

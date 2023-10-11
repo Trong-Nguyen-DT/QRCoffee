@@ -69,11 +69,8 @@ form {
     font-weight: bold;
     font-size: 120%;
     border: none;
-}
-
-button a {
-    text-decoration: none;
     color: #fff;
+    cursor: pointer;
 }
 
 .QMK {

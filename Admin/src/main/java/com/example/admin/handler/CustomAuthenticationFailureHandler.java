@@ -21,7 +21,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
 
         String jsonPayload = "{\"message\" : \"%s\", \"timestamp\" : \"%s\" }";
-        response.getOutputStream().println(String.format(jsonPayload, exception.getMessage(), Calendar.getInstance().getTime()));
+//        response.getOutputStream().println(String.format(jsonPayload, exception.getMessage(), Calendar.getInstance().getTime()));
         response.sendRedirect("login?error=Bad credentials");
     }
 }

@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>OKE</title>
-    <link href="../static/css/success.css">
+    <title>Thánh Địa Coffee</title>
+    <link rel="stylesheet" th:href="@{/css/success.css}">
 </head>
 <body>
-    <h1>Thanh toán thành công rồi</h1>
-    <h1>Bạn chờ tí sẽ có nhân viên đem Đồ uống đến cho bạn nhé</h1>
-    <h1>Bạn có muốn tiếp tục gọi món không?</h1>
-    <h1>Nếu gọi thì bấm vào đây nhá</h1>
-    <a th:href="@{/menu/{tb}}"><button>Tiếp tục Gọi món</button></a>
-
+    <div class="container">
+        <h1>Thanh toán thành công!</h1>
+        <h1>Cảm ơn quý khách.</h1>
+        <h1>Bấm vào nút bên dưới để tiếp tục gọi món!</h1>
+        <a th:href="@{/menu/{tb}}"><button>Tiếp Tục Gọi Món</button></a>
+    </div>
 </body>
 </html>

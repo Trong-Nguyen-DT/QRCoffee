@@ -13,6 +13,21 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+.header-customer {
+    width: 100%;
+    display: flex;
+}
+
+.info-customer {
+    width: 90%;
+}
+
+.btn-back {
+    width: 20%;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
 .info {
     margin-bottom: 20px;
 }
@@ -35,7 +50,12 @@ table tr {
 
 @media screen and (max-width: 768px){
     .container {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
+
+    .btn-back {
+        margin-top: 20px;
+    }
+
 
 }
