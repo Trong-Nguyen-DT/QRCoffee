@@ -139,9 +139,9 @@ public class StaffOrderController {
                     Order order = orderService.setOrder(orderEntity);
                     order.setItems(cartEntity.getAllCartItems());
 
-//                    String url = paymentAPI.getQrFromOtherClient(order);
-//                    return "redirect:" + url;
-                    return "redirect:/staff/payment-success/" + orderEntity.getId();
+                    String url = paymentAPI.getQrFromOtherClient(order);
+                    return "redirect:" + url;
+//                    return "redirect:/staff/payment-success/" + orderEntity.getId();
                 } else {
                     return "redirect:/staff/payment/success/" + orderEntity.getId();
                 }
@@ -155,9 +155,9 @@ public class StaffOrderController {
             Order order = orderService.setOrder(orderEntity);
             order.setItems(cartEntity.getAllCartItems());
 
-//            String url = paymentAPI.getQrFromOtherClient(order);
-//            return "redirect:" + url;
-            return "redirect:/staff/payment-success/" + orderEntity.getId();
+            String url = paymentAPI.getQrFromOtherClient(order);
+            return "redirect:" + url;
+//            return "redirect:/staff/payment-success/" + orderEntity.getId();
         }
     }
 

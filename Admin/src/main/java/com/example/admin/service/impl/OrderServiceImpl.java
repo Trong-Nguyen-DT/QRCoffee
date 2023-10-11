@@ -130,8 +130,8 @@ public class OrderServiceImpl implements OrderService {
             order.setBuyerName("Guest");
             order.setBuyerPhone("không có");
         }
-        order.setCancelUrl("http://localhost:8081/staff/payment-failed");
-        order.setReturnUrl("http://localhost:8081/staff/payment-success/" + order.getOrderCode());
+        order.setCancelUrl("http://103.107.183.142:8081/staff/payment-failed");
+        order.setReturnUrl("http://103.107.183.142:8081/staff/payment-success/" + order.getOrderCode());
 
         Map<String, String> params = Map.of(
                 "amount", String.valueOf(order.getAmount()),
