@@ -7,6 +7,10 @@ mở port 8080, 8081, 3306, http, https
 import d sql - done
 update IP cloudFlare
 
-mvn spring-boot:run
+chạy - mvn spring-boot:run
 
-rm -r QRCoffee
+xóa  - rm -r QRCoffee
+
+Tạo thư mục - mkdir Images
+
+import ảnh -scp -r D:\Hoc\JavaFrame\iviettech\Image root@103.107.183.142:/root/Images
