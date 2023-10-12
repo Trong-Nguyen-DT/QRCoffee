@@ -1,0 +1,12 @@
+
+java 17.0.8.1 - apt install openjdk-17-jre-headless
+maven - sudo apt install maven
+git - sudo apt install git
+mysql - sudo apt install mysql-server
+mở port 8080, 8081, 3306, http, https
+import d sql - done
+update IP cloudFlare
+
+mvn spring-boot:run
+
+rm -r QRCoffee

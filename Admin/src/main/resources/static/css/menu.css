@@ -50,6 +50,18 @@ header {
     padding: 1% 2%;
 }
 
+.enter-phone input{
+    padding: 1% 0;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    border: 2px solid #EEEEEE;
+}
+
+.enter-phone input:focus {
+    outline: none;
+    padding: 1% 2%;
+}
+
 .header-bottom {
     width: 90%;
     margin: 1% auto;
