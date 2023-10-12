@@ -36,7 +36,7 @@ public class ProductController {
     @Autowired
      private CategoryService categoryService;
 
-    @Value("${path}")
+    @Value("${imagePath}")
     private String imagePath;
 
     @GetMapping("/product")
@@ -62,7 +62,7 @@ public class ProductController {
 //            getFileExtension(Objects.requireNonNull(file.getOriginalFilename()));
 //            String fileName = UUID.randomUUID().toString() + "." + fileExtension; // Tạo tên file mới để tránh trùng lặp
 
-            File file1 = new File("D:\\Hoc\\JavaFrame\\iviettech\\Image\\" + file.getOriginalFilename());
+            File file1 = new File( imagePath + file.getOriginalFilename());
 
 
             try (OutputStream os = new FileOutputStream(file1)) {

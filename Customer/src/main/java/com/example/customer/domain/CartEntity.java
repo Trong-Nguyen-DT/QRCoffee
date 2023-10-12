@@ -1,7 +1,6 @@
 package com.example.customer.domain;
 
 
-import com.example.customer.converter.CustomerConverter;
 import com.example.customer.converter.OrderDetailConverter;
 import com.example.customer.entity.OrderDetailEntity;
 import com.example.customer.entity.OrderEntity;
