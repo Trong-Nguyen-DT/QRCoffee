@@ -364,25 +364,26 @@ footer button {
     .header-bottom {
         flex-direction: column;
         align-items: flex-start;
-        font-size: 0.3rem;
-    }
-
-    .menu {
-        width: 100%;
-        margin: 20px 0;
     }
 
     .menu-head {
         width: 100%;
+        margin: 20px 0;
+
     }
 
-    .menu ul {
+    .menu-head ul {
         justify-content: center; /* Canh giữa các mục menu */
     }
 
-    .menu ul li {
+    .menu-head ul li {
         margin-right: 0; /* Loại bỏ khoảng cách giữa các mục menu */
         margin-bottom: 10px; /* Thêm khoảng cách dưới mỗi mục menu */
+    }
+
+    .menu-head ul li a {
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     main {

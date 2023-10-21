@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +49,7 @@ public class PaymentController {
 
     @GetMapping("success/{orderCode}")
     @Transactional
-    public String showSuccess(@PathVariable String orderCode, @PathVariable String tb, RedirectAttributes redirectAttributes){
+    public String showSuccess(@PathVariable String orderCode, @PathVariable String tb, Model model){
         Long orderId = Long.parseLong(orderCode);
         Long tableId = tableValidator.validateTable(tb);
         OrderEntity orderEntity = orderService.getOrderById(orderId);
@@ -58,7 +59,7 @@ public class PaymentController {
         orderDetailService.saveOrderDetailHistory(orderEntity, orderHistoryEntity);
         cartEntity.reset();
         tableService.setTableTrue(Long.parseLong(tb));
-        redirectAttributes.addAttribute("tb", tableId);
+        model.addAttribute("tb", tableId);
         return "Success";
     }
 
