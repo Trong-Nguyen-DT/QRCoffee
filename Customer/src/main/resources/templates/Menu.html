@@ -97,9 +97,22 @@
             </label>
             <div class="header-bottom">
                 <div class="menu-head">
-                    <ul>
-                        <li th:each="cate : ${categories}"><a th:href="@{'/menu/' + ${tb} + '/' + ${cate.id}}" th:text="${cate.name}"></a></li>
-                    </ul>
+                    <input type="checkbox" hidden="hidden" id="bar_input" class="bar_input">
+                    <label for="bar_input" class="bar-menu">
+                        <i class="fa-solid fa-bars fa-2xl"></i>
+                    </label>
+                    <label for="bar_input" class="nav-overlay"></label>
+                    <div class="menu-head-pc">
+                        <ul>
+                            <li th:each="cate : ${categories}"><a th:href="@{'/menu/' + ${tb} + '/' + ${cate.id}}" th:text="${cate.name}"></a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-head-mobile">
+                        <label for="bar_input" class="user_items-close"><i class="fa-solid fa-xmark fa-2xl"></i></label>
+                        <ul class="content-mobile-list">
+                            <li th:each="cate : ${categories}"><a th:href="@{'/menu/' + ${tb} + '/' + ${cate.id}}" th:text="${cate.name}"></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </label>
@@ -122,7 +135,7 @@
                                     <h3 th:text="${prod.title}"></h3>
                                 </div>
                                 <div class="price">
-                                    <p class="price-amount" th:text="${prod.price}"></p>
+                                    <p class="price-amount" th:text="${prod.price} + ' VNĐ'"></p>
 
                                     <div class="input-group product-qty">
                                         <div th:each="item : ${orderDetails}" th:if="${item.product_id == prod.id}">

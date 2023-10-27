@@ -39,9 +39,9 @@ public class LoginController {
     }
 
     @GetMapping("login/{tb}")
-    public String showLogin(@PathVariable String tb, RedirectAttributes redirectAttributes) {
+    public String showLogin(@PathVariable String tb, Model model) {
         Long tableId = tableValidator.validateTable(tb);
-        redirectAttributes.addAttribute("tb", tableId);
+        model.addAttribute("tb", tableId);
         return "LoginMember";
     }
 
@@ -57,10 +57,9 @@ public class LoginController {
 
     ) {
         Long tableId = tableValidator.validateTable(tb);
-
         if (phoneNumber.length() != 10) {
-            model.addAttribute("errorMessage", "Số điện thoại không hợp lệ. Vui lòng nhập 10 số.");
-            return "LoginMember"; // Trả về trang đăng nhập với thông báo lỗi
+            redirectAttributes.addAttribute("errorMessage", "Số điện thoại không hợp lệ. Vui lòng nhập 10 số.");
+            return "redirect:/login/{tb}"; // Trả về trang đăng nhập với thông báo lỗi
         }
 
 

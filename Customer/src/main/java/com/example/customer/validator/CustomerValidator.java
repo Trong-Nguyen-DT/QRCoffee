@@ -3,6 +3,7 @@ package com.example.customer.validator;
 import com.example.customer.domain.Customer;
 import com.example.customer.entity.ProductEntity;
 import com.example.customer.handler.CustomerEntityNotFoundException;
+import com.example.customer.handler.CustomerSessionNotFoundException;
 import jakarta.servlet.http.HttpSession;
 import org.apache.catalina.session.StandardSession;
 import org.springframework.stereotype.Component;
@@ -39,7 +40,7 @@ public class CustomerValidator implements Validator {
         if (customer != null) {
             return customer;
         } else {
-            throw new CustomerEntityNotFoundException("Không có khách hàng nào đang đặt món");
+            throw new CustomerSessionNotFoundException("Không có khách hàng nào đang đặt món");
         }
     }
 }

@@ -32,23 +32,23 @@ public class CustomerController {
     private TableValidator tableValidator;
 
     @GetMapping()
-    public String showCustomerInfo(Model model, HttpSession session, @PathVariable String tb, RedirectAttributes redirectAttributes){
+    public String showCustomerInfo(Model model, HttpSession session, @PathVariable String tb){
         Customer customer = customerValidator.checkSession(session);
         Long tableId = tableValidator.validateTable(tb);
         model.addAttribute("customer", customer);
         model.addAttribute("orders", customerService.getAllOrderByCustomerId(customer.getId()));
-        redirectAttributes.addAttribute("tb", tableId);
+        model.addAttribute("tb", tableId);
         return "HomeCustomer";
     }
 
     @GetMapping("{orderId}")
-    public String showOrderDetail(@PathVariable String orderId, Model model, HttpSession session, @PathVariable String tb, RedirectAttributes redirectAttributes) {
+    public String showOrderDetail(@PathVariable String orderId, Model model, HttpSession session, @PathVariable String tb) {
         Customer customer = customerValidator.checkSession(session);
         Long tableId = tableValidator.validateTable(tb);
         Long id = Long.parseLong(orderId);
         model.addAttribute("customer", customer);
         model.addAttribute("orderDetails", customerService.getAllOrderDetailByOrderId(id));
-        redirectAttributes.addAttribute("tb", tableId);
+        model.addAttribute("tb", tableId);
         return "HomeCustomerOrderDetail";
     }
 }

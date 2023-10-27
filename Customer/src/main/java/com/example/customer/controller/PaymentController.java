@@ -9,6 +9,7 @@ import com.example.customer.entity.OrderEntity;
 import com.example.customer.entity.OrderHistoryEntity;
 import com.example.customer.remote.TableAPI;
 import com.example.customer.service.*;
+import com.example.customer.validator.CustomerValidator;
 import com.example.customer.validator.TableValidator;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
@@ -40,18 +41,19 @@ public class PaymentController {
     private TableService tableService;
 
     @Autowired
-    private TableAPI tableAPI;
+    private TableValidator tableValidator;
 
     @Autowired
-    private TableValidator tableValidator;
+    private CustomerValidator customerValidator;
 
 
 
     @GetMapping("success/{orderCode}")
     @Transactional
-    public String showSuccess(@PathVariable String orderCode, @PathVariable String tb, Model model){
+    public String showSuccess(@PathVariable String orderCode, @PathVariable String tb, Model model, HttpSession session){
         Long orderId = Long.parseLong(orderCode);
         Long tableId = tableValidator.validateTable(tb);
+        customerValidator.checkSession(session);
         OrderEntity orderEntity = orderService.getOrderById(orderId);
         orderEntity = orderService.setStatus(orderEntity);
         customerService.setPoint(orderEntity);
@@ -65,9 +67,10 @@ public class PaymentController {
 
     @GetMapping("failed")
     @Transactional
-    public String showFailed(@PathVariable String tb, RedirectAttributes redirectAttributes){
-        Integer banValue = Integer.parseInt(tb);
-        redirectAttributes.addAttribute("tb", banValue);
+    public String showFailed(@PathVariable String tb, Model model, HttpSession session){
+        Long tableId = tableValidator.validateTable(tb);
+        customerValidator.checkSession(session);
+        model.addAttribute("tb", tableId);
         return "Failed";
     }
 

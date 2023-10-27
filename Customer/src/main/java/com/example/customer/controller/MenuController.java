@@ -45,30 +45,32 @@ public class MenuController {
     @GetMapping("/{tb}")
     public String showMenuPage(Model model, HttpSession session, @PathVariable String tb) {
         Long tableId = tableValidator.validateTable(tb);
-        Customer customer = (Customer) session.getAttribute("customer");
-        if (customer == null) {
-            return "redirect:/login";
-        }
+        Customer customer = customerValidator.checkSession(session);
         model.addAttribute("customer", customer);
         model.addAttribute("orderDetails", cartEntity.getAllCartItems());
         model.addAttribute("products", productService.getAllProduct());
         model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("tb", tableId);
         return "Menu";
     }
 
     @GetMapping("{tb}/{id}")
     public String showMenuOneCategory(@PathVariable String tb, Model model, @PathVariable String id, HttpSession session) {
         Long categoryId = Long.parseLong(id);
+        Long tableId = tableValidator.validateTable(tb);
+        customerValidator.checkSession(session);
+
         model.addAttribute("orderDetails", cartEntity.getAllCartItems());
         model.addAttribute("products", productService.getAllProductByCategoryId(categoryId));
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("category", categoryService.getCategoryById(categoryId));
+        model.addAttribute("categoryId", categoryId);
+        model.addAttribute("tb", tableId);
         return "MenuOneCategory";
     }
 
     @GetMapping("/{tb}/addItem")
     public String addItem(@RequestParam Long productId, @PathVariable String tb, HttpSession session, RedirectAttributes redirectAttributes) {
-
         Long tableId = tableValidator.validateTable(tb);
         customerValidator.checkSession(session);
         ProductEntity product = productService.getProductById(productId);

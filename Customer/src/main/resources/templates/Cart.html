@@ -135,7 +135,7 @@
                       </h6>
                     </div>
                     <div class="total-price">
-                      <span class="money text-dark"><p th:text="${prod.price}"></p></span>
+                      <span class="money text-dark"><p th:text="${prod.price} + ' VNĐ'"></p></span>
                     </div>
                   </td>
                   <td id="quantity-product" class="py-3" style="width: 40%; display: flex">
@@ -159,7 +159,7 @@
             <div class="cart-totals bg-grey">
               <h4 class="text-dark pb-3">Information Customer</h4>
               <div class="total-price">
-                <table cellspacing="0" class="table text-uppercase">
+                <table class="table text-uppercase">
                   <tbody>
                   <tr class="subtotal pt-2 pb-2 border-top border-bottom">
                     <th>Your Name</th>
@@ -184,7 +184,7 @@
                     </td>
                   </tr>
                   <tr class="order-total pt-2 pb-2 border-bottom">
-                    <th><label for="minus-point"></label><input type="checkbox" name="checkbox" id="minus-point"> Minus</th>
+                    <th><label for="minus-point"><input type="checkbox" name="checkbox" id="minus-point">Minus</label></th>
                     <td data-title="Total">
                       <span class="price-amount amount text-dark ps-6">
                         <label for="enter-point"></label><input type="text" th:field="${orderEntity.point}" id="enter-point" readonly>
@@ -205,7 +205,7 @@
                     <th><h1 style="width: 50%; float: left; font-size: 200%;">Total</h1>
                       <span class="price-amount amount text-dark" style="width: 50%;">
                         <bdi>
-                          <span class="price-currency-symbol px-3" id="totalPrice" th:text="${totalPrice}"></span>
+                          <span class="price-currency-symbol px-3" id="totalPrice" th:text="${totalPrice} + ' VNĐ'"></span>
                         </bdi>
                       </span>
                     </th>
