@@ -17,13 +17,14 @@
                     <h1>QRCoffee</h1>
                 </div>
                 <div class="enter-phone">
-                    <input type="text" name="phone" placeholder="Enter Phone Number">
+                    <input type="text" name="phone" placeholder="Nhập số điện thoại" inputmode="numeric" autofocus>
                 </div>
+                <h4>Nếu bạn chưa là thành viên của thánh địa COFFEE, Hãy nhập số điện thoại mới để trở thành một phần của thành địa</h4>
                 <div th:if="${errorMessage}" class="error-message">
                     <p th:text="${errorMessage}" style="color: red"></p>
                 </div>
                 <div class="button-start">
-                    <button type="submit" name="start" id="start">Start</button>
+                    <button type="submit" name="start" id="start">Bắt đầu</button>
                 </div>
             </div>
         </form>

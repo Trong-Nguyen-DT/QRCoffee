@@ -180,45 +180,59 @@
     </div>
 
     <!-- ORDERS TABLE -->
-    <div class="box">
-        <div class="box-body overflow-scroll">
-            <div class="box-header">
-                Product
-            </div>
-            <div class="box-body overflow-scroll">
-                <!--                <select id="categorySelect">-->
-                <!--                    <option th:value="0">All</option>-->
-                <!--                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>-->
-                <!--                </select>-->
-
-                <table>
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Category</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-
-                    </tr>
-                    </thead>
-                    <tbody  th:each="prod : ${products}" th:if="${prod.deleted == false}"  >
-                    <tr>
-                        <td th:text="${prod.id}"></td>
-                        <td th:each="cate : ${categories}"  th:if="${prod.category_id == cate.id}" th:text="${cate.name}"></td>
-                        <td th:text="${prod.title}"></td>
-                        <td th:text="${prod.price}"></td>
-
-                        <td><button class="btn-click"> <a  th:href="@{/admin/product/edit/{productId}(productId=${prod.id})}"> <i class="fa-solid fa-pen"></i>  </a></button> </td>
-                        <td><button class="btn-click"> <a th:href="@{/admin/product/delete/{productId}(productId=${prod.id})}" > <i class="fa-solid fa-trash-can"></i>  </a> </button></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="main-content">
+        <div class="row">
         </div>
 
+        <div class="row">
+
+            <div class="col-12">
+                <!-- Account TABLE -->
+                <div class="box">
+                    <div class="box-body overflow-scroll">
+                        <div class="box-header">
+                            Product
+                        </div>
+                        <div class="box-body overflow-scroll">
+                            <!--                <select id="categorySelect">-->
+                            <!--                    <option th:value="0">All</option>-->
+                            <!--                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>-->
+                            <!--                </select>-->
+
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category</th>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+
+                                </tr>
+                                </thead>
+                                <tbody  th:each="prod : ${products}" th:if="${prod.deleted == false}"  >
+                                <tr>
+                                    <td th:text="${prod.id}"></td>
+                                    <td th:each="cate : ${categories}"  th:if="${prod.category_id == cate.id}" th:text="${cate.name}"></td>
+                                    <td th:text="${prod.title}"></td>
+                                    <td th:text="${prod.price}"></td>
+
+                                    <td><button class="btn-click"> <a  th:href="@{/admin/product/edit/{productId}(productId=${prod.id})}"> <i class="fa-solid fa-pen"></i>  </a></button> </td>
+                                    <td><button class="btn-click"> <a th:href="@{/admin/product/delete/{productId}(productId=${prod.id})}" > <i class="fa-solid fa-trash-can"></i>  </a> </button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- END Account TABLE -->
+            </div>
+        </div>
     </div>
+
     <!-- END ORDERS TABLE -->
 
 <!-- END MAIN CONTENT -->

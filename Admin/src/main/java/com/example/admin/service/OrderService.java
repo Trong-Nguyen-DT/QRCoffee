@@ -5,7 +5,6 @@ import com.example.admin.domain.*;
 import com.example.admin.entity.OrderDetailHistoryEntity;
 import com.example.admin.entity.OrderEntity;
 import com.example.admin.entity.OrderHistoryEntity;
-import com.example.admin.entity.ProductEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,4 +36,10 @@ public interface OrderService {
     OrderHistoryEntity saveOrderHistory(OrderEntity orderEntity);
 
     List<OrderDetailHistoryEntity> getOrderDetailHistoryByOrderId(Long id);
+
+    List<OrderHistory> getOrderByMonth(int month, int year);
+
+    double getPercentCompare(Long totalThisMonth, Long totalLastMonth);
+
+    Long getTotalAmountByOrder(List<OrderHistory> orderHistories);
 }

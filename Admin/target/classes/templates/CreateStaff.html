@@ -181,79 +181,92 @@
 
         <!-- ORDERS TABLE -->
 
-        <div class="box">
-                <!-- <div class="box-header">
-                   Account Staff
-                </div> -->
-                <div class="box-body overflow-scroll">
-                        <form th:action="@{/admin/staff/create}" th:method="post" th:object="${user}">
-                                <table>
-                                        <tr>
-                                                <th>
-                                                        <label>Name:</label>
 
-                                                </th>
-                                                <td>
-                                                        <input type="text" th:field="*{name}" />
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <th>
-                                                        <label>User Name:</label>
+        <div class="main-content">
+                <div class="row">
+                </div>
 
-                                                </th>
-                                                <td>
-                                                        <input type="text" th:field="*{username}" />
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <th>
-                                                        <label>Password:</label>
+                <div class="row">
 
-                                                </th>
-                                                <td>
-                                                        <input type="text" th:field="*{password}" />
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <th>
-                                                        <label>Phone:</label>
+                        <div class="col-12">
+                                <!-- Account TABLE -->
+                                <div class="box">
+                                        <!-- <div class="box-header">
+                                           Account Staff
+                                        </div> -->
+                                        <div class="box-body overflow-scroll">
+                                                <form th:action="@{/admin/staff/create}" th:method="post" th:object="${user}">
+                                                        <table>
+                                                                <tr>
+                                                                        <th>
+                                                                                <label>Name:</label>
 
-                                                </th>
-                                                <td>
-                                                        <input type="text" th:field="*{phone}" />
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <th>
-                                                        <label>Address:</label>
+                                                                        </th>
+                                                                        <td>
+                                                                                <input type="text" th:field="*{name}" />
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <th>
+                                                                                <label>User Name:</label>
 
-                                                </th>
-                                                <td><input type="text" th:field="*{address}" /></td>
-                                        </tr>
-                                        <tr>
-                                                <th>
-                                                        <label>Birthday:</label>
-                                                </th>
-                                                <td>
-                                                        <input type="date" th:field="*{birthday}" />
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <th>
-                                                        <label>Salary:</label>
-                                                </th>
-                                                <td>
-                                                        <input type="text" th:field="*{salary}" />
-                                                </td>
-                                        </tr>
+                                                                        </th>
+                                                                        <td>
+                                                                                <input type="text" th:field="*{username}" />
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <th>
+                                                                                <label>Password:</label>
 
-                                </table>
-                                <button type="submit">ADD</button>
-                        </form>
+                                                                        </th>
+                                                                        <td>
+                                                                                <input type="text" th:field="*{password}" />
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <th>
+                                                                                <label>Phone:</label>
+
+                                                                        </th>
+                                                                        <td>
+                                                                                <input type="text" th:field="*{phone}" />
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <th>
+                                                                                <label>Address:</label>
+
+                                                                        </th>
+                                                                        <td><input type="text" th:field="*{address}" /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <th>
+                                                                                <label>Birthday:</label>
+                                                                        </th>
+                                                                        <td>
+                                                                                <input type="date" th:field="*{birthday}" />
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <th>
+                                                                                <label>Salary:</label>
+                                                                        </th>
+                                                                        <td>
+                                                                                <input type="text" th:field="*{salary}" />
+                                                                        </td>
+                                                                </tr>
+
+                                                        </table>
+                                                        <button type="submit">ADD</button>
+                                                </form>
+                                        </div>
+                                </div>
+
+                                <!-- END Account TABLE -->
+                        </div>
                 </div>
         </div>
-
 
         <!-- END ORDERS TABLE -->
 

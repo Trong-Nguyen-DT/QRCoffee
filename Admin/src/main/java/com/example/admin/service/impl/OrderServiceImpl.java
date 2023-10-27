@@ -8,6 +8,7 @@ import com.example.admin.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +27,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private TableRepository tableRepository;
 
     @Autowired
     private OrderDetailHistoryRepository orderDetailHistoryRepository;
@@ -175,10 +173,29 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDetailHistoryEntity> getOrderDetailHistoryByOrderId(Long id) {
-
-
-
         return orderDetailHistoryRepository.findAllByOrderHistoryEntity(orderHistoryRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public List<OrderHistory> getOrderByMonth(int month, int year) {
+        return orderHistoryRepository.findOrdersByMonthAndYear(month, year).stream().map(OrderHistoryConvertor::toModel).toList();
+    }
+
+    @Override
+    public double getPercentCompare(Long totalThisMonth, Long totalLastMonth) {
+        double percentage = (double) totalThisMonth / totalLastMonth * 100;
+        percentage -= 100;
+        String formattedPercentage = String.format("%.2f", percentage); // Định dạng số với tối đa 2 chữ số sau dấu phẩy
+        return Double.parseDouble(formattedPercentage);
+    }
+
+    @Override
+    public Long getTotalAmountByOrder(List<OrderHistory> orderHistories) {
+        Long totalAmount = 0L;
+        for (OrderHistory orderHistory : orderHistories){
+            totalAmount += orderHistory.getAmount();
+        }
+        return totalAmount;
     }
 
 }

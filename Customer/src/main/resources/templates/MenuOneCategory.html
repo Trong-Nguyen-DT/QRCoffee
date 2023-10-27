@@ -90,8 +90,8 @@
                 <label class="user_items">
                     <label for="nav_input" class="user_items-close"><i class="fa-solid fa-xmark fa-2xl"></i></label>
                     <ul class="user_items-list">
-                        <li><a th:href="@{'/my/' + ${tb}}" class="user_item-link">My Information</a></li>
-                        <li><a th:href="@{'/exit/' + ${tb}}" class="user_item-link">Exit</a></li>
+                        <li><a th:href="@{'/my/' + ${tb}}" class="user_item-link">Thông tin của bạn</a></li>
+                        <li><a th:href="@{'/exit/' + ${tb}}" class="user_item-link">Thoát</a></li>
                     </ul>
                 </label>
             </label>
@@ -104,13 +104,16 @@
                     <label for="bar_input" class="nav-overlay"></label>
                     <div class="menu-head-pc">
                         <ul>
-                            <li th:each="cate : ${categories}"><a th:href="@{'/menu/' + ${tb} + '/' + ${cate.id}}" th:text="${cate.name}"></a></li>
+                            <li><a th:href="@{'/menu/' + ${tb}}">Tất cả</a></li>
+                            <li th:each="cate : ${categories}" th:if="${cate.id != categoryId}">
+                                <a th:href="@{'/menu/' + ${tb} + '/' + ${cate.id}}" th:text="${cate.name}"></a>
+                            </li>
                         </ul>
                     </div>
                     <div class="menu-head-mobile">
                         <label for="bar_input" class="user_items-close"><i class="fa-solid fa-xmark fa-2xl"></i></label>
                         <ul class="content-mobile-list">
-                            <li><a th:href="@{'/menu/' + ${tb}}">ALL</a></li>
+                            <li><a th:href="@{'/menu/' + ${tb}}">Tất cả</a></li>
                             <li th:each="cate : ${categories}" th:if="${cate.id != categoryId}">
                                 <a th:href="@{'/menu/' + ${tb} + '/' + ${cate.id}}" th:text="${cate.name}"></a>
                             </li>

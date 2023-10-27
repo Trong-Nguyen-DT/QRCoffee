@@ -181,56 +181,70 @@
 
     <!-- ORDERS TABLE -->
 
-    <div class="box">
-        <!-- <div class="box-header">
-           Account Staff
-        </div> -->
-        <div class="box-body overflow-scroll">
-            <form th:action="@{/admin/product/create}" th:method="post" th:object="${product}" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <th>
-                            <label>Title:</label>
 
-                        </th>
-                        <td>
-                            <input type="text" th:field="*{title}" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>Price:</label>
+    <div class="main-content">
+        <div class="row">
+        </div>
 
-                        </th>
-                        <td>
-                            <input type="text" th:field="*{price}" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>Select Image</label>
+        <div class="row">
 
-                        </th>
-                        <td>
-                            <input id="input-file" type="file" name="file">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>Select Category</label>
+            <div class="col-12">
+                <!-- Account TABLE -->
+                <div class="box">
+                    <!-- <div class="box-header">
+                       Account Staff
+                    </div> -->
+                    <div class="box-body overflow-scroll">
+                        <form th:action="@{/admin/product/create}" th:method="post" th:object="${product}" enctype="multipart/form-data">
+                            <table>
+                                <tr>
+                                    <th>
+                                        <label>Title:</label>
 
-                        </th>
-                        <td>
-                            <select th:field="*{category_id}">
+                                    </th>
+                                    <td>
+                                        <input type="text" th:field="*{title}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label>Price:</label>
 
-                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-                            </select>
-                        </td>
-                    </tr>
+                                    </th>
+                                    <td>
+                                        <input type="text" th:field="*{price}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label>Select Image</label>
 
-                </table>
-                <button type="submit">ADD</button>
-            </form>
+                                    </th>
+                                    <td>
+                                        <input id="input-file" type="file" name="file">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label>Select Category</label>
+
+                                    </th>
+                                    <td>
+                                        <select th:field="*{category_id}">
+
+                                            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <button type="submit">ADD</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- END Account TABLE -->
+            </div>
         </div>
     </div>
 

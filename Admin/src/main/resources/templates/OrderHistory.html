@@ -204,6 +204,9 @@
                             <button type="submit">Search</button>
                         </form>
                     </div>
+                    <div>
+                        <h1 th:text="'Total Amount: ' + ${totalAmount} + ' VNĐ'"></h1>
+                    </div>
                     <div class="box-body overflow-scroll">
                         <table>
                             <thead>
@@ -231,7 +234,7 @@
                                 <td th:text="${orderhistory.amount}"></td>
                                 <td th:text="${orderhistory.point}"></td>
                                 <td th:text="${orderhistory.totalPrice}"></td>
-                                <td><a th:href="@{'/admin/orderdetail/' + ${orderhistory.id}}"><i class="fa-solid fa-magnifying-glass"></i></a> </td>
+                                <td><a th:href="@{'/admin/order-detail/' + ${orderhistory.id}}"><i class="fa-solid fa-magnifying-glass"></i></a> </td>
                             </tr>
 
 

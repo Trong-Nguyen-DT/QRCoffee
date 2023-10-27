@@ -24,7 +24,6 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-
     private OrderService orderService;
 
     @Autowired
@@ -37,9 +36,12 @@ public class OrderController {
 
     @GetMapping("/orders")
     public String showOrderHistory(Model model){
-        model.addAttribute("orders", orderService.getAllOrders());
+        List<OrderHistory> orderHistories = orderService.getAllOrders();
+        model.addAttribute("orders", orderHistories);
+        Long totalAmount = orderService.getTotalAmountByOrder(orderHistories);
+        String formattedTotal = String.format("%,d", totalAmount);
+        model.addAttribute("totalAmount", formattedTotal);
         model.addAttribute("customers",customerService.getAllCustomers());
-
         return "OrderHistory";
     }
     @GetMapping("/orders/search")
@@ -47,11 +49,14 @@ public class OrderController {
                                       @RequestParam("endTime") LocalDateTime endTime,Model model){
         List<OrderHistory> orderHistories = orderService.getOrderByTime(startTime,endTime);
         model.addAttribute("orders", orderHistories );
+        Long totalAmount = orderService.getTotalAmountByOrder(orderHistories);
+        String formattedTotal = String.format("%,d", totalAmount);
+        model.addAttribute("totalAmount", formattedTotal);
         model.addAttribute("customers",customerService.getAllCustomers());
         return "OrderHistorySearch";
     }
 
-    @GetMapping("orderdetail/{id}")
+    @GetMapping("order-detail/{id}")
     public String showOrderDetail(@PathVariable String id, Model model){
         Long orderID = Long.parseLong(id);
         model.addAttribute("orderDetails", orderDetailService.getAllDetailByOrderId(orderID));

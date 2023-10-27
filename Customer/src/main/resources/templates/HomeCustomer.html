@@ -12,18 +12,18 @@
 <div class="container">
     <div class="header-customer">
         <div class="info-customer">
-            <h1>Information</h1>
+            <h1>Thông tin của bạn</h1>
             <div class="info">
-                <label for="name">Name:</label>
+                <label for="name">Tên:</label>
                 <span id="name" th:text="${customer.name}"></span>
             </div>
             <div class="info">
-                <label for="phone">Phone Number:</label>
+                <label for="phone">Số điện thoại: </label>
                 <span id="phone" th:text="${customer.phone}"></span>
             </div>
             <div class="info">
-                <label for="Point">Points:</label>
-                <span id="point" th:text="${customer.point}"></span>
+                <label for="Point">Đã tích lũy được:</label>
+                <span id="point" th:text="${customer.point} + ' điểm'"></span>
             </div>
         </div>
         <div class="btn-back">
@@ -31,22 +31,22 @@
         </div>
     </div>
     <div class="info">
-        <h2>Order History For You</h2>
+        <h2>Lịch sử đặt hàng</h2>
         <table>
             <tr>
-                <th>Order ID</th>
-                <th>Order Date</th>
-                <th>Amount</th>
-                <th>Points</th>
-                <th>Total Price</th>
-                <th>Detail</th>
+                <th>ID đơn hàng</th>
+                <th>Thời gian gọi món</th>
+                <th>Thanh toán</th>
+                <th>Số điểm sử dụng</th>
+                <th>Tổng tiền</th>
+                <th>Chi tiết</th>
             </tr>
             <tr th:each="order : ${orders}">
                 <td th:text="${order.id}"></td>
                 <td th:text="${order.orderDateTime}"></td>
-                <td th:text="${order.amount} + 'VNĐ'"></td>
+                <td th:text="${order.amount} + ' VNĐ'"></td>
                 <td th:text="${order.point}"></td>
-                <td th:text="${order.totalPrice} + 'VNĐ'"></td>
+                <td th:text="${order.totalPrice} + ' VNĐ'"></td>
                 <td><a th:href="@{'/my/' + ${tb} + '/' + ${order.id}}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
             </tr>
 
