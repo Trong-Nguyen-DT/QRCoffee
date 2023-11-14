@@ -15,7 +15,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class PaymentAPI {
 
     public String getQrFromOtherClient(Order requestBody) {
-        //Url
+
+        //Url https://api.brevo.com/v3/emailCampaigns
         String url =  UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("api-merchant.payos.vn")

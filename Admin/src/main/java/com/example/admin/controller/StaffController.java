@@ -23,7 +23,7 @@ public class StaffController {
     }
 
     @GetMapping("/staff/create")
-    public String showCreateStaffBy(Model model){
+    public String showCreateStaff(Model model){
         model.addAttribute("user", new User());
         return "CreateStaff";
     }
@@ -34,10 +34,7 @@ public class StaffController {
     }
     @GetMapping("/staff/edit/{id}")
     public String showUpdateStaff(@PathVariable Long id, Model model) {
-
         model.addAttribute("user", staffService.getStaffById(id));
-
-
         return "EditStaff"; // Chuyển hướng về trang danh sách sản phẩm sau khi cập nhật
     }
     @PostMapping("/staff/edit")

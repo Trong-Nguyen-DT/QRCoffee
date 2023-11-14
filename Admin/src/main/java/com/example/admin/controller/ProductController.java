@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/create")
-    public String showProduct(Model model){
+    public String showCreateProduct(Model model){
         List<Category> categories = categoryService.getAllCategory();
         model.addAttribute("categories", categories);
         model.addAttribute("product", new Product()); // Thay vì new ProductController()
@@ -59,8 +59,6 @@ public class ProductController {
         String message = "";
 
         try {
-//            getFileExtension(Objects.requireNonNull(file.getOriginalFilename()));
-//            String fileName = UUID.randomUUID().toString() + "." + fileExtension; // Tạo tên file mới để tránh trùng lặp
 
             File file1 = new File( imagePath + file.getOriginalFilename());
 
@@ -71,8 +69,6 @@ public class ProductController {
 
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             model.addAttribute("message", message);
-//            model.addAttribute("fileExtension", fileExtension);
-//            model.addAttribute("fileDownloadLink", "/files/download/" + fileExtension);
 
         } catch (Exception e) {
             message = "Could not upload the file: " + file.getOriginalFilename() + ". Error: " + e.getMessage();
@@ -82,13 +78,6 @@ public class ProductController {
         productService.saveProduct(product);
         return "redirect:/admin/product";
     }
-
-//    private boolean getFileExtension(String originalFilename) {
-//        String newFileName = "png";
-//        //hack.png
-//        String[] fileSplits = originalFilename.split("\\."); // ["hack", "png"]
-//        return newFileName.equals(fileSplits[fileSplits.length - 1]);
-//    }
 
     @GetMapping("/product/edit/{id}")
     public String showUpdate(@PathVariable Long id,  Model model) {
@@ -114,11 +103,11 @@ public class ProductController {
         productService.restoreProduct(id);
         return "redirect:/admin/product/restore"; // Chuyển hướng về trang danh sách sản phẩm sau khi cập nhật
     }
-@GetMapping("product/restore")
-    public String showRestoreProduct(Model model){
-        model.addAttribute("categories",categoryService.getAllCategory());
-        model.addAttribute("RestoreProducts", productService.getAllProducts());
-        return "RestoreProduct";
-}
+    @GetMapping("product/restore")
+        public String showRestoreProduct(Model model){
+            model.addAttribute("categories",categoryService.getAllCategory());
+            model.addAttribute("RestoreProducts", productService.getAllProducts());
+            return "RestoreProduct";
+    }
 
 }

@@ -46,7 +46,7 @@ public class CartController {
 
 
     @GetMapping()
-    public String showErrorQR(Model model) {
+    public String showErrorQR() {
         return "ErrorCustomer";
     }
 
@@ -82,12 +82,15 @@ public class CartController {
 
     @GetMapping("/{tb}/checkout")
     @Transactional
-    public String checkout(@PathVariable String tb, @ModelAttribute OrderEntity cartOrderEntity, HttpSession session, RedirectAttributes redirectAttributes){
+    public String checkout(@PathVariable String tb, @ModelAttribute OrderEntity cartOrderEntity,
+                           HttpSession session,
+                           RedirectAttributes redirectAttributes){
         Long tableId = tableValidator.validateTable(tb);
         Customer customer = customerValidator.checkSession(session);
         int orderPoints = (cartOrderEntity.getPoint() != null) ? cartOrderEntity.getPoint() : 0;
         if ((orderPoints <= customer.getPoint()) && orderPoints <= cartEntity.getTotalPrice()) {
-            OrderEntity orderEntity = orderService.saveOrder(Integer.parseInt(tb), customer, cartEntity.getTotalPrice(), orderPoints);
+            OrderEntity orderEntity = orderService.saveOrder(
+                    Integer.parseInt(tb), customer, cartEntity.getTotalPrice(), orderPoints);
             orderDetailService.saveOrderDetail(orderEntity, cartEntity.getAllCartItems());
 
             if (orderEntity.getAmount() > 0) {

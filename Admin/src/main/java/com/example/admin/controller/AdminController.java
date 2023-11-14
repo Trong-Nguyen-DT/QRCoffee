@@ -33,8 +33,10 @@ public class AdminController {
     @GetMapping
     public String showAdminPage(Model model) {
         model.addAttribute("quantityCustomer", customerService.getAllCustomers().size());
-        List<OrderHistory> orderThisMonth = orderService.getOrderByMonth(LocalDateTime.now().getMonth().getValue(), LocalDateTime.now().getYear());
-        List<OrderHistory> orderLastMonth = orderService.getOrderByMonth(LocalDateTime.now().getMonth().getValue() - 1, LocalDateTime.now().getYear());
+        List<OrderHistory> orderThisMonth = orderService.getOrderByMonth(
+                LocalDateTime.now().getMonth().getValue(), LocalDateTime.now().getYear());
+        List<OrderHistory> orderLastMonth = orderService.getOrderByMonth(
+                LocalDateTime.now().getMonth().getValue() - 1, LocalDateTime.now().getYear());
         model.addAttribute("quantityOrder", orderThisMonth.size());
 
         Long totalThisMonth = orderService.getTotalAmountByOrder(orderThisMonth);

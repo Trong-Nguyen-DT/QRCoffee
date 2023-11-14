@@ -37,7 +37,6 @@ public class StaffHomeController {
     public String ShowHomePage(Model model){
         // Lấy thông tin xác thực của người dùng hiện tại
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         model.addAttribute("user", staffService.getUserByUserName(authentication.getName()));
         model.addAttribute("orders", orderService.getOrderConfirmedFalse(false));
         model.addAttribute("tables", tableService.getAllTables());

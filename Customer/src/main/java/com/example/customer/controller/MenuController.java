@@ -59,7 +59,6 @@ public class MenuController {
         Long categoryId = Long.parseLong(id);
         Long tableId = tableValidator.validateTable(tb);
         customerValidator.checkSession(session);
-
         model.addAttribute("orderDetails", cartEntity.getAllCartItems());
         model.addAttribute("products", productService.getAllProductByCategoryId(categoryId));
         model.addAttribute("categories", categoryService.getAllCategory());
