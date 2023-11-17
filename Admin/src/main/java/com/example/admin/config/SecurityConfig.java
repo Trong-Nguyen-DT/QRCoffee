@@ -52,7 +52,7 @@ public class SecurityConfig {
                                 auth.requestMatchers("/admin*")
                                         .hasRole("ADMIN")
                                         .requestMatchers("/staff*")
-                                        .hasRole("STAFF")
+                                        .hasAnyRole("ADMIN", "STAFF")
 //                        .requestMatchers("/anonymous*")
 //                        .anonymous()
                                         .requestMatchers("/login*","/table-api*")
